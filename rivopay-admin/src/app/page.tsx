@@ -20,8 +20,8 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="h-screen w-full flex flex-col items-center justify-center bg-gradient-to-br from-white to-slate-100 px-4 text-center">
-      <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+    <main className="h-screen w-full flex flex-col items-center justify-center bg-[#F5F3FF] px-4 text-center">
+      <h1 className="text-4xl md:text-5xl font-bold text-[#7B48EF] mb-4">
         Rivo Admin Dashboard
       </h1>
 
@@ -33,13 +33,13 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -5 }}
           transition={{ duration: 0.5 }}
-          className="text-gray-500 text-lg md:text-xl mb-6"
+          className="text-[#444] text-lg md:text-xl mb-6"
         >
           {messages[currentIndex]}
         </motion.p>
       </AnimatePresence>
 
-      <span className="px-4 py-2 rounded-full text-sm font-medium bg-gray-200 text-gray-600">
+      <span className="px-5 py-2 rounded-full text-sm font-medium bg-[#7B48EF] text-white shadow-md">
         Coming Soon
       </span>
     </main>
