@@ -211,7 +211,7 @@ const SignupForm = () => {
 
             {/* T&C checkbox Field */}
             <div className="flex items-center gap-3">
-              <Checkbox id="terms" />
+              <Checkbox id="terms" className="size-5" />
               <Label
                 htmlFor="terms"
                 className="text-muted-foreground text-sm flex"
