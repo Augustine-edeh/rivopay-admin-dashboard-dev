@@ -41,7 +41,6 @@ const SignupForm = () => {
   const router = useRouter();
 
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -69,14 +68,14 @@ const SignupForm = () => {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-6 bg-red- 500 w-full h-full"
+          className="space-y-5 w-full h-full"
         >
           <div>
             <h1 className="text-2xl font-semibold tracking-tight">
               Create an Account
             </h1>
 
-            <Button className="w-full flex gap-2 bg-lightGray text-darkGray py-4">
+            <Button className="w-full flex gap-2 bg-lightGray text-darkGray py-4 mt-5 rounded-3xl">
               <svg
                 width="18"
                 height="18"
@@ -105,24 +104,66 @@ const SignupForm = () => {
               <span>Sign Up Google</span>
             </Button>
 
-            <div className="flex items-center gap-4 my-6">
+            <div className="flex items-center gap-4 mt-4">
               <Separator className="flex-1" />
               <span className="text-muted-foreground text-sm">or</span>
               <Separator className="flex-1" />
             </div>
           </div>
 
-          <div className="bg-blue-500 flex gap-8">
-            {/* First Name */}
+          <div className="bg-purple-700 p-1 space-y-5">
+            {/* First & Last Names Field */}
+            <div className="bg-blue-500 flex gap-8">
+              {/* First Name */}
+              <FormField
+                control={form.control}
+                name="firstName"
+                render={({ field }) => (
+                  <FormItem className="space-y-[12px]">
+                    <FormLabel>First Name</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="First Name"
+                        className="rounded-3xl"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              {/* Last Name */}
+              <FormField
+                control={form.control}
+                name="lastName"
+                render={({ field }) => (
+                  <FormItem className="space-y-[12px]">
+                    <FormLabel>Last Name</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="Last Name"
+                        className="rounded-3xl"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+
+            {/* Email Field*/}
             <FormField
               control={form.control}
-              name="firstName"
+              name="email"
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>First Name</FormLabel>
+                <FormItem className="space-y-[12px]">
+                  <FormLabel>Email Address</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="First Name"
+                      type="email"
+                      placeholder="example@email.com"
                       className="rounded-3xl"
                       {...field}
                     />
@@ -132,83 +173,49 @@ const SignupForm = () => {
               )}
             />
 
-            {/* Last Name */}
+            {/* Password Field */}
             <FormField
               control={form.control}
-              name="lastName"
+              name="password"
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Last Name</FormLabel>
+                <FormItem className="space-y-[12px]">
+                  <FormLabel htmlFor="password">Password</FormLabel>
                   <FormControl>
-                    <Input
-                      placeholder="Last Name"
-                      className="rounded-3xl"
-                      {...field}
-                    />
+                    <div className="relative">
+                      <Input
+                        id="password"
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Minimum 8 characters"
+                        className="pr-10 rounded-3xl" // add padding to avoid icon overlap
+                        {...field}
+                      />
+                      <span
+                        className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-muted-foreground"
+                        onClick={() => setShowPassword((prev) => !prev)}
+                      >
+                        {showPassword ? (
+                          <EyeOff size={18} />
+                        ) : (
+                          <Eye size={18} />
+                        )}
+                      </span>
+                    </div>
                   </FormControl>
+
                   <FormMessage />
                 </FormItem>
               )}
             />
+
+            {/* Create Account Button */}
+            <Button
+              type="submit"
+              className="w-full bg-primary rounded-3xl mt-4"
+              disabled={!form.formState.isValid}
+            >
+              Create Account
+            </Button>
           </div>
-
-          {/* Email */}
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email Address</FormLabel>
-                <FormControl>
-                  <Input
-                    type="email"
-                    placeholder="example@email.com"
-                    className="rounded-3xl"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          {/* Password Field */}
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel htmlFor="password">Password</FormLabel>
-                <FormControl>
-                  <div className="relative">
-                    <Input
-                      id="password"
-                      type={showPassword ? "text" : "password"}
-                      placeholder="Minimum 8 characters"
-                      className="pr-10 rounded-3xl" // add padding to avoid icon overlap
-                      {...field}
-                    />
-                    <span
-                      className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-muted-foreground"
-                      onClick={() => setShowPassword((prev) => !prev)}
-                    >
-                      {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                    </span>
-                  </div>
-                </FormControl>
-
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <Button
-            type="submit"
-            className="w-full bg-primary"
-            disabled={!form.formState.isValid}
-          >
-            Create Account
-          </Button>
         </form>
       </Form>
     </div>
