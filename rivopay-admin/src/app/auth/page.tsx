@@ -8,6 +8,8 @@ import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
 
 import {
   Form,
@@ -75,7 +77,7 @@ const SignupForm = () => {
               Create an Account
             </h1>
 
-            <Button className="w-full flex gap-2 bg-lightGray text-darkGray py-4 mt-5 rounded-3xl">
+            <Button className="w-full flex gap-2 bg-lightGray text-darkGray hover:text-white py-4 mt-5 rounded-3xl">
               <svg
                 width="18"
                 height="18"
@@ -206,6 +208,23 @@ const SignupForm = () => {
                 </FormItem>
               )}
             />
+
+            {/* T&C checkbox Field */}
+            <div className="flex items-center gap-3">
+              <Checkbox id="terms" />
+              <Label
+                htmlFor="terms"
+                className="text-muted-foreground text-sm flex"
+              >
+                <p>
+                  By creating an account, you agree to our
+                  <span className="font-semibold text-[#553A6B]">
+                    Terms and Conditions
+                  </span>{" "}
+                  and Privacy Policy.
+                </p>
+              </Label>
+            </div>
 
             {/* Create Account Button */}
             <Button
