@@ -64,7 +64,7 @@ const SignupForm = () => {
   }
 
   return (
-    <div className="bg-lime-500 w-full max-w-md">
+    <div className="w-full max-w-md">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -111,9 +111,9 @@ const SignupForm = () => {
             </div>
           </div>
 
-          <div className="bg-purple-700 p-1 space-y-5">
+          <div className="space-y-5">
             {/* First & Last Names Field */}
-            <div className="bg-blue-500 flex gap-8">
+            <div className="flex gap-8">
               {/* First Name */}
               <FormField
                 control={form.control}

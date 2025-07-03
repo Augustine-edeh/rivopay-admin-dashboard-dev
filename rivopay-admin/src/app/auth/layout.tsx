@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 const AuthLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col">
       <header className="bg-darkPurple flex justify-between items-center px-8 py-2">
         <div className="font-bold text-white text-3xl">rivo</div>
 
