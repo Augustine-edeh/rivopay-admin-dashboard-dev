@@ -73,7 +73,7 @@ const SignupForm = () => {
           className="space-y-5 w-full h-full"
         >
           <div>
-            <h1 className="text-2xl font-semibold tracking-tight">
+            <h1 className="text-2xl font-semibold tracking-tight text-center">
               Create an Account
             </h1>
 
