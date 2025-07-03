@@ -9,7 +9,7 @@ const AuthLayout = ({ children }: { children: ReactNode }) => {
         <div className="size-12 rounded-full bg-gray-50" />
       </header>
 
-      <main className="flex-1 flex flex-col justify-center items-center w-full">
+      <main className="flex-1 flex flex-col justify-center items-center w-full px-6">
         {children}
       </main>
 

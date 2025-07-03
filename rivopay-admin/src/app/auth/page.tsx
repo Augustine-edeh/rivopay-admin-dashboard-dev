@@ -90,135 +90,141 @@ const SignupForm = () => {
   };
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-6 bg-red- 500 w-full h-full"
-      >
-        <h1 className="text-2xl font-semibold tracking-tight">
-          Create an Account
-        </h1>
+    <div className="bg-red-500 w-full max-w-md">
+      {/* <h2>Create Account</h2> */}
 
-        {/* Full Name */}
-        <FormField
-          control={form.control}
-          name="fullName"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Full Name</FormLabel>
-              <FormControl>
-                <Input placeholder="Enter your full name" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* Email */}
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input
-                  type="email"
-                  placeholder="Enter your official email address"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* Password Field + Strength Meter */}
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel htmlFor="password">Password</FormLabel>
-              <FormControl>
-                <div className="relative">
-                  <Input
-                    id="password"
-                    type={showPassword ? "text" : "password"}
-                    placeholder="Minimum 8 characters"
-                    {...field}
-                    className="pr-10" // add padding to avoid icon overlap
-                  />
-                  <span
-                    className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-muted-foreground"
-                    onClick={() => setShowPassword((prev) => !prev)}
-                  >
-                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                  </span>
-                </div>
-              </FormControl>
-
-              {/* Password Strength Indicator */}
-              {passwordValue && (
-                <div className="mt-2 flex gap-2">
-                  {[1, 2, 3].map((level) => (
-                    <div
-                      key={level}
-                      className={`h-2 flex-1 rounded-sm transition-colors duration-300 ${getBarColor(
-                        level
-                      )}`}
-                    />
-                  ))}
-                </div>
-              )}
-
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* Confirm Passowrd */}
-        <FormField
-          control={form.control}
-          name="confirmPassword"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel htmlFor="confirmPassword">Confirm Password</FormLabel>
-              <FormControl>
-                <div className="relative">
-                  <Input
-                    id="confirmPassword"
-                    type={showConfirmPassword ? "text" : "password"}
-                    placeholder="Rewrite your password"
-                    {...field}
-                    className="pr-10"
-                  />
-                  <span
-                    className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-muted-foreground"
-                    onClick={() => setShowConfirmPassword((prev) => !prev)}
-                  >
-                    {showConfirmPassword ? (
-                      <EyeOff size={18} />
-                    ) : (
-                      <Eye size={18} />
-                    )}
-                  </span>
-                </div>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <Button
-          type="submit"
-          className="w-full bg-primary"
-          disabled={!form.formState.isValid}
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-6 bg-red- 500 w-full h-full"
         >
-          Create Account
-        </Button>
-      </form>
-    </Form>
+          <h1 className="text-2xl font-semibold tracking-tight">
+            Create an Account
+          </h1>
+
+          {/* Full Name */}
+          <FormField
+            control={form.control}
+            name="fullName"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Full Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter your full name" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Email */}
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input
+                    type="email"
+                    placeholder="Enter your official email address"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Password Field + Strength Meter */}
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel htmlFor="password">Password</FormLabel>
+                <FormControl>
+                  <div className="relative">
+                    <Input
+                      id="password"
+                      type={showPassword ? "text" : "password"}
+                      placeholder="Minimum 8 characters"
+                      {...field}
+                      className="pr-10" // add padding to avoid icon overlap
+                    />
+                    <span
+                      className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-muted-foreground"
+                      onClick={() => setShowPassword((prev) => !prev)}
+                    >
+                      {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                    </span>
+                  </div>
+                </FormControl>
+
+                {/* Password Strength Indicator */}
+                {passwordValue && (
+                  <div className="mt-2 flex gap-2">
+                    {[1, 2, 3].map((level) => (
+                      <div
+                        key={level}
+                        className={`h-2 flex-1 rounded-sm transition-colors duration-300 ${getBarColor(
+                          level
+                        )}`}
+                      />
+                    ))}
+                  </div>
+                )}
+
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Confirm Passowrd */}
+          <FormField
+            control={form.control}
+            name="confirmPassword"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel htmlFor="confirmPassword">
+                  Confirm Password
+                </FormLabel>
+                <FormControl>
+                  <div className="relative">
+                    <Input
+                      id="confirmPassword"
+                      type={showConfirmPassword ? "text" : "password"}
+                      placeholder="Rewrite your password"
+                      {...field}
+                      className="pr-10"
+                    />
+                    <span
+                      className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-muted-foreground"
+                      onClick={() => setShowConfirmPassword((prev) => !prev)}
+                    >
+                      {showConfirmPassword ? (
+                        <EyeOff size={18} />
+                      ) : (
+                        <Eye size={18} />
+                      )}
+                    </span>
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <Button
+            type="submit"
+            className="w-full bg-primary"
+            disabled={!form.formState.isValid}
+          >
+            Create Account
+          </Button>
+        </form>
+      </Form>
+    </div>
   );
 };
 
