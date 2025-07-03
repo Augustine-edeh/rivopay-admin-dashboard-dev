@@ -11,19 +11,6 @@
   --color-darkGray: #8e8e93;
   --color-lightGray: #eaeaea;
   --color-separatorGray: #9d9c9c;
-
-  --color-cream: #fff7e8;
-  --color-primary: #a2185a;
-  --primary-50: #fdf0f5;
-  --primary-100: #fbe0eb;
-  --primary-200: #f6bcd0;
-  --primary-300: #f093b2;
-  --primary-400: #e45b88;
-  --primary-500: #a2185a;
-  --primary_600: #89144c;
-  --primary-700: #6e103e;
-  --primary-800: #540c30;
-  --primary-900: #3a0922;
 }
 
 @custom-variant dark (&:is(.dark *));
