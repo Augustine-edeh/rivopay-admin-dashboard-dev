@@ -17,14 +17,16 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 // import clsx from "clsx";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 
 // Schema
 const formSchema = z.object({
-  password: z.string({ message: "Password must be at least 8 characters" }),
+  password: z
+    .string()
+    .min(8, { message: "Password must be at least 8 characters." })
+    .max(32, { message: "Password must be at most 32 characters." }),
 });
 
 const LoginWelcome = () => {
@@ -55,7 +57,8 @@ const LoginWelcome = () => {
     // NOTE: if response.data.success; redirect to admin page
     // 1. show toast({type: success, message: {heading: 'Login successfully}', subText: 'You are logged in.' })
     // 2. clear the form & redirect to /admin.
-    router.push("/admin"); //3.
+    // 3. form.reset();
+    router.push("/admin"); //4.
   }
 
   return (
@@ -95,6 +98,10 @@ const LoginWelcome = () => {
                         {...field}
                       />
                       <span
+                        aria-label={
+                          showPassword ? "Hide password" : "Show password"
+                        }
+                        role="button"
                         className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-muted-foreground"
                         onClick={() => setShowPassword((prev) => !prev)}
                       >
@@ -114,9 +121,9 @@ const LoginWelcome = () => {
 
             {/* Remember login checkbox Field */}
             <div className="flex items-center gap-3 mt-2.5">
-              <Checkbox id="terms" className="size-5" />
+              <Checkbox id="rememberLogin" className="size-5" />
               <Label
-                htmlFor="terms"
+                htmlFor="rememberLogin"
                 className="text-muted-foreground text-sm flex"
               >
                 Keep me logged in
@@ -126,7 +133,7 @@ const LoginWelcome = () => {
             {/* Log in Button */}
             <Button
               type="submit"
-              className="w-full bg-primary rounded- p-6 mt-8 mb-5 rounded-3xl"
+              className="w-full bg-primary p-6 mt-8 mb-5 rounded-3xl"
               disabled={!form.formState.isValid}
             >
               Log in
