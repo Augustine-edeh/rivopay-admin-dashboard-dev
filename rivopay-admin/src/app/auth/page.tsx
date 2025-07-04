@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 // Schema
 const formSchema = z.object({
@@ -210,17 +211,20 @@ const SignupForm = () => {
             />
 
             {/* T&C checkbox Field */}
-            <div className="flex items-center gap-3">
-              <Checkbox id="terms" className="size-5" />
+            <div className="flex gap-3">
+              <Checkbox id="terms" className="size-5 mt-1" />
               <Label
                 htmlFor="terms"
                 className="text-muted-foreground text-sm flex"
               >
                 <p>
-                  By creating an account, you agree to our
-                  <span className="font-semibold text-[#553A6B]">
-                    Terms and Conditions
-                  </span>{" "}
+                  By creating an account, you agree to our{" "}
+                  <Link
+                    href="/rivo-terms-and-conditions"
+                    className="font-semibold text-textPurple"
+                  >
+                    Terms and Conditions,
+                  </Link>{" "}
                   and Privacy Policy.
                 </p>
               </Label>
@@ -234,6 +238,13 @@ const SignupForm = () => {
             >
               Create Account
             </Button>
+
+            <p>
+              Already a member?{" "}
+              <Link href="/sign-in" className="font-semibold text-textPurple">
+                Sign In
+              </Link>
+            </p>
           </div>
         </form>
       </Form>

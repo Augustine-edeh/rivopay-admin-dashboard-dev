@@ -11,6 +11,7 @@
   --color-darkGray: #8e8e93;
   --color-lightGray: #eaeaea;
   --color-separatorGray: #9d9c9c;
+  --color-textPurple: #553a6b;
 }
 
 @custom-variant dark (&:is(.dark *));
