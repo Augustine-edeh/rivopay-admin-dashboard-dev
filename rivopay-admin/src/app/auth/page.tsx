@@ -20,7 +20,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 // Schema
@@ -41,7 +41,7 @@ const formSchema = z.object({
 });
 
 const SignupForm = () => {
-  const router = useRouter();
+  // const router = useRouter();
 
   const [showPassword, setShowPassword] = useState(false);
 
