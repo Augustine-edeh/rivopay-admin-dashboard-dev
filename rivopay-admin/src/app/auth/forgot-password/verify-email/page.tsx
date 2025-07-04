@@ -16,23 +16,23 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
-import { CircleAlert } from "lucide-react";
-import Link from "next/link";
+import Image from "next/image";
 
 // Schema
 const formSchema = z.object({
-  email: z.string().email({
-    message: "This email field is required",
-  }),
+  otp: z
+    .string()
+    .length(6, { message: "OTP must be exactly 6 digits." })
+    .regex(/^\d+$/, { message: "OTP must be numeric." }),
 });
 
-const ResetPasswordPage = () => {
+const VerifyEmail = () => {
   const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
+      otp: "",
     },
   });
 
@@ -56,48 +56,43 @@ const ResetPasswordPage = () => {
   }
 
   return (
-    <div className="w-full max-w-md">
+    <div className="flex justify-between w-full p-5 px-10">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-16 w-full h-full"
+          className="space-y-16 w-full lg:max-w-md lg:w-1/2 h-full mb-32"
         >
           <div className="space-y-2.5">
-            <h1 className="text-2xl font-semibold tracking-tight text-center">
-              Forgot password?
+            <h1 className="text-2xl font-semibold tracking-tight">
+              Admin Verification
             </h1>
             <p className="text-center">
-              Input your email and we will send your reset password link.
+              A one time OTP has been sent to your email address, please enter
+              the OTP in the bottom.
             </p>
           </div>
 
           <div>
-            {/* Password Field */}
+            {/* OTP Field */}
             <FormField
               control={form.control}
-              name="email"
+              name="otp"
               render={({ field }) => (
                 <FormItem className="space-y-[12px]">
                   <FormLabel htmlFor="email" className="text-separatorGray">
-                    Email Address
+                    Enter OTP here
                   </FormLabel>
                   <FormControl>
                     <div className="relative">
                       <Input
                         id="email"
-                        type="email"
-                        placeholder="Minimum 8 characters"
-                        className="pr-10 rounded-3xl p-6" // add padding to avoid icon overlap
+                        type="text"
+                        inputMode="numeric"
+                        placeholder="6 digit OTP"
+                        className="rounded-3xl p-6 text-center"
+                        maxLength={6}
                         {...field}
                       />
-                      <span
-                        role="button"
-                        className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-muted-foreground"
-                      >
-                        {fakebackendResponse && (
-                          <CircleAlert size={18} color="red" />
-                        )}
-                      </span>
                     </div>
                   </FormControl>
 
@@ -106,12 +101,10 @@ const ResetPasswordPage = () => {
               )}
             />
 
-            {/* Remember login checkbox Field */}
-            <div className="flex items-center gap-3 mt-2.5">
-              <p className="text-muted-foreground text-sm flex">
-                This email field is required
-              </p>
-            </div>
+            {/* Bottomline note */}
+            <p className="text-muted-foreground text-sm flex mt-2.5">
+              This field is required
+            </p>
 
             {/* Log in Button */}
             <Button
@@ -119,23 +112,23 @@ const ResetPasswordPage = () => {
               className="w-full bg-primary p-6 mt-8 mb-5 rounded-3xl"
               disabled={!form.formState.isValid}
             >
-              Send
+              Enter
             </Button>
-
-            <p className="text-center">
-              Remember your account?{" "}
-              <Link
-                href="/auth/login"
-                className="text-textPurple hover:underline"
-              >
-                Sign In
-              </Link>
-            </p>
           </div>
         </form>
       </Form>
+
+      <div className="relative hidden lg:block w-1/2">
+        <Image
+          src="/lockPad.png"
+          width={230}
+          height={230}
+          alt="secure-image"
+          className="absolute bottom-0 right-0"
+        />
+      </div>
     </div>
   );
 };
 
-export default ResetPasswordPage;
+export default VerifyEmail;
