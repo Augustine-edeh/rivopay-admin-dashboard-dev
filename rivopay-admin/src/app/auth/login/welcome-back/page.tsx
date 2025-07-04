@@ -24,13 +24,10 @@ import { Checkbox } from "@/components/ui/checkbox";
 
 // Schema
 const formSchema = z.object({
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-  password: z.string({}),
+  password: z.string({ message: "Password must be at least 8 characters" }),
 });
 
-const LoginPage = () => {
+const LoginWelcome = () => {
   const router = useRouter();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -38,7 +35,6 @@ const LoginPage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
       password: "",
     },
   });
@@ -73,45 +69,29 @@ const LoginPage = () => {
             <h1 className="text-2xl font-semibold tracking-tight text-center">
               Sign in with your email
             </h1>
-
-            <p>Enter your email address and password to sign in</p>
+            <p className="text-center">
+              Your command center is ready. Let’s keep the system running
+              smoothly!
+            </p>
           </div>
 
           <div>
-            {/* Email Field*/}
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem className="space-y-[12px] mb-5">
-                  <FormLabel>Email Address</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="email"
-                      placeholder="example@email.com"
-                      className="rounded-3xl lg:p-6"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
             {/* Password Field */}
             <FormField
               control={form.control}
               name="password"
               render={({ field }) => (
                 <FormItem className="space-y-[12px]">
-                  <FormLabel htmlFor="password">Password</FormLabel>
+                  <FormLabel htmlFor="password" className="text-separatorGray">
+                    Password
+                  </FormLabel>
                   <FormControl>
                     <div className="relative">
                       <Input
                         id="password"
                         type={showPassword ? "text" : "password"}
                         placeholder="Minimum 8 characters"
-                        className="pr-10 rounded-3xl lg:p-6" // add padding to avoid icon overlap
+                        className="pr-10 rounded-3xl p-6" // add padding to avoid icon overlap
                         {...field}
                       />
                       <span
@@ -146,18 +126,11 @@ const LoginPage = () => {
             {/* Log in Button */}
             <Button
               type="submit"
-              className="w-full bg-primary rounded-3xl mt-10 mb-5"
+              className="w-full bg-primary rounded- p-6 mt-8 mb-5 rounded-3xl"
               disabled={!form.formState.isValid}
             >
               Log in
             </Button>
-
-            <Link
-              href="/sign-in"
-              className="text-textPurple block w-fit mx-auto hover:underline"
-            >
-              Forgot password?
-            </Link>
           </div>
         </form>
       </Form>
@@ -165,4 +138,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default LoginWelcome;
