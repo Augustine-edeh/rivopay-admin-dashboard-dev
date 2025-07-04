@@ -134,9 +134,9 @@ const LoginPage = () => {
 
             {/* Remember login checkbox Field */}
             <div className="flex items-center gap-3 mt-2.5">
-              <Checkbox id="terms" className="size-5" />
+              <Checkbox id="rememberMeLoggedin" className="size-5" />
               <Label
-                htmlFor="terms"
+                htmlFor="rememberMeLoggedin"
                 className="text-muted-foreground text-sm flex"
               >
                 Keep me logged in
