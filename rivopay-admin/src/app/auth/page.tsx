@@ -23,6 +23,9 @@ import { Input } from "@/components/ui/input";
 // import { useRouter } from "next/navigation";
 import Link from "next/link";
 
+// NOTE: add standard validation for all forms and users KYC inputs
+// NOTE: correct spelling is RIVO !== REVO
+
 // Schema
 const formSchema = z.object({
   firstName: z.string().min(2, {
