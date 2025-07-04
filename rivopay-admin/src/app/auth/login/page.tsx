@@ -18,12 +18,15 @@ import {
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import clsx from "clsx";
+// import clsx from "clsx";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Separator } from "@/components/ui/separator";
 
 // Schema
 const formSchema = z.object({
   email: z.string().email({
-    // message: "Please enter a valid email address.",
+    message: "Please enter a valid email address.",
   }),
   password: z.string({}),
 });
@@ -61,32 +64,33 @@ const LoginPage = () => {
   }
 
   return (
-    <div className="w-full">
-      <h1 className="text-2xl font-semibold tracking-tight mb-2">
-        Welcome Back
-      </h1>
-      <p>Enter your details to login as an admin</p>
-
+    <div className="w-full max-w-md">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="w-full h-full mt-16"
+          className="space-y-16 w-full h-full"
         >
-          <div className="space-y-6">
-            {/* Email */}
+          <div className="space-y-2.5">
+            <h1 className="text-2xl font-semibold tracking-tight text-center">
+              Sign in with your email
+            </h1>
+
+            <p>Enter your email address and password to sign in</p>
+          </div>
+
+          <div>
+            {/* Email Field*/}
             <FormField
               control={form.control}
               name="email"
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
+                <FormItem className="space-y-[12px] mb-5">
+                  <FormLabel>Email Address</FormLabel>
                   <FormControl>
                     <Input
                       type="email"
-                      placeholder="Enter your official email address"
-                      className={clsx(
-                        fakebackendResponse ? "border-error-300" : ""
-                      )}
+                      placeholder="example@email.com"
+                      className="rounded-3xl lg:p-6"
                       {...field}
                     />
                   </FormControl>
@@ -100,19 +104,16 @@ const LoginPage = () => {
               control={form.control}
               name="password"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="space-y-[12px]">
                   <FormLabel htmlFor="password">Password</FormLabel>
                   <FormControl>
                     <div className="relative">
                       <Input
                         id="password"
                         type={showPassword ? "text" : "password"}
-                        placeholder="Enter your password"
+                        placeholder="Minimum 8 characters"
+                        className="pr-10 rounded-3xl lg:p-6" // add padding to avoid icon overlap
                         {...field}
-                        className={clsx(
-                          "pr-10 bo rder border-b lue-500 outline outline-blue-500", // add padding to avoid eye-icon overlap
-                          fakebackendResponse ? "border-error-300" : ""
-                        )}
                       />
                       <span
                         className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-muted-foreground"
@@ -131,21 +132,34 @@ const LoginPage = () => {
                 </FormItem>
               )}
             />
-          </div>
 
-          <div className="w-fit ml-auto mt-4">
-            <Link href="/reset-password" className="text-primary">
-              Forgort password?
+            {/* Remember login checkbox Field */}
+            <div className="flex items-center gap-3 mt-2.5">
+              <Checkbox id="terms" className="size-5" />
+              <Label
+                htmlFor="terms"
+                className="text-muted-foreground text-sm flex"
+              >
+                Keep me logged in
+              </Label>
+            </div>
+
+            {/* Log in Button */}
+            <Button
+              type="submit"
+              className="w-full bg-primary rounded-3xl mt-10 mb-5"
+              disabled={!form.formState.isValid}
+            >
+              Log in
+            </Button>
+
+            <Link
+              href="/sign-in"
+              className="text-textPurple block w-fit mx-auto hover:underline"
+            >
+              Forgot password?
             </Link>
           </div>
-
-          <Button
-            type="submit"
-            className="w-full bg-primary mt-16"
-            disabled={!form.formState.isValid}
-          >
-            Log In
-          </Button>
         </form>
       </Form>
     </div>
