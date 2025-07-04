@@ -79,13 +79,13 @@ const VerifyEmail = () => {
               name="otp"
               render={({ field }) => (
                 <FormItem className="space-y-[12px]">
-                  <FormLabel htmlFor="email" className="text-separatorGray">
+                  <FormLabel htmlFor="otp" className="text-separatorGray">
                     Enter OTP here
                   </FormLabel>
                   <FormControl>
                     <div className="relative">
                       <Input
-                        id="email"
+                        id="otp"
                         type="text"
                         inputMode="numeric"
                         placeholder="6 digit OTP"
