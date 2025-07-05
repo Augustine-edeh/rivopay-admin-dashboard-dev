@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
+
 import {
   Form,
   FormControl,
@@ -16,24 +17,28 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+// import { useRouter } from "next/navigation";
 
-// import clsx from "clsx";
-import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
-
+// NOTE: add standard validation for all forms and users KYC inputs
+// NOTE: correct spelling is RIVO !== REVO
 
 // Schema
 const formSchema = z.object({
   email: z.string().email({
     message: "Please enter a valid email address.",
   }),
-  password: z.string({}),
+  password: z
+    .string()
+    .min(8, { message: "Password must be at least 8 characters." })
+    .max(32, { message: "Password must be at most 32 characters." }),
+  confirmPassword: z
+    .string()
+    .min(8, { message: "Password must be at least 8 characters." })
+    .max(32, { message: "Password must be at most 32 characters." }),
 });
 
-const LoginPage = () => {
-  const router = useRouter();
+const ResetPasswordPage = () => {
+  // const router = useRouter();
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -42,26 +47,19 @@ const LoginPage = () => {
     defaultValues: {
       email: "",
       password: "",
+      confirmPassword: "",
     },
   });
 
-  // const [fakebackendResponse, setfakebackendResponse] =
-  //   useState<boolean>(false);
-
-  // 2. Submit handler.
+  // 2. Defining a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
+    // Do something with the form values.
+    // ✅ This will be type-safe and validated.
+
+    // I think I could also typically clear the form  here & redirect the user.
     console.log(values);
 
-    // NOTE: post form values to the backend.
-
-    // NOTE: if response.data.error (i.e, wrong credentials); show toast
-    // setfakebackendResponse(true); // 1.
-    // 2. show toast({type: error, message: {heading: 'Invalid email or password}', subText: 'Please try again.' })
-
-    // NOTE: if response.data.success; redirect to admin page
-    // 1. show toast({type: success, message: {heading: 'Login successfully}', subText: 'You are logged in.' })
-    // 2. clear the form & redirect to /admin.
-    router.push("/admin"); //3.
+    // router.push("/auth/verify-email");
   }
 
   return (
@@ -69,29 +67,30 @@ const LoginPage = () => {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-16 w-full h-full"
+          className="space-y-5 w-full h-full"
         >
-          <div className="space-y-2.5">
+          <div>
             <h1 className="text-2xl font-semibold tracking-tight text-center">
-              Sign in with your email
+              Reset Password
             </h1>
-
-            <p>Enter your email address and password to sign in</p>
+            <p className=" text-center">
+              Input your email to reset your password
+            </p>
           </div>
 
-          <div>
+          <div className="space-y-5">
             {/* Email Field*/}
             <FormField
               control={form.control}
               name="email"
               render={({ field }) => (
-                <FormItem className="space-y-[12px] mb-5">
+                <FormItem className="space-y-[12px]">
                   <FormLabel>Email Address</FormLabel>
                   <FormControl>
                     <Input
                       type="email"
                       placeholder="example@email.com"
-                      className="rounded-3xl lg:p-6"
+                      className="rounded-3xl"
                       {...field}
                     />
                   </FormControl>
@@ -99,6 +98,10 @@ const LoginPage = () => {
                 </FormItem>
               )}
             />
+
+            <p className="text-muted-foreground text-sm mt- 2.5">
+              The email field is required
+            </p>
 
             {/* Password Field */}
             <FormField
@@ -113,7 +116,7 @@ const LoginPage = () => {
                         id="password"
                         type={showPassword ? "text" : "password"}
                         placeholder="Minimum 8 characters"
-                        className="pr-10 rounded-3xl lg:p-6" // add padding to avoid icon overlap
+                        className="pr-10 rounded-3xl" // add padding to avoid icon overlap
                         {...field}
                       />
                       <span
@@ -134,32 +137,50 @@ const LoginPage = () => {
               )}
             />
 
-            {/* Remember login checkbox Field */}
-            <div className="flex items-center gap-3 mt-2.5">
-              <Checkbox id="rememberMeLoggedin" className="size-5" />
-              <Label
-                htmlFor="rememberMeLoggedin"
-                className="text-muted-foreground text-sm flex"
-              >
-                Keep me logged in
-              </Label>
-            </div>
+            {/* Confirm Password Field */}
+            <FormField
+              control={form.control}
+              name="confirmPassword"
+              render={({ field }) => (
+                <FormItem className="space-y-[12px]">
+                  <FormLabel htmlFor="confirmPassword">
+                    Confirm Password
+                  </FormLabel>
+                  <FormControl>
+                    <div className="relative">
+                      <Input
+                        id="confirmPassword"
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Minimum 8 characters"
+                        className="pr-10 rounded-3xl" // add padding to avoid icon overlap
+                        {...field}
+                      />
+                      <span
+                        className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-muted-foreground"
+                        onClick={() => setShowPassword((prev) => !prev)}
+                      >
+                        {showPassword ? (
+                          <EyeOff size={18} />
+                        ) : (
+                          <Eye size={18} />
+                        )}
+                      </span>
+                    </div>
+                  </FormControl>
 
-            {/* Log in Button */}
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            {/* Create Account Button */}
             <Button
               type="submit"
-              className="w-full bg-primary rounded-3xl mt-10 mb-5"
+              className="w-full bg-primary rounded-3xl mt-4"
               disabled={!form.formState.isValid}
             >
-              Log in
+              Reset Password
             </Button>
-
-            <Link
-              href="/sign-in"
-              className="text-textPurple block w-fit mx-auto hover:underline"
-            >
-              Forgot password?
-            </Link>
           </div>
         </form>
       </Form>
@@ -167,4 +188,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default ResetPasswordPage;

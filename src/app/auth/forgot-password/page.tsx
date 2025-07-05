@@ -1,6 +1,5 @@
 "use client";
 
-import { EyeOff, Eye } from "lucide-react";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -17,36 +16,28 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
+import { CircleAlert } from "lucide-react";
 import Link from "next/link";
-
-// import clsx from "clsx";
-import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
-
 
 // Schema
 const formSchema = z.object({
   email: z.string().email({
-    message: "Please enter a valid email address.",
+    message: "This email field is required",
   }),
-  password: z.string({}),
 });
 
-const LoginPage = () => {
+const ResetPasswordPage = () => {
   const router = useRouter();
-
-  const [showPassword, setShowPassword] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
-      password: "",
     },
   });
 
-  // const [fakebackendResponse, setfakebackendResponse] =
-  //   useState<boolean>(false);
+  const [fakebackendResponse, setfakebackendResponse] =
+    useState<boolean>(false);
 
   // 2. Submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
@@ -55,13 +46,13 @@ const LoginPage = () => {
     // NOTE: post form values to the backend.
 
     // NOTE: if response.data.error (i.e, wrong credentials); show toast
-    // setfakebackendResponse(true); // 1.
+    setfakebackendResponse(true); // 1.
     // 2. show toast({type: error, message: {heading: 'Invalid email or password}', subText: 'Please try again.' })
 
     // NOTE: if response.data.success; redirect to admin page
     // 1. show toast({type: success, message: {heading: 'Login successfully}', subText: 'You are logged in.' })
     // 2. clear the form & redirect to /admin.
-    router.push("/admin"); //3.
+    router.push("/auth/forgot-password/verify-email"); //3.
   }
 
   return (
@@ -73,57 +64,38 @@ const LoginPage = () => {
         >
           <div className="space-y-2.5">
             <h1 className="text-2xl font-semibold tracking-tight text-center">
-              Sign in with your email
+              Forgot password?
             </h1>
-
-            <p>Enter your email address and password to sign in</p>
+            <p className="text-center">
+              Input your email and we will send your reset password link.
+            </p>
           </div>
 
           <div>
-            {/* Email Field*/}
+            {/* Password Field */}
             <FormField
               control={form.control}
               name="email"
               render={({ field }) => (
-                <FormItem className="space-y-[12px] mb-5">
-                  <FormLabel>Email Address</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="email"
-                      placeholder="example@email.com"
-                      className="rounded-3xl lg:p-6"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            {/* Password Field */}
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
                 <FormItem className="space-y-[12px]">
-                  <FormLabel htmlFor="password">Password</FormLabel>
+                  <FormLabel htmlFor="email" className="text-separatorGray">
+                    Email Address
+                  </FormLabel>
                   <FormControl>
                     <div className="relative">
                       <Input
-                        id="password"
-                        type={showPassword ? "text" : "password"}
+                        id="email"
+                        type="email"
                         placeholder="Minimum 8 characters"
-                        className="pr-10 rounded-3xl lg:p-6" // add padding to avoid icon overlap
+                        className="pr-10 rounded-3xl p-6" // add padding to avoid icon overlap
                         {...field}
                       />
                       <span
+                        role="button"
                         className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-muted-foreground"
-                        onClick={() => setShowPassword((prev) => !prev)}
                       >
-                        {showPassword ? (
-                          <EyeOff size={18} />
-                        ) : (
-                          <Eye size={18} />
+                        {fakebackendResponse && (
+                          <CircleAlert size={18} color="red" />
                         )}
                       </span>
                     </div>
@@ -136,30 +108,29 @@ const LoginPage = () => {
 
             {/* Remember login checkbox Field */}
             <div className="flex items-center gap-3 mt-2.5">
-              <Checkbox id="rememberMeLoggedin" className="size-5" />
-              <Label
-                htmlFor="rememberMeLoggedin"
-                className="text-muted-foreground text-sm flex"
-              >
-                Keep me logged in
-              </Label>
+              <p className="text-muted-foreground text-sm flex">
+                This email field is required
+              </p>
             </div>
 
             {/* Log in Button */}
             <Button
               type="submit"
-              className="w-full bg-primary rounded-3xl mt-10 mb-5"
+              className="w-full bg-primary p-6 mt-8 mb-5 rounded-3xl"
               disabled={!form.formState.isValid}
             >
-              Log in
+              Send
             </Button>
 
-            <Link
-              href="/sign-in"
-              className="text-textPurple block w-fit mx-auto hover:underline"
-            >
-              Forgot password?
-            </Link>
+            <p className="text-center">
+              Remember your account?{" "}
+              <Link
+                href="/auth/login"
+                className="text-textPurple hover:underline"
+              >
+                Sign In
+              </Link>
+            </p>
           </div>
         </form>
       </Form>
@@ -167,4 +138,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default ResetPasswordPage;

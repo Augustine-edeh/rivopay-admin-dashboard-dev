@@ -20,8 +20,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useRouter } from "next/navigation";
+
+// import { useRouter } from "next/navigation";
 import Link from "next/link";
+
+// NOTE: add standard validation for all forms and users KYC inputs
+// NOTE: correct spelling is RIVO !== REVO
 
 // Schema
 const formSchema = z.object({
@@ -41,7 +45,7 @@ const formSchema = z.object({
 });
 
 const SignupForm = () => {
-  const router = useRouter();
+  // const router = useRouter();
 
   const [showPassword, setShowPassword] = useState(false);
 
