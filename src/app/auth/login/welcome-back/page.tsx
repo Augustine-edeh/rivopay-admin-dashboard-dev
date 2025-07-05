@@ -41,8 +41,8 @@ const LoginWelcome = () => {
     },
   });
 
-  const [fakebackendResponse, setfakebackendResponse] =
-    useState<boolean>(false);
+  // const [fakebackendResponse, setfakebackendResponse] =
+  //   useState<boolean>(false);
 
   // 2. Submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
@@ -51,7 +51,7 @@ const LoginWelcome = () => {
     // NOTE: post form values to the backend.
 
     // NOTE: if response.data.error (i.e, wrong credentials); show toast
-    setfakebackendResponse(true); // 1.
+    // setfakebackendResponse(true); // 1.
     // 2. show toast({type: error, message: {heading: 'Invalid email or password}', subText: 'Please try again.' })
 
     // NOTE: if response.data.success; redirect to admin page
