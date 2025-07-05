@@ -75,7 +75,7 @@ const AdminComingSoon = () => {
       </motion.div>
 
       <h1 className="text-4xl md:text-5xl font-bold text-[#7B48EF] mb-4 z-10">
-        rivoPay Admin Dashboard
+        Rivo Admin Dashboard
       </h1>
 
       <AnimatePresence mode="wait">
