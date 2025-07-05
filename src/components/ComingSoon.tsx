@@ -58,7 +58,6 @@ const AdminComingSoon = () => {
         transition={{ delay: 0.2 }}
         className="mb-6 z-10"
       >
-        {/* Replace with your own SVG if you prefer a custom icon */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-20 w-20 text-[#7B48EF] mx-auto"
@@ -76,7 +75,7 @@ const AdminComingSoon = () => {
       </motion.div>
 
       <h1 className="text-4xl md:text-5xl font-bold text-[#7B48EF] mb-4 z-10">
-        Rivo Admin Dashboard
+        rivoPay Admin Dashboard
       </h1>
 
       <AnimatePresence mode="wait">
