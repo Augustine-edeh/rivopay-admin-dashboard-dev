@@ -9,7 +9,7 @@ const messages = [
   "One Tap at a time 🚀",
 ];
 
-export default function Home() {
+const AdminComingSoon = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -97,4 +97,6 @@ export default function Home() {
       </span>
     </main>
   );
-}
+};
+
+export default AdminComingSoon;
