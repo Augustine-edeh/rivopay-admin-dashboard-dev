@@ -39,7 +39,11 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
 
           <div className="flex-1 flex justify-between bg-blue-400">
             <div className="relative flex items-center bg-green-300 w-full max-w-2xl">
-              <Input className="rounded-4xl pl-14" id="search" />
+              <Input
+                className="rounded-4xl pl-14"
+                id="search"
+                placeholder="Search..."
+              />
               <Label htmlFor="search" className="absolute left-3.5">
                 <Search className="text-separatorGray" />
               </Label>
