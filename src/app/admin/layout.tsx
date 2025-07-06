@@ -1,4 +1,5 @@
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Bell, Search } from "lucide-react";
 import type { ReactNode } from "react";
 // import "@/styles/globals.css"; // ensure your global styles are loaded
@@ -36,9 +37,11 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
           <h1 className="text-xl font-bold tracking-wide">Welcome!</h1>
 
           <div className="flex-1 flex justify-between bg-blue-400">
-            <div className="flex bg-green-300 w-full max-w-2xl">
-              <Input className="rounded-4xl" />
-              <Search />
+            <div className="relative flex items-center bg-green-300 w-full max-w-2xl">
+              <Input className="rounded-4xl pl-14" id="search" />
+              <Label htmlFor="search" className="absolute left-3.5">
+                <Search className="text-separatorGray" />
+              </Label>
             </div>
 
             <div className="flex gap-10 bg-orange-400">
