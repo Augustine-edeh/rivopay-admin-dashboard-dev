@@ -1,5 +1,6 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import UserAvatar from "@/components/UserAvatar";
 import { Bell, Search } from "lucide-react";
 import type { ReactNode } from "react";
 // import "@/styles/globals.css"; // ensure your global styles are loaded
@@ -45,8 +46,15 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             </div>
 
             <div className="flex gap-10 bg-orange-400">
-              <Bell />
-              <p>avatar</p>
+              <div className="grid place-content-center bg-gray-400 rounded-full size-10">
+                <Bell />
+                <p className="sr-only">Notifications</p>
+              </div>
+
+              <div className="flex items-center gap-2.5 bg-gray-400 rounded-3xl px-2 py-1.5">
+                <UserAvatar />
+                <p>Admin</p>
+              </div>
             </div>
           </div>
         </header>
