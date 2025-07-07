@@ -4,7 +4,7 @@ const AdminPage = () => {
   return (
     <div className="flex-1 flex flex-col bg-white py-12">
       {/* Boxes Section */}
-      <section>
+      <section className="flex justify-between gap-8">
         <BalanceCard />
         <BalanceCard />
         <BalanceCard />

@@ -1,8 +1,6 @@
 import {
   Card,
-  CardAction,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -11,12 +9,12 @@ import { TrendingUp } from "lucide-react";
 
 const BalanceCard = () => {
   return (
-    <Card>
+    <Card className="w-full">
       <CardHeader>
         <CardTitle className="text-separatorGray">Total Revenue</CardTitle>
       </CardHeader>
 
-      <CardContent>
+      <CardContent className="font-semibold">
         <p>₦0.00</p>
       </CardContent>
 
