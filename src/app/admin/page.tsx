@@ -1,6 +1,8 @@
 import MetricCard from "@/components/MetricCard";
+import { Button } from "@/components/ui/button";
 
 import { TrendingUp, ArrowDown } from "lucide-react";
+import Image from "next/image";
 
 export const metricsData = [
   {
@@ -39,8 +41,8 @@ export const metricsData = [
 
 const AdminPage = () => {
   return (
-    <div className="flex-1 flex flex-col bg-white py-5 md:py-12">
-      {/* Boxes Section */}
+    <div className="flex-1 flex flex-col gap-4 bg-white py-5">
+      {/* MetricCard Section */}
       <section className="flex justify-between gap-4 overflow-x-auto pb-2 md:p-0">
         {metricsData.map((item, index) => (
           <MetricCard
@@ -56,16 +58,29 @@ const AdminPage = () => {
       </section>
 
       {/* Bottom Section */}
-      <section className="flex-1 flex bg-blue-400 p-1">
-        <div className="bg-red-500">
+      <section className="flex-1 flex gap-1.5 bg-blue-400 -dashboardAccentGray p-1">
+        <div className="bg-red-500 w-1/2">
           {/* Card Section */}
-          <div>Card Management Section</div>
+          <div>
+            <h4>Total 50</h4>
+
+            <div className="flex justify-between">
+              <h3 className="font-semibold">Cards Managemnet</h3>
+              <Button className="rounded-3xl bg-textPurple px-5 py-2.5">
+                Add Card
+              </Button>
+            </div>
+
+            <div className="relative w-60 h-32 bg-yellow-600">
+              <Image src="/card-image.png" fill alt="card" />
+            </div>
+          </div>
 
           {/* Table Section */}
           <div>Table Section</div>
         </div>
 
-        <div className="bg-red-500">
+        <div className="bg-orange-500 w-1/2">
           {/* Card Section */}
           <div>Pie Chart Section</div>
 
