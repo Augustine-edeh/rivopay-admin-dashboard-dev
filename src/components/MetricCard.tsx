@@ -10,8 +10,9 @@ import { LucideIcon } from "lucide-react";
 interface MetricCardProps {
   title: string;
   value: string;
-  percentageChange?: string;
+  percentageChange: number;
   Icon?: LucideIcon;
+  iconColor: string;
   iconBgColor?: string;
   highlightColor?: string;
 }
@@ -19,8 +20,9 @@ interface MetricCardProps {
 const MetricCard = ({
   title,
   value,
-  percentageChange = "0%",
+  percentageChange = 0,
   Icon,
+  iconColor,
   iconBgColor = "bg-green-300",
   highlightColor = "text-green-600",
 }: MetricCardProps) => {
@@ -34,11 +36,11 @@ const MetricCard = ({
 
       <CardFooter className="flex items-center space-x-2">
         <span className={`text-sm font-medium ${highlightColor}`}>
-          {percentageChange}
+          {percentageChange}%
         </span>
         {Icon && (
-          <div className={`${iconBgColor} rounded-full p-1`}>
-            <Icon size={18} />
+          <div className={`bg-${iconBgColor} rounded-full p-1`}>
+            <Icon size={18} color={iconColor} />
           </div>
         )}
       </CardFooter>
