@@ -64,11 +64,9 @@ const AdminPage = () => {
           <div>
             <h4>Total 50</h4>
 
-            <div className="flex justify-between">
+            <div className="flex justify-between items-center bg-pink-500">
               <h3 className="font-semibold">Cards Managemnet</h3>
-              <Button className="rounded-3xl bg-textPurple px-5 py-2.5">
-                Add Card
-              </Button>
+              <Button className="rounded-3xl bg-textPurple">Add Card</Button>
             </div>
 
             <div className="relative w-60 h-32 bg-yellow-600">
