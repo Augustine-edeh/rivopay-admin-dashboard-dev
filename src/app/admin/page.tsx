@@ -69,8 +69,66 @@ const AdminPage = () => {
               <Button className="rounded-3xl bg-textPurple">Add Card</Button>
             </div>
 
-            <div className="relative w-60 h-32 bg-yellow-600">
-              <Image src="/card-image.png" fill alt="card" />
+            <div className="flex gap-3 bg-pink-300">
+              <div className="relative w-60 h-32 bg-yellow-600">
+                <Image src="/card-image.png" fill alt="card" />
+              </div>
+
+              <div className="w-10 border border-[#9D9C9C47] rounded-xl"></div>
+
+              <div className="flex flex-col gap-2">
+                {/* Card 1 */}
+                <div className="relative bg-white overflow-hidde n rounded">
+                  <div className="flex flex-col gap-5">
+                    <div className="flex mt-3">
+                      <h6 className="border-l-3 border-dashboardCardGray pl-1">
+                        Total Card Registared
+                      </h6>
+
+                      <div className="flex items-center">
+                        <TrendingUp color="green" size={16} />
+                        <span>{12}</span>
+                      </div>
+                    </div>
+
+                    <p>{123}</p>
+
+                    <Image
+                      src="/semi-circle.png"
+                      width={49}
+                      height={49}
+                      alt="svg"
+                      className="absolute -bottom-3 -right-3 object-cover"
+                    />
+                  </div>
+                </div>
+
+                {/* Card 2 */}
+                <div className="relative bg-dashboardAccentGreen overflow-hidde n rounded">
+                  <div className="flex flex-col gap-5">
+                    <div className="flex mt-3">
+                      <h6 className="border-l-3 border-dashboardLightGreen pl-1">
+                        Total Blocked Card
+                      </h6>
+
+                      <div className="flex items-center">
+                        <TrendingUp color="red" size={16} />
+                        <span>{12}</span>
+                      </div>
+                    </div>
+
+                    <p>{14}</p>
+
+                    <Image
+                      src="/semi-circle.png"
+                      width={49}
+                      height={49}
+                      alt="svg"
+                      className="absolute -bottom-3 -right-3 object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
