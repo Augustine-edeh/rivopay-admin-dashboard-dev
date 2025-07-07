@@ -1,8 +1,14 @@
+import BalanceCard from "@/components/BalanceCard";
+
 const AdminPage = () => {
   return (
     <div className="flex-1 flex flex-col bg-white py-12">
       {/* Boxes Section */}
-      <section>Box Section</section>
+      <section>
+        <BalanceCard />
+        <BalanceCard />
+        <BalanceCard />
+      </section>
 
       {/* Bottom Section */}
       <section className="flex-1 flex bg-blue-400 p-1">
