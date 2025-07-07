@@ -11,7 +11,8 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
       <SideBar />
 
       {/* Main Content */}
-      <main className="flex-1 w-5/6 p-7 overflow-y-auto bg-red-500">
+      {/* NOTE: consider having a p-7 instead of px-7 for the main content */}
+      <main className="flex-1 flex flex-col w-5/6 px-7 overflow-y-auto bg-red-500">
         <Header />
 
         {children}

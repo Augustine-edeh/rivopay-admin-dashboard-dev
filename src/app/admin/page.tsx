@@ -1,11 +1,11 @@
 const AdminPage = () => {
   return (
-    <div className="flex flex-col">
+    <div className="flex-1 flex flex-col bg-white py-12">
       {/* Boxes Section */}
-      <section></section>
+      <section>Box Section</section>
 
       {/* Bottom Section */}
-      <section className="flex-1 flex bg-yellow-400 p-1">
+      <section className="flex-1 flex bg-blue-400 p-1">
         <div className="bg-red-500">
           {/* Card Section */}
           <div>Card Management Section</div>
