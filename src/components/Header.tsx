@@ -9,7 +9,7 @@ const Header = () => {
       <h1 className="text-xl font-bold tracking-wide">Welcome!</h1>
 
       <div className="flex-1 flex justify-between bg-blue-400">
-        <div className="relative flex items-center bg-green-300 w-full max-w-2xl">
+        <div className="relative hidden md:flex items-center bg-green-300 w-full max-w-2xl">
           <Input
             className="rounded-4xl pl-14"
             id="search"
@@ -20,7 +20,7 @@ const Header = () => {
           </Label>
         </div>
 
-        <div className="flex gap-10 bg-orange-400">
+        <div className="flex items-center ml-auto gap-10 bg-orange-400">
           <div className="grid place-content-center bg-gray-400 rounded-full size-10">
             <Bell />
             <p className="sr-only">Notifications</p>

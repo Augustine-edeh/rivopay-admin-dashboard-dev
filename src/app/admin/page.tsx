@@ -41,7 +41,7 @@ const AdminPage = () => {
   return (
     <div className="flex-1 flex flex-col bg-white py-12">
       {/* Boxes Section */}
-      <section className="flex justify-between gap-8">
+      <section className="flex justify-between gap-4 overflow-x-auto">
         {metricsData.map((item, index) => (
           <MetricCard
             key={index}

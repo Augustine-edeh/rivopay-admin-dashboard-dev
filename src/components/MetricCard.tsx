@@ -23,10 +23,10 @@ const MetricCard = ({
   percentageChange = 0,
   Icon,
   iconColor,
-  iconBgColor = "bg-green-300",
+  iconBgColor,
 }: MetricCardProps) => {
   return (
-    <Card className="w-full">
+    <Card className="w-full pb-1.5 bg-dashboardAccentGray">
       <CardHeader>
         <CardTitle className="text-separatorGray">{title}</CardTitle>
       </CardHeader>

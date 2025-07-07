@@ -12,6 +12,7 @@
   --color-lightGray: #eaeaea;
   --color-separatorGray: #9d9c9c;
   --color-textPurple: #553a6b;
+  --color-dashboardAccentGray: #f9f9f9;
 }
 
 @custom-variant dark (&:is(.dark *));
