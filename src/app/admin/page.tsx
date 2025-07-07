@@ -51,9 +51,6 @@ const AdminPage = () => {
             Icon={item.Icon}
             iconColor={item.iconColor}
             iconBgColor={item.iconBgColor}
-            highlightColor={
-              item.percentageChange >= 0 ? "text-green-600" : "text-red-500"
-            }
           />
         ))}
       </section>

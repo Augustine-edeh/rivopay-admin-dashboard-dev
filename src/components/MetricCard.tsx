@@ -6,6 +6,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { LucideIcon } from "lucide-react";
+import clsx from "clsx";
 
 interface MetricCardProps {
   title: string;
@@ -14,7 +15,6 @@ interface MetricCardProps {
   Icon?: LucideIcon;
   iconColor: string;
   iconBgColor?: string;
-  highlightColor?: string;
 }
 
 const MetricCard = ({
@@ -24,7 +24,6 @@ const MetricCard = ({
   Icon,
   iconColor,
   iconBgColor = "bg-green-300",
-  highlightColor = "text-green-600",
 }: MetricCardProps) => {
   return (
     <Card className="w-full">
@@ -35,11 +34,12 @@ const MetricCard = ({
       <CardContent className="font-semibold text-xl">{value}</CardContent>
 
       <CardFooter className="flex items-center space-x-2">
-        <span className={`text-sm font-medium ${highlightColor}`}>
-          {percentageChange}%
-        </span>
+        <span className="text-sm font-medium">{percentageChange}%</span>
         {Icon && (
-          <div className={`bg-${iconBgColor} rounded-full p-1`}>
+          <div
+            className={clsx("rounded-full p-1")}
+            style={{ backgroundColor: iconBgColor }}
+          >
             <Icon size={18} color={iconColor} />
           </div>
         )}
