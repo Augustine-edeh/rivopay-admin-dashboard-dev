@@ -39,9 +39,9 @@ export const metricsData = [
 
 const AdminPage = () => {
   return (
-    <div className="flex-1 flex flex-col bg-white py-12">
+    <div className="flex-1 flex flex-col bg-white py-5 md:py-12">
       {/* Boxes Section */}
-      <section className="flex justify-between gap-4 overflow-x-auto">
+      <section className="flex justify-between gap-4 overflow-x-auto pb-2 md:p-0">
         {metricsData.map((item, index) => (
           <MetricCard
             key={index}
