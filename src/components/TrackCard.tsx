@@ -1,28 +1,56 @@
-import { TrendingUp } from "lucide-react";
+import { LucideIcon } from "lucide-react";
 import Image from "next/image";
+import clsx from "clsx";
 
-const TrackCard = () => {
+interface TrackCardProps {
+  title: string;
+  value: number | string;
+  percentageChange?: number | string;
+  Icon?: LucideIcon;
+  iconColor?: string;
+  imageSrc: string;
+  borderColor: string;
+  bgColor?: string; // Example: 'bg-dashboardCardPurple' (defined via Tailwind using CSS variable)
+}
+
+const TrackCard = ({
+  title,
+  value,
+  percentageChange,
+  Icon,
+  iconColor,
+  imageSrc,
+  borderColor,
+  bgColor,
+}: TrackCardProps) => {
   return (
-    <div className="relative bg-white overflow-hidde n rounded">
+    <div className={clsx("relative overflow-hidden rounded py-4", bgColor)}>
       <div className="flex flex-col gap-5">
-        <div className="flex mt-3">
-          <h6 className="border-l-3 border-dashboardCardGray pl-1">
-            Total Card Registared
+        <div className="flex justify-between items-center mt-1">
+          <h6
+            className={clsx(
+              "border-l-8 pl-2 text-sm font-medium text-muted-foreground",
+              borderColor
+            )}
+          >
+            {title}
           </h6>
 
-          <div className="flex items-center">
-            <TrendingUp color="green" size={16} />
-            <span>{12}</span>
-          </div>
+          {percentageChange !== undefined && Icon && (
+            <div className="flex items-center gap-1 text-xs text-muted-foreground">
+              <Icon color={iconColor} size={16} />
+              <span>{percentageChange}</span>
+            </div>
+          )}
         </div>
 
-        <p>{123}</p>
+        <p className="text-2xl font-semibold px-2">{value}</p>
 
         <Image
-          src="/semi-circle.png"
+          src={imageSrc}
           width={49}
           height={49}
-          alt="svg"
+          alt="Background icon"
           className="absolute -bottom-3 -right-3 object-cover"
         />
       </div>

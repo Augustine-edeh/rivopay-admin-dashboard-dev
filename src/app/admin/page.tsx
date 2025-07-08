@@ -78,8 +78,26 @@ const AdminPage = () => {
               <div className="w-10 border border-[#9D9C9C47] rounded-xl"></div>
 
               <div className="flex flex-col gap-2">
-                <TrackCard />
-                <TrackCard />
+                <TrackCard
+                  title="Card Activations"
+                  value={123}
+                  percentageChange={12}
+                  Icon={TrendingUp}
+                  iconColor="#33B952"
+                  imageSrc="/semi-circle_gray.png"
+                  borderColor="border-dashboardCardGray"
+                  bgColor="bg-white"
+                />
+                <TrackCard
+                  title="Total Blocked Card"
+                  value={14}
+                  percentageChange="4%"
+                  Icon={TrendingUp}
+                  iconColor="#FF0000"
+                  imageSrc="/semi-circle_green.png"
+                  borderColor="border-[#B1EE81]"
+                  bgColor="bg-dashboardAccentGreen"
+                />
               </div>
             </div>
           </div>
