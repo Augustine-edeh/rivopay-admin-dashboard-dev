@@ -111,7 +111,14 @@ const AdminPage = () => {
 
         <div className="bg-orange-500 w-1/2">
           {/* Card Section */}
-          <div>Pie Chart Section</div>
+          <div>
+            <div>
+              <h2>Payment Method Distribution</h2>
+              <p>Januaty - December 2024</p>
+            </div>
+
+            <div>Pie Chart Section</div>
+          </div>
 
           {/* Line Chart Section */}
           <div>Line Chart Section</div>
