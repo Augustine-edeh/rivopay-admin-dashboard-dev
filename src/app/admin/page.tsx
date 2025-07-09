@@ -1,3 +1,4 @@
+import CardsTable from "@/components/CardsTable";
 import MetricCard from "@/components/MetricCard";
 import TrackCard from "@/components/TrackCard";
 import { Button } from "@/components/ui/button";
@@ -103,7 +104,9 @@ const AdminPage = () => {
           </div>
 
           {/* Table Section */}
-          <div>Table Section</div>
+          <div>
+            <CardsTable />
+          </div>
         </div>
 
         <div className="bg-orange-500 w-1/2">
