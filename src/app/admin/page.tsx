@@ -70,14 +70,14 @@ const AdminPage = () => {
               <Button className="rounded-3xl bg-textPurple">Add Card</Button>
             </div>
 
-            <div className="flex gap-3 bg-pink-300">
+            <div className="flex justify-between gap-3 bg-pink-300">
               <div className="relative w-60 h-32 bg-yellow-600">
                 <Image src="/card-image.png" fill alt="card" />
               </div>
 
-              <div className="w-10 border border-[#9D9C9C47] rounded-xl"></div>
+              <div className="w-10 border border-[#9D9C9C47] rounded-xl" />
 
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col flex-1 gap-2">
                 <TrackCard
                   title="Card Activations"
                   value={123}

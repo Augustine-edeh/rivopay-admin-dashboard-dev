@@ -24,12 +24,12 @@ const TrackCard = ({
   bgColor,
 }: TrackCardProps) => {
   return (
-    <div className={clsx("relative overflow-hidden rounded py-4", bgColor)}>
-      <div className="flex flex-col gap-5">
-        <div className="flex justify-between items-center mt-1">
+    <div className={clsx("relative overflow-hidden rounded py-2", bgColor)}>
+      <div className="flex flex-col gap-2.5">
+        <div className="flex justify-between items-center">
           <h6
             className={clsx(
-              "border-l-8 pl-2 text-sm font-medium text-muted-foreground",
+              "border-l-4 pl-2 pb-2 text-sm font-medium text-muted-foreground",
               borderColor
             )}
           >
