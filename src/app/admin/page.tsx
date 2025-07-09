@@ -1,3 +1,4 @@
+import PieChartComponent from "@/components/admin/PieChartComponent";
 import CardsTable from "@/components/CardsTable";
 import MetricCard from "@/components/MetricCard";
 import TrackCard from "@/components/TrackCard";
@@ -109,19 +110,22 @@ const AdminPage = () => {
           </div>
         </div>
 
-        <div className="bg-orange-500 w-1/2">
+        <div className="flex flex-col gap-2 bg-orange-500 p-1 w-1/2">
           {/* Card Section */}
-          <div>
-            <div>
+          <div className="flex flex-col bg-blue-700 p-2 h-1/2">
+            <div className="bg-yellow-200">
               <h2>Payment Method Distribution</h2>
               <p>Januaty - December 2024</p>
             </div>
 
-            <div>Pie Chart Section</div>
+            {/* <div className="bg-pink-400"> */}
+            <div className="flex-1 bg-pink-400">
+              <PieChartComponent />
+            </div>
           </div>
 
           {/* Line Chart Section */}
-          <div>Line Chart Section</div>
+          <div className="bg-green-300 h-1/2">Line Chart Section</div>
         </div>
       </section>
     </div>
