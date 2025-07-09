@@ -71,7 +71,7 @@ const AdminPage = () => {
             </div>
 
             <div className="flex justify-between gap-3 bg-pink-300">
-              <div className="relative w-60 h-32 bg-yellow-600">
+              <div className="relative w-72 bg-yellow-600">
                 <Image src="/card-image.png" fill alt="card" />
               </div>
 
