@@ -59,28 +59,32 @@ const CardsTable = () => {
   return (
     <Table>
       <TableCaption className="sr-only">
-        A list of your recent records.
+        A list of all cards records.
       </TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead>
-            <Checkbox />
+          <TableHead className="align-middle">
+            <div className="flex items-center">
+              <Checkbox />
+            </div>
           </TableHead>
-          <TableHead>ID</TableHead>
-          <TableHead>Names</TableHead>
-          <TableHead>Status</TableHead>
-          <TableHead>Date</TableHead>
+          <TableHead className="align-middle">ID</TableHead>
+          <TableHead className="align-middle">Names</TableHead>
+          <TableHead className="align-middle">Status</TableHead>
+          <TableHead className="align-middle">Date</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {cards.map((card) => (
           <TableRow key={card.id}>
-            <TableCell className="font-medium">
-              <Checkbox />
+            <TableCell className="align-middle">
+              <div className="flex items-center">
+                <Checkbox />
+              </div>
             </TableCell>
-            <TableCell>{card.id}</TableCell>
-            <TableCell>{card.name}</TableCell>
-            <TableCell>
+            <TableCell className="align-middle">{card.id}</TableCell>
+            <TableCell className="align-middle">{card.name}</TableCell>
+            <TableCell className="align-middle">
               <span
                 className={clsx(
                   "px-2 py-1 rounded-full text-xs font-semibold capitalize",
@@ -92,7 +96,7 @@ const CardsTable = () => {
                 {card.status}
               </span>
             </TableCell>
-            <TableCell>{card.date}</TableCell>
+            <TableCell className="align-middle">{card.date}</TableCell>
           </TableRow>
         ))}
       </TableBody>
