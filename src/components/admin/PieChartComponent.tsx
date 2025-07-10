@@ -6,17 +6,18 @@ import {
   Tooltip,
   Cell,
   ResponsiveContainer,
+  Legend,
 } from "recharts";
 
-// Sample Data
+// Pie chart Data
 const data = [
-  { name: "Page A", uv: 590 },
-  { name: "Page B", uv: 860 },
-  { name: "Page C", uv: 420 },
+  { name: "Card", uv: 500 },
+  { name: "QR Code", uv: 100 },
+  { name: "Virtual Card", uv: 100 },
 ];
 
-// Optional: Custom Colors
-const COLORS = ["#7B48EF", "#4ADE80", "#FACC15"];
+// Colours Options
+const COLOURS = ["#6362CC", "#9D9C9C", "#60646C"];
 
 const PieChartComponent = () => {
   return (
@@ -33,9 +34,14 @@ const PieChartComponent = () => {
           label
         >
           {data.map((entry, index) => (
-            <Cell key={`slice-${index}`} fill={COLORS[index % COLORS.length]} />
+            <Cell
+              key={`slice-${index}`}
+              fill={COLOURS[index % COLOURS.length]}
+            />
           ))}
         </Pie>
+        <Legend align="right" verticalAlign="bottom" layout="vertical" />
+
         <Tooltip />
       </RechartsPieChart>
     </ResponsiveContainer>

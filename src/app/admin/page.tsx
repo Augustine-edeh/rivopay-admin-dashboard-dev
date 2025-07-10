@@ -118,7 +118,6 @@ const AdminPage = () => {
               <p>Januaty - December 2024</p>
             </div>
 
-            {/* <div className="bg-pink-400"> */}
             <div className="flex-1 bg-pink-400">
               <PieChartComponent />
             </div>
