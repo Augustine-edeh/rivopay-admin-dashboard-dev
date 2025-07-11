@@ -11,7 +11,7 @@ const Header = () => {
       <div className="flex-1 flex justify-between bg-blue-400">
         <div className="relative hidden md:flex items-center bg-green-300 w-full max-w-2xl">
           <Input
-            className="rounded-4xl pl-14"
+            className="rounded-4xl pl-14 bg-dashboardLightGrayBG hover:bg-dashboardCardGray"
             id="search"
             placeholder="Search..."
           />
@@ -21,12 +21,12 @@ const Header = () => {
         </div>
 
         <div className="flex items-center ml-auto gap-10 bg-orange-400">
-          <div className="grid place-content-center bg-gray-400 rounded-full size-10">
+          <div className="grid place-content-center bg-dashboardLightGrayBG hover:bg-dashboardCardGray rounded-full size-10">
             <Bell />
             <p className="sr-only">Notifications</p>
           </div>
 
-          <div className="flex items-center gap-2.5 bg-gray-400 rounded-3xl px-2 py-1.5">
+          <div className="flex items-center gap-2.5 bg-dashboardLightGrayBG hover:bg-dashboardCardGray rounded-3xl px-4 py-1">
             <UserAvatar />
             <p>Admin</p>
           </div>
