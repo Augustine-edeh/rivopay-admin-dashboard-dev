@@ -71,7 +71,7 @@ const SideBar = () => {
       </nav>
 
       <div className="px-4">
-        <button className="w-full flex items-center gap-3 p-2 rounded bg-gray-300 hover:bg-red-500/10 text-red-400 hover:text-white transition-colors">
+        <button className="w-full flex items-center gap-3 p-2 rounded-3xl text-white hover:bg-white hover:text-darkPurple transition-colors">
           <Image src="/icons/logout.svg" alt="logout" width={20} height={20} />
           <span>Log out</span>
         </button>
