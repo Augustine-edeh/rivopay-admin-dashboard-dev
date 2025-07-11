@@ -1,8 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-// import { sidebarLinks } from "@/constants/sidebar-links"; // Update this path as needed
+import { usePathname } from "next/navigation";
 
 const SideBar = () => {
+  const pathname = usePathname();
+
   const sidebarLinks = [
     { label: "Dashboard", href: "/admin", icon: "/icons/dashboard.svg" },
     {
@@ -44,24 +48,32 @@ const SideBar = () => {
         <p className="text-sm">Rapid Transport System.</p>
       </div>
 
-      <nav className="flex- 1 space-y-2 px-4">
-        {sidebarLinks.map(({ label, href, icon }) => (
-          <Link
-            key={label}
-            href={href}
-            className="flex items-center gap-3 p-2 rounded hover:bg-primary/10 transition-colors"
-          >
-            <Image src={icon} alt={label} width={20} height={20} />
+      <nav className="space-y-2 px-4">
+        {sidebarLinks.map(({ label, href, icon }) => {
+          const isActive = pathname === href;
 
-            <span>{label}</span>
-          </Link>
-        ))}
+          return (
+            <Link
+              key={label}
+              href={href}
+              className={`flex items-center gap-3 p-2 rounded-3xl transition-colors
+                ${
+                  isActive
+                    ? "bg-white text-darkPurple"
+                    : "text-white hover:bg-white hover:text-darkPurple"
+                }`}
+            >
+              <Image src={icon} alt={label} width={20} height={20} />
+              <span>{label}</span>
+            </Link>
+          );
+        })}
       </nav>
 
-      {/* Logout button pinned to bottom */}
-      <div className="bg-amber-200 px-4">
-        <button className="w-full p-2 rounded hover:bg-red-500/10 text-red-400 hover:text-red-500 transition-colors">
-          Log out
+      <div className="px-4">
+        <button className="w-full flex items-center gap-3 p-2 rounded bg-gray-300 hover:bg-red-500/10 text-red-400 hover:text-white transition-colors">
+          <Image src="/icons/logout.svg" alt="logout" width={20} height={20} />
+          <span>Log out</span>
         </button>
       </div>
     </aside>
