@@ -1,4 +1,5 @@
 import PieChartComponent from "@/components/admin/PieChartComponent";
+import SelectComponent from "@/components/admin/Select";
 import CardsTable from "@/components/CardsTable";
 import MetricCard from "@/components/MetricCard";
 import TrackCard from "@/components/TrackCard";
@@ -124,7 +125,14 @@ const AdminPage = () => {
           </div>
 
           {/* Line Chart Section */}
-          <div className="bg-green-300 h-1/2">Line Chart Section</div>
+          <div className="flex flex-col bg-green-300 h-1/2">
+            <div className="flex justify-between items-center">
+              <p>Revenue Fenerated</p>
+              <SelectComponent />
+            </div>
+
+            <div className="flex-1 bg-violet-500/40"></div>
+          </div>
         </div>
       </section>
     </div>
