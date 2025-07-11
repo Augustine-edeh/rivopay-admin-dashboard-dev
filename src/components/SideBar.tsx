@@ -51,13 +51,8 @@ const SideBar = () => {
             href={href}
             className="flex items-center gap-3 p-2 rounded hover:bg-primary/10 transition-colors"
           >
-            <Image
-              src={icon}
-              alt={`${label} icon`}
-              width={5}
-              height={5}
-              className="w-5 h-5"
-            />
+            <Image src={icon} alt={label} width={20} height={20} />
+
             <span>{label}</span>
           </Link>
         ))}
