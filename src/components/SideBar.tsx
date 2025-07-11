@@ -1,19 +1,40 @@
+import Image from "next/image";
 import Link from "next/link";
 // import { sidebarLinks } from "@/constants/sidebar-links"; // Update this path as needed
 
 const SideBar = () => {
   const sidebarLinks = [
-    { label: "Dashboard", href: "/admin" },
-    { label: "Transactions", href: "/admin/transactions" },
-    { label: "Cards Management", href: "/admin/cards" },
-    { label: "Users", href: "/admin/users" },
-    { label: "Booking", href: "/admin/booking" },
-    { label: "Merchants", href: "/admin/merchants" },
-    { label: "Drivers", href: "/admin/drivers" },
-    { label: "Overview", href: "/admin/overview" },
-    { label: "Analytics", href: "/admin/analytics" },
-    { label: "Settings", href: "/admin/settings" },
-    { label: "Help and Support", href: "/admin/help" },
+    { label: "Dashboard", href: "/admin", icon: "/icons/dashboard.svg" },
+    {
+      label: "Transactions",
+      href: "/admin/transactions",
+      icon: "/icons/transactions.svg",
+    },
+    {
+      label: "Cards Management",
+      href: "/admin/cards",
+      icon: "/icons/card-management.svg",
+    },
+    { label: "Users", href: "/admin/users", icon: "/icons/users.svg" },
+    { label: "Booking", href: "/admin/booking", icon: "/icons/bookings.svg" },
+    {
+      label: "Merchants",
+      href: "/admin/merchants",
+      icon: "/icons/merchants.svg",
+    },
+    { label: "Drivers", href: "/admin/drivers", icon: "/icons/drivers.svg" },
+    { label: "Overview", href: "/admin/overview", icon: "/icons/overview.svg" },
+    {
+      label: "Analytics",
+      href: "/admin/analytics",
+      icon: "/icons/analytics.svg",
+    },
+    { label: "Settings", href: "/admin/settings", icon: "/icons/settings.svg" },
+    {
+      label: "Help and Support",
+      href: "/admin/help",
+      icon: "/icons/help-and-support.svg",
+    },
   ];
 
   return (
@@ -24,13 +45,20 @@ const SideBar = () => {
       </div>
 
       <nav className="flex- 1 space-y-2 px-4">
-        {sidebarLinks.map(({ label, href }) => (
+        {sidebarLinks.map(({ label, href, icon }) => (
           <Link
             key={label}
             href={href}
-            className="block p-2 rounded hover:bg-primary/10 transition-colors"
+            className="flex items-center gap-3 p-2 rounded hover:bg-primary/10 transition-colors"
           >
-            {label}
+            <Image
+              src={icon}
+              alt={`${label} icon`}
+              width={5}
+              height={5}
+              className="w-5 h-5"
+            />
+            <span>{label}</span>
           </Link>
         ))}
       </nav>
