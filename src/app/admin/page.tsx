@@ -113,9 +113,9 @@ const AdminPage = () => {
         <div className="flex flex-col gap-2 bg-orange-500 p-1 w-1/2">
           {/* Card Section */}
           <div className="flex flex-col bg-blue-700 p-2 h-1/2">
-            <div className="bg-yellow-200">
-              <h2>Payment Method Distribution</h2>
-              <p>Januaty - December 2024</p>
+            <div className="bg-yellow-200 w-fit px-1 text-center">
+              <h3 className="font-medium">Payment Method Distribution</h3>
+              <p className="font-normal">Januaty - December 2024</p>
             </div>
 
             <div className="flex-1 bg-pink-400">
