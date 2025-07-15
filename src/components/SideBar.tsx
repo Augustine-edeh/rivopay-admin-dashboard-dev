@@ -10,9 +10,9 @@ const SideBar = () => {
   const sidebarLinks = [
     { label: "Dashboard", href: "/admin", icon: "/icons/dashboard.svg" },
     {
-      label: "Transactions",
-      href: "/admin/transactions",
-      icon: "/icons/transactions.svg",
+      label: "Wallet",
+      href: "/admin/wallet",
+      icon: "/icons/wallet.svg",
     },
     {
       label: "Cards Management",
