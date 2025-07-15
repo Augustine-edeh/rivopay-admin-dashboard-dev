@@ -20,11 +20,15 @@ const SideBar = () => {
       icon: "/icons/card-management.svg",
     },
     { label: "Users", href: "/admin/users", icon: "/icons/users.svg" },
-    { label: "Booking", href: "/admin/booking", icon: "/icons/bookings.svg" },
     {
       label: "Merchants",
       href: "/admin/merchants",
       icon: "/icons/merchants.svg",
+    },
+    {
+      label: "Merchants Request",
+      href: "/admin/merchant-request",
+      icon: "/icons/merchant-request.svg",
     },
     { label: "Drivers", href: "/admin/drivers", icon: "/icons/drivers.svg" },
     { label: "Overview", href: "/admin/overview", icon: "/icons/overview.svg" },
