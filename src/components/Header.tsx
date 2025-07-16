@@ -1,6 +1,6 @@
 "use client";
 
-import { Bell, ChevronLeft, ChevronRight, Search } from "lucide-react";
+import { Bell, ChevronLeft, ChevronRight } from "lucide-react";
 import UserAvatar from "./UserAvatar";
 import { Label } from "@/components/ui/label";
 import { Input } from "./ui/input";
@@ -56,7 +56,7 @@ const Header = () => {
       </div>
 
       <div className="relative flex items-center bg-red-500 dashboardLightGrayBG hover:bg-dashboardCardGray rounded-full">
-        <UserAvatar />
+        <UserAvatar className="size-9" />
         <Bell
           fill="#BF2B2B"
           color="#BF2B2B"
