@@ -1,9 +1,14 @@
+"use client";
+
 import PieChartComponent from "@/components/admin/PieChartComponent";
 import SelectComponent from "@/components/admin/Select";
 import CardsTable from "@/components/CardsTable";
 import MetricCard from "@/components/MetricCard";
 import TrackCard from "@/components/TrackCard";
 import { Button } from "@/components/ui/button";
+
+import { useEffect } from "react";
+import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
 
 import { TrendingUp, ArrowDown } from "lucide-react";
 import Image from "next/image";
@@ -44,6 +49,13 @@ export const metricsData = [
 ];
 
 const AdminPage = () => {
+  const { title, setTitle } = usePageTitleStore((state) => state);
+  useEffect(() => {
+    if (title !== "welcome!") {
+      setTitle("welcome!");
+    }
+  }, [title, setTitle]);
+
   return (
     <div className="flex-1 flex flex-col gap-4 bg-white py-5">
       {/* MetricCard Section */}

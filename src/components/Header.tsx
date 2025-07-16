@@ -42,7 +42,7 @@ const Header = () => {
     // </header>
 
     <header className="h-16 flex justify-between items-center bg-blue-600">
-      <h1 className="text-xl font-bold tracking-wide">{title}</h1>
+      <h1 className="text-xl font-bold tracking-wide capitalize">{title}</h1>
 
       <div className="flex justify-center items-center gap-10 bg-dashboardLightGrayBG px-5 py-3 rounded-lg">
         <div className="bg-transparent hover:bg-[#B3B3B35C] border border-separatorGray hover:border-transparent rounded-full transition-colors duration-150">
