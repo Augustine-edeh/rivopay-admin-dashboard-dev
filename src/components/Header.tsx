@@ -1,69 +1,96 @@
 "use client";
 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
 import { Bell, ChevronLeft, ChevronRight } from "lucide-react";
 import UserAvatar from "./UserAvatar";
-import { Label } from "@/components/ui/label";
-import { Input } from "./ui/input";
-
 import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
-import { Button } from "./ui/button";
+
+const notifications = Array(5).fill({
+  name: "Adekanye Similoluwa",
+  message:
+    "Can we schedule a meeting for 2pm tomorrow via zoom. Please do confirm your availability.",
+  time: "2h ago",
+});
 
 const Header = () => {
   const title = usePageTitleStore((state) => state.title);
 
   return (
-    // <header className="h-16 flex items-center gap-28 bg-blue-600">
-    //   <h1 className="text-xl font-bold tracking-wide">{title}</h1>
-
-    //   <div className="flex-1 flex justify-between bg-blue-400">
-    //     <div className="relative hidden md:flex items-center bg-green-300 w-full max-w-2xl">
-    //       <Input
-    //         className="rounded-4xl pl-14 bg-dashboardLightGrayBG hover:bg-dashboardCardGray"
-    //         id="search"
-    //         placeholder="Search..."
-    //       />
-    //       <Label htmlFor="search" className="absolute left-3.5">
-    //         <Search className="text-separatorGray" />
-    //       </Label>
-    //     </div>
-
-    //     <div className="flex items-center ml-auto gap-10 bg-orange-400">
-    //       <div className="grid place-content-center bg-dashboardLightGrayBG hover:bg-dashboardCardGray rounded-full size-10">
-    //         <Bell />
-    //         <p className="sr-only">Notifications</p>
-    //       </div>
-
-    //       <div className="flex items-center gap-2.5 bg-dashboardLightGrayBG hover:bg-dashboardCardGray rounded-3xl px-4 py-1">
-    //         <UserAvatar />
-    //         <p>Admin</p>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </header>
-
     <header className="h-16 flex justify-between items-center bg-blue-600">
       <h1 className="text-xl font-bold tracking-wide capitalize">{title}</h1>
 
       <div className="flex justify-center items-center gap-10 bg-dashboardLightGrayBG px-5 py-3 rounded-lg">
-        <div className="bg-transparent hover:bg-[#B3B3B35C] border border-separatorGray hover:border-transparent rounded-full transition-colors duration-150">
+        <div className="hover:bg-[#B3B3B35C] border border-separatorGray hover:border-transparent rounded-full transition-colors duration-150">
           <ChevronLeft color="#737373" />
         </div>
         <p>July 2025</p>
-
-        <div className="bg-transparent hover:bg-[#B3B3B35C] border border-separatorGray hover:border-transparent rounded-full transition-colors duration-150">
+        <div className="hover:bg-[#B3B3B35C] border border-separatorGray hover:border-transparent rounded-full transition-colors duration-150">
           <ChevronRight />
         </div>
       </div>
 
-      <div className="relative flex items-center bg-red-500 dashboardLightGrayBG hover:bg-dashboardCardGray rounded-full">
-        <UserAvatar className="size-9" />
-        <Bell
-          fill="#BF2B2B"
-          color="#BF2B2B"
-          size={10}
-          className="absolute top-0 right-0"
-        />
-      </div>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <div className="relative flex items-center cursor-pointer bg-dashboardLightGrayBG hover:bg-dashboardCardGray rounded-full p-1.5">
+            <UserAvatar className="size-9" />
+            <Bell
+              fill="#BF2B2B"
+              color="#BF2B2B"
+              size={10}
+              className="absolute top-0 right-0"
+            />
+          </div>
+        </DropdownMenuTrigger>
+
+        <DropdownMenuContent
+          align="end"
+          className="w-[350px] p-0 shadow-lg rounded-lg"
+        >
+          <div className="px-4 py-3 border-b text-sm font-medium flex justify-between items-center">
+            <span>Notification</span>
+            <button className="text-xs text-muted-foreground hover:underline">
+              Mark all as read
+            </button>
+          </div>
+
+          <p className="px-4 py-3 bg-red-400">Today</p>
+
+          <div className="max-h-72 overflow-y-auto divide-y">
+            {notifications.map((n, idx) => (
+              <div
+                key={idx}
+                className={`flex gap-3 p-4 hover:bg-muted ${
+                  idx === 1 || idx === 3 ? "bg-[#553A6B33]" : ""
+                }`}
+              >
+                <div className="w-10 h-10 rounded-full bg-muted-foreground/20 flex items-center justify-center text-muted-foreground">
+                  <UserAvatar className="size-8" />
+                </div>
+                <div className="text-sm">
+                  <p className="font-medium">{n.name}</p>
+                  <p className="text-muted-foreground text-xs leading-snug">
+                    {n.message}
+                  </p>
+                </div>
+                <span className="ml-auto text-xs text-muted-foreground whitespace-nowrap">
+                  {n.time}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center border-t">
+            <button className="w-full text-sm py-2 text-muted-foreground hover:underline">
+              View all notifications
+            </button>
+          </div>
+        </DropdownMenuContent>
+      </DropdownMenu>
     </header>
   );
 };
