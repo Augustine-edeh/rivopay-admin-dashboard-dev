@@ -58,6 +58,7 @@ const Header = () => {
             </button>
           </div>
 
+          {/* NOTE: use actual bg-color for 'today' element */}
           <p className="px-4 py-3 bg-red-400">Today</p>
 
           <div className="max-h-72 overflow-y-auto divide-y">
