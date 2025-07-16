@@ -1,12 +1,18 @@
+"use client";
+
 import { Bell, Search } from "lucide-react";
 import UserAvatar from "./UserAvatar";
 import { Label } from "@/components/ui/label";
 import { Input } from "./ui/input";
 
+import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
+
 const Header = () => {
+  const title = usePageTitleStore((state) => state.title);
+
   return (
     <header className="h-16 flex items-center gap-28 bg-blue-600">
-      <h1 className="text-xl font-bold tracking-wide">Welcome!</h1>
+      <h1 className="text-xl font-bold tracking-wide">{title}</h1>
 
       <div className="flex-1 flex justify-between bg-blue-400">
         <div className="relative hidden md:flex items-center bg-green-300 w-full max-w-2xl">
