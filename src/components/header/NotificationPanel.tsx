@@ -1,3 +1,4 @@
+import Link from "next/link";
 import UserAvatar from "../UserAvatar";
 
 const notifications = Array(5).fill({
@@ -27,9 +28,10 @@ const NotificationPanel = () => {
               idx === 1 || idx === 3 ? "bg-[#553A6B33]" : "bg-white"
             }`}
           >
-            <div className="w-10 h-10 rounded-full bg-muted-foreground/20 flex items-center justify-center text-muted-foreground">
-              <UserAvatar className="size-8" />
+            <div className="size-fit p-1.5 rounded-full bg-muted-foreground/20 flex items-center justify-center text-muted-foreground">
+              <UserAvatar className="size-4" src="/icons/user-fallback.svg" />
             </div>
+
             <div className="text-sm">
               <p className="font-medium">{n.name}</p>
               <p className="text-muted-foreground text-xs leading-snug">
@@ -43,10 +45,13 @@ const NotificationPanel = () => {
         ))}
       </div>
 
-      <div className="text-center border-t">
-        <button className="w-full text-sm py-2 text-muted-foreground hover:underline">
+      <div className="text-center border-t py-2">
+        <Link
+          href="#"
+          className="w-full text-sm text-muted-foreground hover:underline"
+        >
           View all notifications
-        </button>
+        </Link>
       </div>
     </>
   );
