@@ -6,7 +6,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { Bell, ChevronLeft, ChevronRight } from "lucide-react";
+import { Bell } from "lucide-react";
 import UserAvatar from "./UserAvatar";
 import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
 import NotificationPanel from "./header/NotificationPanel";
