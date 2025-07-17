@@ -58,15 +58,14 @@ const Header = () => {
             </button>
           </div>
 
-          {/* NOTE: use actual bg-color for 'today' element */}
-          <p className="px-4 py-3 bg-red-400">Today</p>
+          <p className="px-4 py-3 bg-[#f3f3f7]">Today</p>
 
-          <div className="max-h-72 overflow-y-auto divide-y">
+          <div className="max-h-72 overflow-y-auto space-y-1 p-1.5">
             {notifications.map((n, idx) => (
               <div
                 key={idx}
-                className={`flex gap-3 p-4 hover:bg-muted ${
-                  idx === 1 || idx === 3 ? "bg-[#553A6B33]" : ""
+                className={`flex gap-3 p-4 hover:bg-[#553a6b17] rounded-md ${
+                  idx === 1 || idx === 3 ? "bg-[#553A6B33]" : "bg-white"
                 }`}
               >
                 <div className="w-10 h-10 rounded-full bg-muted-foreground/20 flex items-center justify-center text-muted-foreground">
