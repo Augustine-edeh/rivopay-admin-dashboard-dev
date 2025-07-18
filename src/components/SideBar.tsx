@@ -74,12 +74,12 @@ const SideBar = () => {
         })}
       </nav>
 
-      <div className="px-4">
+      {/* <div>
         <button className="w-full flex items-center gap-3 p-2 rounded-3xl text-white hover:bg-white hover:text-darkPurple transition-colors">
           <Image src="/icons/logout.svg" alt="logout" width={20} height={20} />
           <span>Log out</span>
         </button>
-      </div>
+      </div> */}
     </aside>
   );
 };
