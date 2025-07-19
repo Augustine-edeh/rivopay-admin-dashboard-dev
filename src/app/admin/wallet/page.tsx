@@ -20,6 +20,9 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import clsx from "clsx";
+import { Label } from "@/components/ui/label";
+import { Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
 
 const transactions = [
   {
@@ -92,6 +95,17 @@ const WalletPage = () => {
       {/* Wallet Page Header section */}
       <section className="flex justify-between items-center">
         <h2 className="text-lg font-semibold">Wallet</h2>
+
+        <div className="relative hidden md:flex items-center w-full max-w-lg">
+          <Input
+            className="rounded-[45px] pl-14 bg-[#B3B3B35C] hover:bg-dashboardCardGray"
+            id="search"
+            placeholder="Search"
+          />
+          <Label htmlFor="search" className="absolute left-3.5 rounded-full">
+            <Search className="text-separatorGray" />
+          </Label>
+        </div>
 
         <div className="flex items-center gap-2">
           <span className="text-sm text-muted-foreground">Sort by:</span>
