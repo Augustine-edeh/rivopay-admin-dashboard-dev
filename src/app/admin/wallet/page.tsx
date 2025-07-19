@@ -23,6 +23,7 @@ import clsx from "clsx";
 import { Label } from "@/components/ui/label";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import RecentHistory from "@/components/wallet/History";
 
 const transactions = [
   {
@@ -196,7 +197,7 @@ const WalletPage = () => {
       </div>
 
       <div className="bg-blue-500 hidden lg:flex w-1/3 h-full">
-        Hello there!
+        <RecentHistory />
       </div>
     </section>
   );
