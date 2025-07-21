@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 export default function AdminLayout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen flex bg-muted text-foreground">
-      {/* NOTE: remember to remove think Top Navbar */}
+      {/* NOTE: Suggestion: set height to h-screen and give overflow-hidden to overall parent container  */}
 
       {/* SideBar */}
       <SideBar />
