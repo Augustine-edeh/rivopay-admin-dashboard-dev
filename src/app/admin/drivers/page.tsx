@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Pencil, PhoneCall, Trash2 } from "lucide-react";
+import BusesSummary from "@/components/drivers/BusesSummary";
 
 const drivers = new Array(20).fill(null).map((_, i) => ({
   id: `#43${i + 1}`,
@@ -34,39 +35,8 @@ const DriversPage = () => {
     <div className="grid grid-cols-1 xl:grid-cols-[2fr_1fr] gap-6 py-6">
       {/* LEFT SECTION */}
       <div className="space-y-6">
-        {/* Summary Cards */}
-        <div className="bg-dashboardAccentGray rounded-[10px] px-5 py-2.5 space-y-3">
-          <Button className="bg-dashboardLightGrayBG rounded-full text-black hover:text-white ml-auto">
-            Edit <Pencil />
-          </Button>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {[
-              {
-                title: "Total Buses",
-                count: 0,
-                note: "Full fleet size for operations.",
-              },
-              {
-                title: "Active Buses",
-                count: 0,
-                note: "Buses currently in service.",
-              },
-              {
-                title: "In Maintenance",
-                count: 0,
-                note: "Buses in repair or check up.",
-              },
-            ].map((card, i) => (
-              <Card key={i} className="p-4">
-                <p className="text-sm font-medium">{card.title}</p>
-                <p className="text-2xl font-bold">{card.count}</p>
-                <p className="text-xs mt-1 text-muted-foreground">
-                  {card.note}
-                </p>
-              </Card>
-            ))}
-          </div>
-        </div>
+        {/* Buses Summary Cards */}
+        <BusesSummary />
 
         {/* Driver Table */}
         <Card className="h-[500px] flex flex-col">
