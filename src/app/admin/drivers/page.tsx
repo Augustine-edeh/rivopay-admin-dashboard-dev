@@ -15,12 +15,14 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { PhoneCall, Trash2 } from "lucide-react";
+import { PhoneCall, Plus, Trash2 } from "lucide-react";
 import BusesSummary from "@/components/drivers/BusesSummary";
+import clsx from "clsx";
+import { Separator } from "@/components/ui/separator";
 
 const drivers = new Array(20).fill(null).map((_, i) => ({
   id: `#43${i + 1}`,
-  name: `Driver ${i + 1}`,
+  name: "Ademola",
   status: i % 3 === 0 ? "Blocked" : "Completed",
   route: "Ilawe",
   validator: `Bus #10${i}`,
@@ -43,8 +45,12 @@ const DriversPage = () => {
           <CardContent className="p-4 flex-1 flex flex-col">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-base font-medium">Drivers Management</h3>
-              <Button variant="outline" size="sm">
-                Add New Driver +
+              <Button
+                variant="outline"
+                size="sm"
+                className="bg-[#00AB5712] hover:bg-[#00AB57]  text-[#00AB57] hover:text-[#daf9cffc] rounded-full border-none"
+              >
+                Add New Driver <Plus />
               </Button>
             </div>
 
@@ -58,7 +64,7 @@ const DriversPage = () => {
                       <TableHead className="w-1/5">Status</TableHead>
                       <TableHead className="w-1/5">Route</TableHead>
                       <TableHead className="w-2/5">Name</TableHead>
-                      <TableHead className="w-[40px]" />
+                      <TableHead className="w- [40px] bg-red-500" />
                     </TableRow>
                   </TableHeader>
                 </Table>
@@ -73,11 +79,12 @@ const DriversPage = () => {
                         <TableCell>{driver.validator}</TableCell>
                         <TableCell>
                           <Badge
-                            className={
+                            className={clsx(
+                              "rounded-full",
                               driver.status === "Blocked"
                                 ? "bg-[#FFBABA] text-[#FF0900]"
                                 : "bg-[#D8F6E2] text-[#00AB57]"
-                            }
+                            )}
                           >
                             {driver.status}
                           </Badge>
@@ -86,15 +93,17 @@ const DriversPage = () => {
                         <TableCell>
                           <div className="flex items-center gap-2">
                             <Avatar className="h-6 w-6">
-                              <AvatarImage src="/avatars/01.png" />
+                              <AvatarImage src="/driver.svg" />
                               <AvatarFallback>{driver.name[0]}</AvatarFallback>
                             </Avatar>
-                            <span className="font-medium text-sm">
-                              {driver.name}
-                            </span>
-                            <span className="text-muted-foreground text-xs">
-                              {driver.id}
-                            </span>
+                            <div className="flex flex-col">
+                              <span className="font-medium text-sm">
+                                {driver.name}
+                              </span>
+                              <span className="text-muted-foreground text-xs">
+                                {driver.id}
+                              </span>
+                            </div>
                           </div>
                         </TableCell>
                         <TableCell>
@@ -103,7 +112,7 @@ const DriversPage = () => {
                             variant="ghost"
                             className="text-muted-foreground"
                           >
-                            <Trash2 className="w-4 h-4" />
+                            <Trash2 className="size-4" />
                           </Button>
                         </TableCell>
                       </TableRow>
@@ -117,35 +126,46 @@ const DriversPage = () => {
       </div>
 
       {/* RIGHT SECTION */}
-      <Card className="rounded-2xl">
-        <CardContent className="p-4 space-y-5">
+      <Card className="rounded-none bg-dashboardAccentGray">
+        <CardContent className="p-4 space-y-7">
           <div>
-            <p className="text-sm text-muted-foreground mb-2">
+            <p className="text-sm text-muted-foreground">
               Driver’s Information
             </p>
 
-            <div className="flex justify-between items-center">
-              <div className="flex items-center gap-2">
-                <Avatar className="h-10 w-10">
-                  <AvatarImage src="/avatars/01.png" />
-                  <AvatarFallback>A</AvatarFallback>
-                </Avatar>
-                <div>
-                  <p className="text-sm font-medium">Ademola</p>
-                  <p className="text-xs text-muted-foreground">#43456</p>
-                </div>
-              </div>
-              <Badge className="bg-[#D8F6E2] text-[#00AB57]">Active</Badge>
-            </div>
+            <Separator className="my-5" />
 
-            <p className="text-sm mt-4">Mobile number +234 810 000 00</p>
-            <Button
-              className="w-full mt-2 text-white bg-[#00AB57] hover:bg-[#00994b]"
-              variant="default"
-            >
-              <PhoneCall className="w-4 h-4 mr-2" />
-              Call Driver
-            </Button>
+            <div className="px-5 py-2.5 rounded-[8px] bg-white">
+              <div className="flex justify-between items-center">
+                <div className="flex items-center gap-2">
+                  <Avatar className="size-10 grid place-items-center bg-[#B3B3B35C]">
+                    <AvatarImage
+                      src="/icons/user-fallback.svg"
+                      className="size-4"
+                    />
+                    <AvatarFallback>A</AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <p className="text-sm font-medium">Ademola</p>
+                    <p className="text-xs text-muted-foreground">#43456</p>
+                  </div>
+                </div>
+                <Badge className="bg-[#D8F6E2] text-[#00AB57]">Active</Badge>
+              </div>
+
+              <p className="text-sm mt-4">
+                Mobile number{" "}
+                <span className="font-[500]">+234 810 000 00</span>
+              </p>
+
+              <Button
+                className="w-full mt-2 text-white bg-[#00AB57] hover:bg-[#00994b]"
+                variant="default"
+              >
+                <PhoneCall className="w-4 h-4 mr-2" />
+                Call Driver
+              </Button>
+            </div>
           </div>
 
           <div>
