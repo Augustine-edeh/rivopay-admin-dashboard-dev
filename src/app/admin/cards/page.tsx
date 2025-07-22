@@ -3,10 +3,20 @@
 import { useEffect } from "react";
 import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
 
-import { Badge } from "@/components/ui/badge";
+// import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowRightLeft, Ban, Plus, QrCode } from "lucide-react";
+import { ArrowRightLeft, Ban, Pencil, Plus, QrCode } from "lucide-react";
 import Image from "next/image";
+
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Badge } from "@/components/ui/badge";
 
 const AssignedCardsPage = () => {
   const { title, setTitle } = usePageTitleStore((state) => state);
@@ -84,41 +94,54 @@ const AssignedCardsPage = () => {
         </section>
 
         {/* Card Table */}
-        <section className="bg-white rounded-xl shadow p-4">
-          <table className="w-full text-sm">
-            <thead className="text-muted-foreground border-b">
-              <tr>
-                <th className="text-left py-2">Users</th>
-                <th className="text-left py-2">Card ID</th>
-                <th className="text-left py-2">Phone</th>
-                <th className="text-left py-2">Meta ID</th>
-                <th className="text-left py-2">Valid</th>
-                <th className="text-left py-2">Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b">
-                <td className="py-2">Femi Owoalabi</td>
-                <td>0000 00000</td>
-                <td>08130044992</td>
-                <td>RIVO9832</td>
-                <td>20/12/2026</td>
-                <td>
-                  <Badge className="bg-[#B1EE81] text-[#00AB57]">Active</Badge>
-                </td>
-              </tr>
-              <tr>
-                <td className="py-2">Esther Daramola</td>
-                <td>0000 00000</td>
-                <td>08130044992</td>
-                <td>RIVO9832</td>
-                <td>20/12/2026</td>
-                <td>
-                  <Badge className="bg-[#FFBABA] text-[#FF0900]">Blocked</Badge>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <section className="bg-dashboardAccentGray rounded-[10px] shadow p-4 h-80">
+          <Table className="overflow-y-auto h-full">
+            <TableHeader className="uppercase">
+              <TableRow className="text-muted-foreground border-b">
+                <TableHead>Users</TableHead>
+                <TableHead>Card ID</TableHead>
+                <TableHead>Phone</TableHead>
+                <TableHead>Meta ID</TableHead>
+                <TableHead>Valid</TableHead>
+                <TableHead></TableHead>
+                <TableHead></TableHead>
+              </TableRow>
+            </TableHeader>
+
+            <TableBody>
+              <TableRow className="border-b">
+                <TableCell className="py-2">Femi Owoalabi</TableCell>
+                <TableCell>0000 00000</TableCell>
+                <TableCell>08130044992</TableCell>
+                <TableCell>RIVO9832</TableCell>
+                <TableCell>20/12/2026</TableCell>
+                <TableCell>
+                  <Badge className="bg-transparent text-[#00AB57]">
+                    Active
+                  </Badge>
+                </TableCell>
+                <TableCell>
+                  <Pencil size={18} />
+                </TableCell>
+              </TableRow>
+
+              <TableRow>
+                <TableCell className="py-2">Esther Daramola</TableCell>
+                <TableCell>0000 00000</TableCell>
+                <TableCell>08130044992</TableCell>
+                <TableCell>RIVO9832</TableCell>
+                <TableCell>20/12/2026</TableCell>
+                <TableCell>
+                  <Badge className="bg-transparent text-muted-foreground">
+                    Blocked
+                  </Badge>
+                </TableCell>
+                <TableCell>
+                  <Pencil size={18} />
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
         </section>
       </div>
 
