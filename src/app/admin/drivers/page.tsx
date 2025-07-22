@@ -41,7 +41,7 @@ const DriversPage = () => {
         {/* Buses Summary Cards */}
         <BusesSummary />
 
-        {/* Driver Table */}
+        {/* Drivers Management Table */}
         <Card className="h-[500px] flex flex-col">
           <CardContent className="p-4 flex-1 flex flex-col">
             <div className="flex justify-between items-center mb-4">
@@ -65,7 +65,7 @@ const DriversPage = () => {
                       <TableHead className="w-1/5">Status</TableHead>
                       <TableHead className="w-1/5">Route</TableHead>
                       <TableHead className="w-2/5">Name</TableHead>
-                      <TableHead className="w- [40px] bg-red-500" />
+                      <TableHead />
                     </TableRow>
                   </TableHeader>
                 </Table>
