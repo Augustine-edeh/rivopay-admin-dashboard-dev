@@ -29,55 +29,65 @@ const AssignedCardsPage = () => {
       <div className="col-span-2 space-y-6">
         {/* Assigned Cards */}
         <section>
-          {/* <h2 className="text-lg font-semibold mb-3">Assigned Cards</h2> */}
           <div className="flex items-start gap-4">
-            <div className="grid grid-cols-1 gap-4">
-              <div>
+            <div className="grid grid-cols-1 gap-4 text-[#737373]">
+              <div className="flex flex-col justify-center">
                 <Button className="grid place-items-center size-12 rounded-xl border-2 border-dashed border-[#D9D9D9]  bg-dashboardAccentGray">
                   <Plus className="text-muted-foreground" />
                 </Button>
-                <p className="text-destructive">Add Tags</p>
+                <p className="text-[10px]">Add Tags</p>
               </div>
 
-              <div>
+              <div className="flex flex-col justify-center">
                 <Button className="grid place-items-center size-12 rounded-xl border-2 border-[#D9D9D9]  bg-dashboardAccentGray">
                   <Ban color="#BF2B2B" />
                 </Button>
-                <p className="text-sm">Block card</p>
+                <p className="text-[10px]">Block card</p>
               </div>
             </div>
 
             {/* Card Box */}
-            <div className="relative w-[320px] h-[200px] bg-darkPurple text-white rounded-xl p-4 flex flex-col justify-between">
-              <p className="text-sm tracking-widest">0000 0000 0000</p>
-              <div>
-                <p className="text-xs">CARD HOLDER</p>
-                <p className="text-sm font-semibold">Femi Owoalabi</p>
+            <div className="w-[320px] h-[200px] bg-darkPurple text-white rounded-xl p-4 flex flex-col justify-between">
+              <div className="flex-1 flex items-center justify-center mt-5">
+                <p className="text-2xl tracking-widest">{"0000 0000 0000"}</p>
               </div>
-              <div className="text-right text-xs">VALID 12/2026</div>
-              <div className="absolute -top-2 -left-2 w-6 h-6 rounded-full bg-white border border-gray-300 flex items-center justify-center text-black text-sm font-bold">
-                <Plus />
+
+              <div className="flex justify-between items-center">
+                <div>
+                  <p className="text-xs">CARD HOLDER</p>
+                  <p className="text-sm font-semibold">{"Femi Owoalabi"}</p>
+                </div>
+                <div className="text-right text-xs">
+                  <p>VALID</p>
+                  <p>{"12/2026"}</p>
+                </div>
               </div>
             </div>
 
             {/* Balance Cards */}
             <div className="flex flex-col gap-2">
-              <div className="flex justify-between bg-white rounded-xl gap-6 p-3 w-[280px] shadow">
-                <div>
+              <div className="flex justify-between bg-white rounded-xl gap-6 p-3 pl-0 w-[280px] shadow">
+                <div className="border-l-4 pl-3 border-lightPurple">
                   <p className="text-xs text-muted-foreground">
                     Available Balance
                   </p>
-                  <p className="text-lg text-[#6746A3] font-bold mt-2">₦0.00</p>
+                  <p className="text-lg text-[#6746A3] font-bold mt-2">
+                    ₦{"0.00"}
+                  </p>
                 </div>
                 <Button className="my-auto self-start rounded-full bg-darkPurple">
                   Top Up
                 </Button>
               </div>
-              <div className="bg-white rounded-xl p-3 w-[280px] shadow">
-                <p className="text-xs text-muted-foreground">
-                  Previous Balance
-                </p>
-                <p className="text-lg text-[#89C35C] font-bold mt-2">₦0.00</p>
+              <div className="bg-white rounded-xl p-3 pl-0 w-[280px] shadow">
+                <div className="border-l-4 pl-3 border-dashboardLightGreen">
+                  <p className="text-xs text-muted-foreground">
+                    Previous Balance
+                  </p>
+                  <p className="text-lg text-[#89C35C] font-bold mt-2">
+                    ₦{"0.00"}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
