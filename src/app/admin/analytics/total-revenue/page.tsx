@@ -114,7 +114,7 @@ const TotalRevenueLayout = () => {
           <section className="flex-1">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={revenueData}>
-                <CartesianGrid strokeDasharray="3 3" />
+                <CartesianGrid vertical={false} />
                 <XAxis dataKey="name" />
                 <YAxis
                   ticks={[10000, 50000, 100000, 200000, 500000, 1000000]}
@@ -125,7 +125,7 @@ const TotalRevenueLayout = () => {
                   }}
                 />
                 <Tooltip />
-                <Bar dataKey="revenue" fill="#553A6B" radius={[5, 5, 0, 0]} />
+                <Bar dataKey="revenue" fill="#553A6B" />
               </BarChart>
             </ResponsiveContainer>
           </section>
