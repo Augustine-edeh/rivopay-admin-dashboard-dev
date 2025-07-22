@@ -3,10 +3,8 @@
 import { useEffect } from "react";
 import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
 
-// import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowRightLeft, Ban, Pencil, Plus, QrCode } from "lucide-react";
-import Image from "next/image";
+import { Ban, Pencil, Plus } from "lucide-react";
 
 import {
   Table,

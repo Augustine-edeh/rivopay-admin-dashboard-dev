@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Badge } from "../ui/badge";
 import { Separator } from "../ui/separator";
-import { ArrowRightLeft, QrCode } from "lucide-react";
+import { ArrowRightLeft } from "lucide-react";
 
 const TransactionItem = ({
   icon,
