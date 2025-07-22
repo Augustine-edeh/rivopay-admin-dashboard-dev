@@ -15,7 +15,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { Pencil, PhoneCall, Trash2 } from "lucide-react";
+import { PhoneCall, Trash2 } from "lucide-react";
 import BusesSummary from "@/components/drivers/BusesSummary";
 
 const drivers = new Array(20).fill(null).map((_, i) => ({
