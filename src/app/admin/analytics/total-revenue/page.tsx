@@ -50,15 +50,26 @@ const metricsData = [
   },
 ];
 
-// Mock Barchart data
-const revenueData = [
-  { name: "Mon", revenue: 190000, fill: "#553A6B" },
+// Mock Barchart data (Original data which matches design data-specs)
+const revenueData_ = [
+  { name: "Mon", revenue: 190000, fill: "#553a6b" },
   { name: "Tue", revenue: 160000, fill: "#553A6B" },
-  { name: "Wed", revenue: 75000, fill: "#AB74D6" },
+  { name: "Wed", revenue: 75000, fill: "#EADBFF" },
   { name: "Thu", revenue: 500000, fill: "#553A6B" },
-  { name: "Fri", revenue: 75000, fill: "#AB74D6" },
-  { name: "Sat", revenue: 65000, fill: "#AB74D6" },
-  { name: "Sun", revenue: 90000, fill: "#AB74D6" },
+  { name: "Fri", revenue: 75000, fill: "#EADBFF" },
+  { name: "Sat", revenue: 65000, fill: "#EADBFF" },
+  { name: "Sun", revenue: 90000, fill: "#EADBFF" },
+];
+
+// Mock Barchart data (manipulated data to align with design visual specs)
+const revenueData = [
+  { name: "Mon", revenue: 400000, fill: "#553a6b" },
+  { name: "Tue", revenue: 200000, fill: "#553A6B" },
+  { name: "Wed", revenue: 600000, fill: "#EADBFF" },
+  { name: "Thu", revenue: 800000, fill: "#553A6B" },
+  { name: "Fri", revenue: 200000, fill: "#EADBFF" },
+  { name: "Sat", revenue: 600000, fill: "#EADBFF" },
+  { name: "Sun", revenue: 1000000, fill: "#EADBFF" },
 ];
 
 const TotalRevenueLayout = () => {
@@ -118,13 +129,17 @@ const TotalRevenueLayout = () => {
                 <CartesianGrid vertical={false} />
                 <XAxis dataKey="name" />
                 <YAxis
+                  domain={[0, 1000000]} // 👈 fixes the vertical range from 0 to 1M
                   ticks={[10000, 50000, 100000, 200000, 500000, 1000000]}
+                  tickMargin={16}
+                  axisLine={false}
                   tickFormatter={(value) => {
                     if (value === 1000000) return "1M";
                     if (value >= 1000) return `${value / 1000}k`;
                     return value;
                   }}
                 />
+
                 <Tooltip />
                 <Bar dataKey="revenue">
                   {revenueData.map((entry, index) => (
