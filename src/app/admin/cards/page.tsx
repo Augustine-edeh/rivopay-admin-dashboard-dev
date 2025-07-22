@@ -145,7 +145,7 @@ const AssignedCardsPage = () => {
       </div>
 
       {/* Right Side: Card Info & History */}
-      <div className="space-y-4 bg-dashboardAccentGray">
+      <div className="space-y-4 rounded-[8px] border border-[#D9D9D9] bg-dashboardAccentGray">
         {/* Card Details */}
         <section className="rounded-xl p-4  space-y-2">
           <div className="grid grid-cols-2 gap-2 text-sm">
