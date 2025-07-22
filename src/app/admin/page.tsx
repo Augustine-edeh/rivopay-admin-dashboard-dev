@@ -139,7 +139,7 @@ const AdminPage = () => {
           {/* Line Chart Section */}
           <div className="flex flex-col bg-green-300 h-1/2">
             <div className="flex justify-between items-center">
-              <p>Revenue Fenerated</p>
+              <p>Revenue Generated</p>
               <SelectComponent />
             </div>
 

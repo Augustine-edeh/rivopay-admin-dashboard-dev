@@ -16,6 +16,7 @@ interface MetricCardProps {
   iconColor: string;
   iconBgColor?: string;
   type?: "full" | "fixed";
+  className?: string; // Optional className for additional styling
 }
 
 const MetricCard = ({
@@ -26,12 +27,14 @@ const MetricCard = ({
   iconColor,
   iconBgColor,
   type = "full", // default to "full"
+  className,
 }: MetricCardProps) => {
   return (
     <Card
       className={clsx(
         type === "full" ? "w-full" : "w-72",
-        "pb-1.5 bg-dashboardAccentGray"
+        "pb-1.5 bg-dashboardAccentGray",
+        className
       )}
     >
       <CardHeader>
