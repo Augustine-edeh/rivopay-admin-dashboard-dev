@@ -17,6 +17,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
+import RecentHistory from "@/components/wallet/History";
 
 const AssignedCardsPage = () => {
   const { title, setTitle } = usePageTitleStore((state) => state);
@@ -146,9 +147,9 @@ const AssignedCardsPage = () => {
       </div>
 
       {/* Right Side: Card Info & History */}
-      <div className="space-y-4">
+      <div className="space-y-4 bg-dashboardAccentGray">
         {/* Card Details */}
-        <section className="bg-white rounded-xl p-4 shadow space-y-2">
+        <section className="rounded-xl p-4  space-y-2">
           <div className="grid grid-cols-2 gap-2 text-sm">
             <p>
               <span className="text-muted-foreground">Holder Names:</span> Femi
@@ -171,81 +172,7 @@ const AssignedCardsPage = () => {
           </div>
         </section>
 
-        {/* Recent History */}
-        <section className="bg-white rounded-xl shadow p-4 space-y-3">
-          <div className="flex justify-between items-center text-muted-foreground mb-1">
-            <h3 className="font-medium">Recent History</h3>
-            <Badge className="bg-[#DFDFDF] text-inherit px-3">More</Badge>
-          </div>
-          <div className="h-2 w-24 bg-[#00AB57] rounded-full" />
-          <div className="space-y-2">
-            <div className="flex justify-between items-center bg-white rounded-xl p-3 shadow-sm">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-[#F2F2F2] rounded-full flex items-center justify-center">
-                  <ArrowRightLeft className="w-4 h-4" />
-                </div>
-                <div>
-                  <p className="text-sm font-medium">Transfer</p>
-                  <p className="text-xs text-muted-foreground">Sango–Dugbe</p>
-                </div>
-              </div>
-              <div className="text-right">
-                <p className="font-semibold">₦200.00</p>
-                <p className="text-xs text-[#00AB57]">Confirmed</p>
-              </div>
-            </div>
-
-            <div className="flex justify-between items-center bg-white rounded-xl p-3 shadow-sm">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-[#F2F2F2] rounded-full flex items-center justify-center">
-                  <QrCode className="w-4 h-4" />
-                </div>
-                <div>
-                  <p className="text-sm font-medium">Transfer</p>
-                  <p className="text-xs text-muted-foreground">Sango–Dugbe</p>
-                </div>
-              </div>
-              <div className="text-right">
-                <p className="font-semibold">₦200.00</p>
-                <p className="text-xs text-[#00AB57]">Confirmed</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Route History */}
-        <section className="bg-white rounded-xl shadow p-4 space-y-3">
-          <div className="flex justify-between items-center text-muted-foreground">
-            <h3 className="font-medium">Route History</h3>
-            <Badge className="bg-[#DFDFDF] text-inherit px-3">More</Badge>
-          </div>
-
-          <div className="flex items-center justify-between">
-            <p className="text-sm font-medium">Fajuyi</p>
-            <div className="flex items-center gap-2">
-              <div className="h-0.5 w-6 bg-[#D9D9D9]" />
-              <div className="w-8 h-8 rounded bg-[#553A6B] flex items-center justify-center">
-                <ArrowRightLeft className="text-white w-4 h-4" />
-              </div>
-              <div className="h-0.5 w-6 bg-[#D9D9D9]" />
-            </div>
-            <p className="text-sm font-medium">Ijero</p>
-          </div>
-
-          <div className="flex justify-between text-xs text-muted-foreground">
-            <div className="text-left">
-              <p>Terminal</p>
-              <p className="text-black">8:15am</p>
-            </div>
-            <div className="text-center">
-              <p className="text-black text-sm font-semibold">₦200.00</p>
-            </div>
-            <div className="text-right">
-              <p>Destination</p>
-              <p className="text-black">8:40am</p>
-            </div>
-          </div>
-        </section>
+        <RecentHistory />
       </div>
     </div>
   );

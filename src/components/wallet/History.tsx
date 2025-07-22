@@ -75,7 +75,7 @@ const RouteHistoryCard = () => (
   </div>
 );
 
-const RecentHistory = () => {
+export const RecentHistory = () => {
   return (
     <section className="w-full space-y-4 p-4">
       {/* Header */}
