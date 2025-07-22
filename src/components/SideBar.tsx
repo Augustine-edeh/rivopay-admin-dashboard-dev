@@ -15,11 +15,15 @@ const SideBar = () => {
       icon: "/icons/wallet.svg",
     },
     {
-      label: "Cards Management",
+      label: "Assigned Cards",
       href: "/admin/cards",
-      icon: "/icons/card-management.svg",
+      icon: "/icons/assigned-cards.svg",
     },
-    { label: "Users", href: "/admin/users", icon: "/icons/users.svg" },
+    {
+      label: "Transactions",
+      href: "/admin/transactions",
+      icon: "/icons/transactions.svg",
+    },
     {
       label: "Merchants",
       href: "/admin/merchants",
@@ -31,7 +35,6 @@ const SideBar = () => {
       icon: "/icons/merchant-request.svg",
     },
     { label: "Drivers", href: "/admin/drivers", icon: "/icons/drivers.svg" },
-    { label: "Overview", href: "/admin/overview", icon: "/icons/overview.svg" },
     {
       label: "Analytics",
       href: "/admin/analytics",
