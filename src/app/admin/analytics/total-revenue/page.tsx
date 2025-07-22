@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import MetricCard from "@/components/MetricCard";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, TrendingUp } from "lucide-react";
@@ -73,11 +75,14 @@ const revenueData = [
 ];
 
 const TotalRevenueLayout = () => {
+  const router = useRouter();
+
   return (
     <div className="h-screen flex flex-col gap-3.5 bg-muted text-foreground pt-5 pb-10">
       <header>
         <Button
           variant="ghost"
+          onClick={() => router.push("/admin/analytics")}
           className="flex items-center gap-2 bg-darkPurple hover:bg-darkPurple/80 text-accent hover:text-accent"
         >
           <ArrowLeft /> Total Revenue
