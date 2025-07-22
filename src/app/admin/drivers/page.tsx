@@ -19,6 +19,7 @@ import { PhoneCall, Plus, Trash2 } from "lucide-react";
 import BusesSummary from "@/components/drivers/BusesSummary";
 import clsx from "clsx";
 import { Separator } from "@/components/ui/separator";
+import Image from "next/image";
 
 const drivers = new Array(20).fill(null).map((_, i) => ({
   id: `#43${i + 1}`,
@@ -126,7 +127,7 @@ const DriversPage = () => {
       </div>
 
       {/* RIGHT SECTION */}
-      <Card className="rounded-none bg-dashboardAccentGray">
+      <Card className="rounded-none rounded-r-[17px] bg-dashboardAccentGray">
         <CardContent className="p-4 space-y-7">
           <div>
             <p className="text-sm text-muted-foreground">
@@ -170,17 +171,40 @@ const DriversPage = () => {
 
           <div>
             <h4 className="text-base font-semibold mb-1">Bus #101</h4>
-            <div className="text-sm text-muted-foreground flex justify-between mb-1">
-              <p>🕓 Departure: 8:00AM</p>
-              <p>January 23rd 2024</p>
-            </div>
-            <div className="flex justify-between text-sm text-muted-foreground">
-              <p>
-                🪑 Total Seat <strong className="text-black ml-1">50</strong>
-              </p>
-              <p>
-                Total Trips <strong className="text-black ml-1">0</strong>
-              </p>
+
+            {/* Departure row */}
+            <div className="space-y-8 mb-10">
+              <div className="text-sm flex justify-between">
+                <p className="font-[500] flex items-center gap-1">
+                  <Image
+                    src="/icons/bus-departure.svg"
+                    alt="bus"
+                    width={16}
+                    height={16}
+                  />
+                  <span>Departure: 8:00AM</span>
+                </p>
+                <p className="text-muted-foreground">January 23rd 2024</p>
+              </div>
+
+              {/* Seat & Trip summary */}
+              <div className="flex justify-between text-sm text-muted-foreground">
+                <p className="flex items-center gap-1">
+                  <Image
+                    src="/icons/seats.svg"
+                    alt="seats"
+                    width={16}
+                    height={16}
+                  />
+                  <span>
+                    Total Seat <strong className="text-black ml-1">50</strong>
+                  </span>
+                </p>
+
+                <p>
+                  Total Trips <strong className="text-black ml-1">0</strong>
+                </p>
+              </div>
             </div>
           </div>
 
@@ -190,12 +214,23 @@ const DriversPage = () => {
               <span>10:15 AM</span>
               <span>Arriving in 15mins</span>
             </div>
-            <Progress value={75} className="h-2 bg-[#E5E5E5]" />
+            {/* <Progress value={35} className="bg-[#DFDEDE47] h-2" /> */}
+
+            <Progress
+              value={35}
+              className="bg-[#DFDEDE47] h-2"
+              indicatorClassName="bg-[#A5A5A5]"
+            />
           </div>
 
-          <Button variant="ghost" className="w-full text-muted-foreground">
-            More
-          </Button>
+          <div className="flex justify-center">
+            <Button
+              variant="ghost"
+              className="w-fit bg-[#B3B3B35C] text-muted-foreground rounded-full px-6"
+            >
+              More
+            </Button>
+          </div>
         </CardContent>
       </Card>
     </div>
