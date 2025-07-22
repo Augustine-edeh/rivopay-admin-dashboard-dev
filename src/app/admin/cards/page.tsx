@@ -3,16 +3,6 @@
 import { useEffect } from "react";
 import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
 
-// const CardsPage = () => {
-//   const { title, setTitle } = usePageTitleStore((state) => state);
-
-//   useEffect(() => setTitle("Assigned Cards"), [title, setTitle]);
-
-//   return <div>Assigned Cards Page</div>;
-// };
-
-// export default CardsPage;
-
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowRightLeft, Ban, Plus, QrCode } from "lucide-react";
