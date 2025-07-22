@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/select";
 
 import {
+  Cell,
   BarChart,
   Bar,
   XAxis,
@@ -51,13 +52,13 @@ const metricsData = [
 
 // Mock Barchart data
 const revenueData = [
-  { name: "Mon", revenue: 190000 },
-  { name: "Tue", revenue: 160000 },
-  { name: "Wed", revenue: 75000 },
-  { name: "Thu", revenue: 500000 },
-  { name: "Fri", revenue: 75000 },
-  { name: "Sat", revenue: 65000 },
-  { name: "Sun", revenue: 90000 },
+  { name: "Mon", revenue: 190000, fill: "#553A6B" },
+  { name: "Tue", revenue: 160000, fill: "#553A6B" },
+  { name: "Wed", revenue: 75000, fill: "#AB74D6" },
+  { name: "Thu", revenue: 500000, fill: "#553A6B" },
+  { name: "Fri", revenue: 75000, fill: "#AB74D6" },
+  { name: "Sat", revenue: 65000, fill: "#AB74D6" },
+  { name: "Sun", revenue: 90000, fill: "#AB74D6" },
 ];
 
 const TotalRevenueLayout = () => {
@@ -125,7 +126,11 @@ const TotalRevenueLayout = () => {
                   }}
                 />
                 <Tooltip />
-                <Bar dataKey="revenue" fill="#553A6B" />
+                <Bar dataKey="revenue">
+                  {revenueData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.fill} />
+                  ))}
+                </Bar>
               </BarChart>
             </ResponsiveContainer>
           </section>
