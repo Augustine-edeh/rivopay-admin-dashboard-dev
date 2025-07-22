@@ -2,12 +2,28 @@
 
 import { useEffect } from "react";
 import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
-import { Card, CardContent } from "@/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Pencil, Trash2, PhoneCall } from "lucide-react";
+import { Pencil, PhoneCall, Trash2 } from "lucide-react";
+
+const drivers = new Array(20).fill(null).map((_, i) => ({
+  id: `#43${i + 1}`,
+  name: `Driver ${i + 1}`,
+  status: i % 3 === 0 ? "Blocked" : "Completed",
+  route: "Ilawe",
+  validator: `Bus #10${i}`,
+}));
 
 const DriversPage = () => {
   const { setTitle } = usePageTitleStore((state) => state);
@@ -16,108 +32,121 @@ const DriversPage = () => {
 
   return (
     <div className="grid grid-cols-1 xl:grid-cols-[2fr_1fr] gap-6 py-6">
-      {/* Left Section */}
+      {/* LEFT SECTION */}
       <div className="space-y-6">
-        {/* Overview Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {[
-            {
-              title: "Total Buses",
-              count: 0,
-              note: "Full fleet size for operations.",
-            },
-            {
-              title: "Active Buses",
-              count: 0,
-              note: "Buses currently in service.",
-            },
-            {
-              title: "In Maintenance",
-              count: 0,
-              note: "Buses in repair or check up.",
-            },
-          ].map((card, idx) => (
-            <Card key={idx} className="p-4">
-              <div className="flex justify-between items-center">
-                <div>
-                  <p className="font-medium">{card.title}</p>
-                  <p className="text-2xl font-bold">{card.count}</p>
-                </div>
-                {idx === 0 && (
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="text-muted-foreground"
-                  >
-                    <Pencil className="w-4 h-4" />
-                  </Button>
-                )}
-              </div>
-              <p className="text-xs mt-2 text-muted-foreground">{card.note}</p>
-            </Card>
-          ))}
+        {/* Summary Cards */}
+        <div className="bg-dashboardAccentGray rounded-[10px] px-5 py-2.5 space-y-3">
+          <Button className="bg-dashboardLightGrayBG rounded-full text-black hover:text-white ml-auto">
+            Edit <Pencil />
+          </Button>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {[
+              {
+                title: "Total Buses",
+                count: 0,
+                note: "Full fleet size for operations.",
+              },
+              {
+                title: "Active Buses",
+                count: 0,
+                note: "Buses currently in service.",
+              },
+              {
+                title: "In Maintenance",
+                count: 0,
+                note: "Buses in repair or check up.",
+              },
+            ].map((card, i) => (
+              <Card key={i} className="p-4">
+                <p className="text-sm font-medium">{card.title}</p>
+                <p className="text-2xl font-bold">{card.count}</p>
+                <p className="text-xs mt-1 text-muted-foreground">
+                  {card.note}
+                </p>
+              </Card>
+            ))}
+          </div>
         </div>
 
-        {/* Driver Management Table */}
-        <Card>
-          <CardContent className="p-4">
+        {/* Driver Table */}
+        <Card className="h-[500px] flex flex-col">
+          <CardContent className="p-4 flex-1 flex flex-col">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-base font-medium">Drivers Management</h3>
-              <Button variant="outline" className="text-sm">
+              <Button variant="outline" size="sm">
                 Add New Driver +
               </Button>
             </div>
 
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead className="text-muted-foreground border-b">
-                  <tr>
-                    <th className="py-2 text-left">Validator</th>
-                    <th className="py-2 text-left">Status</th>
-                    <th className="py-2 text-left">Route</th>
-                    <th className="py-2 text-left">Name</th>
-                    <th />
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="border-b">
-                    <td className="py-3 font-medium">Bus #101</td>
-                    <td>
-                      <Badge className="bg-[#D8F6E2] text-[#00AB57]">
-                        Completed
-                      </Badge>
-                    </td>
-                    <td>Ilawe</td>
-                    <td>
-                      <div className="flex items-center gap-2">
-                        <Avatar className="h-6 w-6">
-                          <AvatarImage src="/avatars/01.png" />
-                          <AvatarFallback>A</AvatarFallback>
-                        </Avatar>
-                        <span className="font-medium text-sm">Ademola</span>
-                        <span className="text-muted-foreground text-xs">
-                          #43456
-                        </span>
-                      </div>
-                    </td>
-                    <td>
-                      <Button
-                        size="icon"
-                        variant="ghost"
-                        className="text-muted-foreground"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </Button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+            <div className="overflow-hidden border rounded-md flex-1">
+              <div className="overflow-x-auto">
+                <Table className="table-fixed w-full">
+                  {/* Table Head */}
+                  <TableHeader className="sticky top-0 bg-white z-10 shadow-sm">
+                    <TableRow>
+                      <TableHead className="w-1/5">Validator</TableHead>
+                      <TableHead className="w-1/5">Status</TableHead>
+                      <TableHead className="w-1/5">Route</TableHead>
+                      <TableHead className="w-2/5">Name</TableHead>
+                      <TableHead className="w-[40px]" />
+                    </TableRow>
+                  </TableHeader>
+                </Table>
+              </div>
+
+              {/* Scrollable Body */}
+              <div className="overflow-y-auto flex-1 max-h-[360px]">
+                <Table className="table-fixed w-full">
+                  <TableBody>
+                    {drivers.map((driver, index) => (
+                      <TableRow key={index} className="border-b">
+                        <TableCell>{driver.validator}</TableCell>
+                        <TableCell>
+                          <Badge
+                            className={
+                              driver.status === "Blocked"
+                                ? "bg-[#FFBABA] text-[#FF0900]"
+                                : "bg-[#D8F6E2] text-[#00AB57]"
+                            }
+                          >
+                            {driver.status}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>{driver.route}</TableCell>
+                        <TableCell>
+                          <div className="flex items-center gap-2">
+                            <Avatar className="h-6 w-6">
+                              <AvatarImage src="/avatars/01.png" />
+                              <AvatarFallback>{driver.name[0]}</AvatarFallback>
+                            </Avatar>
+                            <span className="font-medium text-sm">
+                              {driver.name}
+                            </span>
+                            <span className="text-muted-foreground text-xs">
+                              {driver.id}
+                            </span>
+                          </div>
+                        </TableCell>
+                        <TableCell>
+                          <Button
+                            size="icon"
+                            variant="ghost"
+                            className="text-muted-foreground"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </Button>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
             </div>
           </CardContent>
         </Card>
       </div>
 
-      {/* Right Section: Driver Info */}
+      {/* RIGHT SECTION */}
       <Card className="rounded-2xl">
         <CardContent className="p-4 space-y-5">
           <div>
