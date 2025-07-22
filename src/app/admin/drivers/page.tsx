@@ -208,25 +208,25 @@ const DriversPage = () => {
             </div>
           </div>
 
-          <div>
-            <p className="text-sm font-medium mb-2">Road Activities</p>
-            <div className="flex justify-between text-sm text-muted-foreground mb-1">
-              <span>10:15 AM</span>
-              <span>Arriving in 15mins</span>
+          <div className="space-y-[8px] text-sm text-muted-foreground">
+            <div className="flex items-center justify-between">
+              <p className="font-medium mb-2">Road Activities</p>
+              <p>{"10:15 AM"}</p>
             </div>
-            {/* <Progress value={35} className="bg-[#DFDEDE47] h-2" /> */}
 
             <Progress
               value={35}
               className="bg-[#DFDEDE47] h-2"
               indicatorClassName="bg-[#A5A5A5]"
             />
+
+            <p className="text-right">Arriving in 15mins</p>
           </div>
 
           <div className="flex justify-center">
             <Button
               variant="ghost"
-              className="w-fit bg-[#B3B3B35C] text-muted-foreground rounded-full px-6"
+              className="w-fit bg-[#B3B3B35C] text-muted-foreground rounded-full px-6 mt-5"
             >
               More
             </Button>
