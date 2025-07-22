@@ -49,15 +49,15 @@ const metricsData = [
   },
 ];
 
-// Mock bar chart data
+// Mock Barchart data
 const revenueData = [
-  { name: "Mon", revenue: 400 },
-  { name: "Tue", revenue: 300 },
-  { name: "Wed", revenue: 600 },
-  { name: "Thu", revenue: 200 },
-  { name: "Fri", revenue: 500 },
-  { name: "Sat", revenue: 100 },
-  { name: "Sun", revenue: 700 },
+  { name: "Mon", revenue: 190000 },
+  { name: "Tue", revenue: 160000 },
+  { name: "Wed", revenue: 75000 },
+  { name: "Thu", revenue: 500000 },
+  { name: "Fri", revenue: 75000 },
+  { name: "Sat", revenue: 65000 },
+  { name: "Sun", revenue: 90000 },
 ];
 
 const TotalRevenueLayout = () => {
@@ -116,7 +116,14 @@ const TotalRevenueLayout = () => {
               <BarChart data={revenueData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" />
-                <YAxis />
+                <YAxis
+                  ticks={[10000, 50000, 100000, 200000, 500000, 1000000]}
+                  tickFormatter={(value) => {
+                    if (value === 1000000) return "1M";
+                    if (value >= 1000) return `${value / 1000}k`;
+                    return value;
+                  }}
+                />
                 <Tooltip />
                 <Bar dataKey="revenue" fill="#553A6B" radius={[5, 5, 0, 0]} />
               </BarChart>
