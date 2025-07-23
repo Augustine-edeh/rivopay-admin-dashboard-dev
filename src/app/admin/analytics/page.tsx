@@ -25,6 +25,8 @@ import {
   Area,
   Legend,
 } from "recharts";
+import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 
 const AnalyticsPage = () => {
   const { setTitle } = usePageTitleStore((state) => state);
@@ -57,20 +59,41 @@ const AnalyticsPage = () => {
   return (
     <div className="flex flex-col gap-6 p-6">
       {/* Revenue + Bar section */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <section className="grid grid-cols-1 md:grid-cols-[25%_1fr] gap-6">
         {/* Pie Chart Card */}
-        <div className="bg-white rounded-xl p-5 shadow">
-          <div className="flex justify-between items-start">
+        <div className="bg-white rounded-xl shadow">
+          <div className="flex justify-between items-start border-b p-4 mb-1.5">
             <div>
               <h4 className="text-sm font-medium">Total Revenue</h4>
-              <p className="text-xs text-muted-foreground">Daily - Yearly</p>
             </div>
-            <Button size="sm" className="rounded-full px-4 py-1.5 text-xs">
-              More Activities →
-            </Button>
+            <Link
+              href="#"
+              className="flex items-center underline text-[#00AB57] text-xs"
+            >
+              More Activities <ChevronRight size={15} />
+            </Link>
           </div>
 
           <div className="h-56">
+            <div className="flex justify-between items-center px-4">
+              <p className="text-sm text-muted-foreground">Daily - Yearly</p>
+
+              <Select>
+                <SelectTrigger className="h-fit py-0 px-3 rounded-[5px] bg-[#FCFCFC] text-sm">
+                  <div className="flex items-center gap-2">
+                    <span className="size-2.5 rounded-[2.7px] bg-green-500" />
+                    <SelectValue placeholder="Daily" />
+                  </div>
+                </SelectTrigger>
+
+                <SelectContent>
+                  <SelectItem value="weekly">Weekly</SelectItem>
+                  <SelectItem value="monthly">Monthly</SelectItem>
+                  <SelectItem value="yearly">Yearly</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
