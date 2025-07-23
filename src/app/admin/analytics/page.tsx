@@ -91,22 +91,39 @@ const AnalyticsPage = () => {
 
         {/* Bar Chart Card */}
         <div className="bg-white rounded-xl p-5 shadow">
-          <div className="flex justify-between items-start">
+          <div className="flex justify-between items-start flex-wrap gap-2">
             <div>
               <h4 className="text-sm font-medium">
                 Payment Method Distribution Daily
               </h4>
               <p className="text-xs text-muted-foreground">2025</p>
             </div>
-            <Select>
-              <SelectTrigger className="w-[100px] h-8 rounded-full text-sm bg-[#F2F2F2]">
-                <SelectValue placeholder="Daily" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="weekly">Weekly</SelectItem>
-                <SelectItem value="monthly">Monthly</SelectItem>
-              </SelectContent>
-            </Select>
+
+            {/* Custom Legend + Select */}
+            <div className="flex items-center gap-4">
+              {/* Custom Legend */}
+              <div className="flex items-center gap-3 text-xs">
+                <div className="flex items-center gap-1">
+                  <span className="w-3 h-3 bg-[#6F2DA8] rounded-sm"></span>
+                  <span>Card</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <span className="w-3 h-3 bg-[#C1C1C1] rounded-sm"></span>
+                  <span>QR</span>
+                </div>
+              </div>
+
+              {/* Select dropdown */}
+              <Select>
+                <SelectTrigger className="w-[100px] h-8 rounded-full text-sm bg-[#F2F2F2]">
+                  <SelectValue placeholder="Daily" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="weekly">Weekly</SelectItem>
+                  <SelectItem value="monthly">Monthly</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
 
           <div className="h-56">
@@ -118,7 +135,12 @@ const AnalyticsPage = () => {
                 barGap={0} // no gap between bars of same tick
               >
                 <CartesianGrid horizontal={false} strokeDasharray="3 3" />
-                <XAxis type="number" />
+                <XAxis
+                  type="number"
+                  ticks={[0, 20, 40, 60, 80, 100]}
+                  domain={[0, 100]}
+                  tick={{ fontSize: 12 }}
+                />
                 <YAxis
                   dataKey="name"
                   type="category"
@@ -131,7 +153,6 @@ const AnalyticsPage = () => {
       To ensure all days (Mon–Sun) are shown, I've passed `interval={0}` to <YAxis /> 
     */}
                 <Tooltip />
-                <Legend />
                 <Bar dataKey="card" fill="#6F2DA8" barSize={10} />
                 <Bar dataKey="qr" fill="#C1C1C1" barSize={10} />
               </BarChart>
