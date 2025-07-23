@@ -34,10 +34,10 @@ const AnalyticsPage = () => {
   useEffect(() => setTitle("analytics"), [setTitle]);
 
   const pieData = [
-    { name: "Card", value: 300, color: "#34A853" },
-    { name: "QR", value: 200, color: "#FBBC05" },
-    { name: "Cash", value: 100, color: "#4285F4" },
-    { name: "Other", value: 50, color: "#EA4335" },
+    { name: "Card", value: 300, color: "#274754" },
+    { name: "QR", value: 200, color: "#E8C468" },
+    { name: "Cash", value: 100, color: "#00AB57" },
+    { name: "Other", value: 50, color: "#9D9C9C" },
   ];
 
   const barData = [
