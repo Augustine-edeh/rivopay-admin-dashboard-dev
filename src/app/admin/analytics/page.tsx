@@ -94,7 +94,7 @@ const AnalyticsPage = () => {
               </Select>
             </div>
 
-            <ResponsiveContainer width="100%" height="100%">
+            <ResponsiveContainer width="100%" height="100%" className="pb-5">
               <PieChart>
                 <Pie
                   data={pieData}
@@ -113,32 +113,32 @@ const AnalyticsPage = () => {
         </div>
 
         {/* Bar Chart Card */}
-        <div className="bg-white rounded-xl p-5 shadow">
-          <div className="flex justify-between items-start flex-wrap gap-2">
+        <div className="flex flex-col gap-3.5 bg-white rounded-xl p-5 pb-0 shadow">
+          <div className="flex justify-between items-center flex-wrap gap-2">
             <div>
               <h4 className="text-sm font-medium">
                 Payment Method Distribution Daily
               </h4>
-              <p className="text-xs text-muted-foreground">2025</p>
+              <p className="text-xs text-muted-foreground">{`2025`}</p>
             </div>
 
-            {/* Custom Legend + Select */}
-            <div className="flex items-center gap-4">
-              {/* Custom Legend */}
-              <div className="flex items-center gap-3 text-xs">
-                <div className="flex items-center gap-1">
-                  <span className="w-3 h-3 bg-[#6F2DA8] rounded-sm"></span>
-                  <span>Card</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <span className="w-3 h-3 bg-[#C1C1C1] rounded-sm"></span>
-                  <span>QR</span>
-                </div>
+            {/* Custom Legend */}
+            <div className="flex items-center gap-3 text-xs">
+              <div className="flex items-center gap-1">
+                <span className="size-3 bg-[#6746A3] rounded-xs"></span>
+                <span>Card</span>
               </div>
+              <div className="flex items-center gap-1">
+                <span className="size-3 bg-[#9D9C9C] rounded-xs"></span>
+                <span>QR</span>
+              </div>
+            </div>
 
+            {/* Sort Select */}
+            <div className="flex items-center gap-4">
               {/* Select dropdown */}
               <Select>
-                <SelectTrigger className="w-[100px] h-8 rounded-full text-sm bg-[#F2F2F2]">
+                <SelectTrigger className="h-8 px-5 rounded-full text-sm bg-[#E0E0E0]">
                   <SelectValue placeholder="Daily" />
                 </SelectTrigger>
                 <SelectContent>
