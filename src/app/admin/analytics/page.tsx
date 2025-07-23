@@ -62,7 +62,7 @@ const AnalyticsPage = () => {
       <section className="grid grid-cols-1 md:grid-cols-[25%_1fr] gap-6">
         {/* Pie Chart Card */}
         <div className="bg-white rounded-xl shadow">
-          <div className="flex justify-between items-start border-b p-4 mb-1.5">
+          <div className="flex justify-between items-center border-b p-4 mb-1.5">
             <div>
               <h4 className="text-sm font-medium">Total Revenue</h4>
             </div>
@@ -185,8 +185,12 @@ const AnalyticsPage = () => {
       </section>
 
       {/* Area Chart (User Growth Rate) */}
-      <section className="bg-white rounded-xl p-5 shadow">
-        <div className="flex justify-between items-start mb-4">
+      <section className="bg-white rounded-xl shadow">
+        <p className="flex justify-between items-center border-b px-4 py-1.5 mb-1.5 text-muted-foreground">
+          User Insight
+        </p>
+
+        <div className="flex justify-between items-start px-5 mb-4">
           <div>
             <h4 className="text-sm font-medium">User Growth Rate</h4>
             <p className="text-xs text-muted-foreground">
@@ -194,7 +198,7 @@ const AnalyticsPage = () => {
             </p>
           </div>
           <Select>
-            <SelectTrigger className="w-[100px] h-8 rounded-full text-sm bg-[#F2F2F2]">
+            <SelectTrigger className="h-8 px-4 rounded-full text-sm bg-[#E0E0E0]">
               <SelectValue placeholder="Daily" />
             </SelectTrigger>
             <SelectContent>
