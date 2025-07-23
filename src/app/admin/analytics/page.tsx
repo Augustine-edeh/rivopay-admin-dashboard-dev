@@ -67,7 +67,7 @@ const AnalyticsPage = () => {
               <h4 className="text-sm font-medium">Total Revenue</h4>
             </div>
             <Link
-              href="#"
+              href="/admin/analytics/total-revenue"
               className="flex items-center underline text-[#00AB57] text-xs"
             >
               More Activities <ChevronRight size={15} />
