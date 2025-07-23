@@ -212,30 +212,40 @@ const AnalyticsPage = () => {
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={areaData}>
               <defs>
-                <linearGradient id="colorNew" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#FF6B6B" stopOpacity={0.3} />
-                  <stop offset="95%" stopColor="#FF6B6B" stopOpacity={0} />
+                <linearGradient id="colorNewUser" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#E76E50" stopOpacity={1} />
+                  <stop offset="95%" stopColor="#E76E50" stopOpacity={0.2} />
                 </linearGradient>
-                <linearGradient id="colorReg" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#4CAF50" stopOpacity={0.3} />
-                  <stop offset="95%" stopColor="#4CAF50" stopOpacity={0} />
+                <linearGradient
+                  id="colorRegularUser"
+                  x1="0"
+                  y1="0"
+                  x2="0"
+                  y2="1"
+                >
+                  <stop offset="5%" stopColor="#2A9D90" stopOpacity={1} />
+                  <stop offset="95%" stopColor="#2A9D90" stopOpacity={0.2} />
                 </linearGradient>
               </defs>
+
               <XAxis dataKey="date" />
               <YAxis />
               <Tooltip />
-              <Legend />
+              <Legend content={renderCustomLegend} />
               <Area
                 type="monotone"
                 dataKey="newUser"
-                stroke="#FF6B6B"
-                fill="url(#colorNew)"
+                stroke="#E76E50"
+                fill="url(#colorNewUser)"
+                stackId="1"
+                legendType="square"
               />
               <Area
                 type="monotone"
                 dataKey="regularUser"
-                stroke="#4CAF50"
-                fill="url(#colorReg)"
+                stroke="#2A9D90"
+                fill="url(#colorRegularUser)"
+                stackId="1"
               />
             </AreaChart>
           </ResponsiveContainer>
@@ -246,3 +256,31 @@ const AnalyticsPage = () => {
 };
 
 export default AnalyticsPage;
+
+const renderCustomLegend = ({ payload }: any) => {
+  // Creatd this helper function to help format the legend keys from camelCase to spaced words
+  const formatLabel = (label: string) => {
+    return label
+      .replace(/([a-z])([A-Z])/g, "$1 $2") // Add space before capital letters
+      .replace(/^./, (str) => str.toUpperCase()); // Capitalize first letter
+  };
+
+  return (
+    <ul className="flex justify-center gap-4 text-xs">
+      {payload.map((entry: any, index: number) => (
+        <li key={`item-${index}`} className="flex items-center gap-2">
+          <span
+            className="inline-block"
+            style={{
+              width: 15,
+              height: 15,
+              backgroundColor: entry.color,
+              borderRadius: 1.8,
+            }}
+          />
+          <span>{formatLabel(entry.value)}</span>
+        </li>
+      ))}
+    </ul>
+  );
+};
