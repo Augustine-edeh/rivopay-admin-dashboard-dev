@@ -119,7 +119,12 @@ const AnalyticsPage = () => {
               >
                 <CartesianGrid horizontal={false} strokeDasharray="3 3" />
                 <XAxis type="number" />
-                <YAxis dataKey="name" type="category" />
+                <YAxis dataKey="name" type="category" interval={0} />
+                {/* 
+  Recharts sometimes skips Y-axis labels to prevent overlap, especially on small screens. 
+  To ensure all days (Mon–Sun) are shown, we pass `interval={0}` to <YAxis /> 
+*/}
+
                 <Tooltip />
                 <Legend />
                 <Bar dataKey="card" fill="#6F2DA8" barSize={10} />
