@@ -33,6 +33,7 @@ type FormValues = {
   phone: string;
   terminal: string;
   route: string;
+  busNumber: string;
 };
 
 const AddNewDriverButtonDialog = () => {
@@ -42,6 +43,7 @@ const AddNewDriverButtonDialog = () => {
       phone: "",
       terminal: "",
       route: "",
+      busNumber: "",
     },
   });
 
@@ -61,7 +63,7 @@ const AddNewDriverButtonDialog = () => {
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-[393px]">
+      <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle className="sr-only">Add New Driver</DialogTitle>
           <Image
@@ -74,97 +76,117 @@ const AddNewDriverButtonDialog = () => {
         </DialogHeader>
 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-            {/* Full Name */}
-            <FormField
-              control={form.control}
-              name="fullName"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      placeholder="Full Name"
-                      className="w-full rounded-[6px]"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+          <form onSubmit={form.handleSubmit(onSubmit)}>
+            <div className="flex flex-col space-y-[14px] mt-4">
+              {/* Full Name */}
+              <FormField
+                control={form.control}
+                name="fullName"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Input
+                        placeholder="Full Name"
+                        className="w-full rounded-[6px]"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-            {/* Phone Number */}
-            <FormField
-              control={form.control}
-              name="phone"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      placeholder="Mobile Number"
-                      className="w-full rounded-[6px]"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+              {/* Phone Number */}
+              <FormField
+                control={form.control}
+                name="phone"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Input
+                        placeholder="Mobile Number"
+                        className="w-full rounded-[6px]"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-            {/* Bus Terminal */}
-            <FormField
-              control={form.control}
-              name="terminal"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Select
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                    >
-                      <SelectTrigger className="w-full rounded-[6px]">
-                        <SelectValue placeholder="Select Bus Terminal" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="Terminal 1">Terminal 1</SelectItem>
-                        <SelectItem value="Terminal 2">Terminal 2</SelectItem>
-                        <SelectItem value="Terminal 3">Terminal 3</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+              {/* Bus Number */}
+              <FormField
+                control={form.control}
+                name="busNumber"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Input
+                        placeholder="Bus Number"
+                        className="w-full rounded-[6px]"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-            {/* Route */}
-            <FormField
-              control={form.control}
-              name="route"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Select
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                    >
-                      <SelectTrigger className="w-full rounded-[6px]">
-                        <SelectValue placeholder="Select Route" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="Ilawe">Ilawe</SelectItem>
-                        <SelectItem value="Iworoko">Iworoko</SelectItem>
-                        <SelectItem value="Opopogboro">Opopogboro</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+              {/* Bus Terminal */}
+              <FormField
+                control={form.control}
+                name="terminal"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
+                        <SelectTrigger className="w-full rounded-[6px]">
+                          <SelectValue placeholder="Select Bus Terminal" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="Terminal 1">Terminal 1</SelectItem>
+                          <SelectItem value="Terminal 2">Terminal 2</SelectItem>
+                          <SelectItem value="Terminal 3">Terminal 3</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-            {/* Submit Button */}
-            <DialogFooter>
+              {/* Route */}
+              <FormField
+                control={form.control}
+                name="route"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
+                        <SelectTrigger className="w-full rounded-[6px]">
+                          <SelectValue placeholder="Select Route" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="Ilawe">Ilawe</SelectItem>
+                          <SelectItem value="Iworoko">Iworoko</SelectItem>
+                          <SelectItem value="Opopogboro">Opopogboro</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+
+            {/* Save Button with top margin of 37px */}
+            <DialogFooter className="mt-[37px]">
               <Button
                 type="submit"
                 className="bg-textPurple/85 hover:bg-textPurple py-2 w-full rounded-full"
