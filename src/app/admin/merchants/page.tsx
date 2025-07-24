@@ -337,47 +337,52 @@ export default function MerchantsPage() {
       </div>
 
       {/* Content */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      {/* NOTE: consider increasing heoght to `500px` */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 h-[450px] bg-[#9D9C9C47] rounded-[14px] px-3.5 py-6">
         {/* Merchant List */}
-        <ScrollArea className="space-y-4 pr-2 max-h-[500px] bg-pink-600">
-          {merchants.map((merchant, idx) => (
-            <Card
-              key={idx}
-              className="p-4 flex flex-col justify-between space-y-3 shadow-sm"
-            >
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-sm font-bold text-white">
-                  🧑‍💼
-                </div>
-                <div className="flex-1">
-                  <p className="font-semibold">{merchant.name}</p>
-                  <p className="text-xs text-muted-foreground">
-                    Assigned Terminal: {merchant.terminal}
-                  </p>
-                </div>
-                <div className="text-xs text-right">
-                  <p className="text-muted-foreground">Terminal ID</p>
-                  <p className="font-medium">{merchant.id}</p>
-                </div>
-              </div>
-              <Button
-                size="sm"
-                className="w-fit bg-muted rounded-full"
-                onClick={() => setSelected(merchant)}
-              >
-                View
-              </Button>
-            </Card>
-          ))}
-        </ScrollArea>
+        <Card className="p-2 h-full overflow-hidden bg-transparent border-none shadow-none">
+          <ScrollArea className="h-full">
+            <div className="space-y-4 pr-3">
+              {merchants.map((merchant, idx) => (
+                <Card
+                  key={idx}
+                  className="p-4 flex flex-col justify-between space-y-3 shadow-sm"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-sm font-bold text-white">
+                      🧑‍💼
+                    </div>
+                    <div className="flex-1">
+                      <p className="font-semibold">{merchant.name}</p>
+                      <p className="text-xs text-muted-foreground">
+                        Assigned Terminal: {merchant.terminal}
+                      </p>
+                    </div>
+                    <div className="text-xs text-right">
+                      <p className="text-muted-foreground">Terminal ID</p>
+                      <p className="font-medium">{merchant.id}</p>
+                    </div>
+                  </div>
+                  <Button
+                    size="sm"
+                    className="w-fit px-8 mx-auto bg-lightGray text-muted-foreground hover:text-white rounded-full"
+                    onClick={() => setSelected(merchant)}
+                  >
+                    View
+                  </Button>
+                </Card>
+              ))}
+            </div>
+          </ScrollArea>
+        </Card>
 
         {/* Selected Merchant Info */}
-        <Card className="p-4 space-y-3">
+        <Card className="p-4 space-y-3 bg-yellow-200">
           <div className="flex justify-between items-center text-muted-foreground">
             <h4 className="text-sm font-medium">Information Summary</h4>
             {/* Edit button */}
             <div className="flex justify-end text-shadow-muted">
-              <Button className="bg-dashboardLightGrayBG rounded-full text-black hover:text-white">
+              <Button className="bg-dashboardLightGrayBG rounded-full text-muted-foreground hover:text-white">
                 Edit <Pencil className="ml-2 h-4 w-4" />
               </Button>
             </div>
