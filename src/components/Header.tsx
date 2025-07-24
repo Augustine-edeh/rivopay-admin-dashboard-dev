@@ -10,13 +10,13 @@ import { Bell } from "lucide-react";
 import UserAvatar from "./UserAvatar";
 import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
 import NotificationPanel from "./header/NotificationPanel";
-import Image from "next/image";
+// import Image from "next/image";
 
 const Header = () => {
   const title = usePageTitleStore((state) => state.title);
 
   return (
-    <header className="h-16 flex items-center bg-blue-600">
+    <header className="sticky top-0 py-6 flex items-center bg-blue-600">
       <h1 className="text-xl font-bold tracking-wide capitalize">{title}</h1>
 
       <div className="flex items-center gap-4 ml-auto">
@@ -41,10 +41,10 @@ const Header = () => {
           </DropdownMenuContent>
         </DropdownMenu>
 
-        <button className="w-full flex items-center gap-2 p-2 rounded-3xl text-white hover:underline hover:text-darkPurple transition-colors">
+        {/* <button className="w-full flex items-center gap-2 p-2 rounded-3xl text-muted-foreground hover:underline hover:text-darkPurple transition-colors">
           <Image src="/icons/logout.svg" alt="logout" width={20} height={20} />
           <span>Log out</span>
-        </button>
+        </button> */}
       </div>
     </header>
   );
