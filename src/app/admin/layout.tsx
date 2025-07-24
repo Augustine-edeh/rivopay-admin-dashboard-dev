@@ -19,7 +19,7 @@ const AdminLayout = ({ children }: { children: ReactNode }) => {
   const shouldHideHeader = hideHeaderRoutes.includes(pathname);
 
   return (
-    <div className="min-h-screen flex bg-muted text-foreground">
+    <div className="h-screen flex bg-muted text-foreground">
       {/* NOTE: Suggestion: set height to h-screen and give overflow-hidden to overall parent container  */}
 
       {/* Conditionally render sidebar */}
@@ -30,7 +30,7 @@ const AdminLayout = ({ children }: { children: ReactNode }) => {
       <main
         className={`
           flex-1 flex flex-col overflow-y-auto
-          ${shouldHideSidebar ? "w-full px-10" : "w-5/6 px-7 bg-red-500"}
+          ${shouldHideSidebar ? "w-full px-10" : "w-5/6 px-7 bg-white"}
         `}
       >
         {/* Conditionally render Header */}
