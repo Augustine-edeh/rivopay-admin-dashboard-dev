@@ -12,7 +12,7 @@ import { useState, useEffect } from "react";
 import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
 import { Pencil, Plus, Search, Trash2 } from "lucide-react";
 import { Label } from "@/components/ui/label";
-
+import { Separator } from "@/components/ui/separator";
 const merchants = [
   {
     id: "6a06163e",
@@ -348,7 +348,7 @@ export default function MerchantsPage() {
               {merchants.map((merchant, idx) => (
                 <Card
                   key={idx}
-                  className="p-4 flex flex-col justify-between space-y-3 shadow-sm"
+                  className="p-4 flex flex-col justify-between shadow-sm"
                 >
                   <Button className="place-self-end grid place-items-center size-7 p-0 m-0 rounded-full bg-transparent hover:bg-lightGray focus:bg-lightGray text-black shadow-none cursor-pointer">
                     <Trash2 size={16} />
@@ -366,18 +366,33 @@ export default function MerchantsPage() {
 
                     <div className="flex-1">
                       <p className="font-semibold">{merchant.name}</p>
-                      <p className="text-xs text-muted-foreground">
-                        Assigned Terminal: {merchant.terminal}
-                      </p>
                     </div>
                     <div className="text-xs text-right">
                       <p className="text-muted-foreground">Terminal ID</p>
                       <p className="font-medium">{merchant.id}</p>
                     </div>
                   </div>
+
+                  <div>
+                    <Separator />
+                    <div className="flex justify-between items-center py-2">
+                      <div className="space-y-2">
+                        <p className="text-xs text-muted-foreground">
+                          Assigned Terminal
+                        </p>
+                        <p className="font-semibold">{merchant.terminal}</p>
+                      </div>
+
+                      <div className="relative h-7 w-0.5 bg-separatorGray">
+                        <div className="absolute -top-1 left-1/2 -translate-x-1/2 size-3 rounded-full bg-[#00AB57]" />
+                      </div>
+                    </div>
+
+                    <Separator />
+                  </div>
                   <Button
                     size="sm"
-                    className="w-fit px-8 mx-auto bg-lightGray text-muted-foreground hover:text-white rounded-full"
+                    className="w-fit px-8 mx-auto mt-2 bg-lightGray text-muted-foreground hover:text-white rounded-full"
                     onClick={() => setSelected(merchant)}
                   >
                     View
