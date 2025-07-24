@@ -1,16 +1,56 @@
+"use client";
+
 import {
   Dialog,
   DialogTrigger,
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogDescription,
   DialogFooter,
 } from "@/components/ui/dialog";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Plus } from "lucide-react";
+import Image from "next/image";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+import { useForm } from "react-hook-form";
+
+type FormValues = {
+  fullName: string;
+  phone: string;
+  terminal: string;
+  route: string;
+};
 
 const AddNewDriverButtonDialog = () => {
+  const form = useForm<FormValues>({
+    defaultValues: {
+      fullName: "",
+      phone: "",
+      terminal: "",
+      route: "",
+    },
+  });
+
+  const onSubmit = (data: FormValues) => {
+    console.log("Submitted Driver:", data);
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -25,39 +65,116 @@ const AddNewDriverButtonDialog = () => {
 
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Add New Driver</DialogTitle>
-          <DialogDescription>
-            {`Fill in the driver's basic details below.`}
-          </DialogDescription>
+          <DialogTitle className="sr-only">Add New Driver</DialogTitle>
+          <Image
+            src="/icons/driverImg-fallback.svg"
+            alt="driver-avatar"
+            width={90}
+            height={90}
+            className="mx-auto"
+          />
         </DialogHeader>
 
-        <div className="grid gap-4 py-4">
-          {/* Example fields */}
-          <div className="grid grid-cols-4 items-center gap-4">
-            <label htmlFor="name" className="text-right">
-              Name
-            </label>
-            <input
-              id="name"
-              placeholder="Driver's Name"
-              className="col-span-3 px-2 py-1 border rounded-md"
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <FormField
+              control={form.control}
+              name="fullName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Full Name</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Enter full name"
+                      className="rounded-[6px]"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <label htmlFor="route" className="text-right">
-              Route
-            </label>
-            <input
-              id="route"
-              placeholder="Driver's Route"
-              className="col-span-3 px-2 py-1 border rounded-md"
-            />
-          </div>
-        </div>
 
-        <DialogFooter>
-          <Button type="submit">Save</Button>
-        </DialogFooter>
+            <FormField
+              control={form.control}
+              name="phone"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Mobile Number</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="+234 810 000 0000"
+                      className="rounded-[6px]"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="terminal"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Bus Terminal</FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger className="rounded-[6px]">
+                        <SelectValue placeholder="Select terminal" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value="Terminal 1">Terminal 1</SelectItem>
+                      <SelectItem value="Terminal 2">Terminal 2</SelectItem>
+                      <SelectItem value="Terminal 3">Terminal 3</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="route"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Route</FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger className="rounded-[6px]">
+                        <SelectValue placeholder="Select route" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value="Ilawe">Ilawe</SelectItem>
+                      <SelectItem value="Iworoko">Iworoko</SelectItem>
+                      <SelectItem value="Opopogboro">Opopogboro</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <DialogFooter>
+              <Button
+                type="submit"
+                className="bg-textPurple/85 hover:bg-textPurple py-2 w-full rounded-full"
+              >
+                Save
+              </Button>
+            </DialogFooter>
+          </form>
+        </Form>
       </DialogContent>
     </Dialog>
   );
