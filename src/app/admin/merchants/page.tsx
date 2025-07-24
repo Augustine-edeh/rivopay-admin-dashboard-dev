@@ -413,7 +413,6 @@ const MerchantsPage = () => {
 
             <Button
               onClick={() => setIsEditing((prev) => !prev)}
-              // className="bg-dashboardLightGrayBG rounded-full text-muted-foreground hover:text-white"
               className={clsx(
                 "rounded-full",
                 isEditing
