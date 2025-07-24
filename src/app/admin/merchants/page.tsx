@@ -8,7 +8,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { useState, useEffect } from "react";
 
 import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
-import { Pencil, Plus, Search } from "lucide-react";
+import { Pencil, Plus, Search, Trash2 } from "lucide-react";
 import { Label } from "@/components/ui/label";
 
 const merchants = [
@@ -348,6 +348,10 @@ export default function MerchantsPage() {
                   key={idx}
                   className="p-4 flex flex-col justify-between space-y-3 shadow-sm"
                 >
+                  <Button className="place-self-end grid place-items-center size-7 p-0 m-0 rounded-full bg-transparent hover:bg-lightGray focus:bg-lightGray text-black shadow-none cursor-pointer">
+                    <Trash2 size={16} />
+                  </Button>
+
                   <div className="flex items-center gap-4">
                     <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-sm font-bold text-white">
                       🧑‍💼
