@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Plus } from "lucide-react";
+import { Pencil, Plus } from "lucide-react";
 import Image from "next/image";
 import {
   Form,
@@ -27,6 +27,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
+import { Label } from "@/components/ui/label";
 
 type FormValues = {
   fullName: string;
@@ -34,9 +36,12 @@ type FormValues = {
   terminal: string;
   route: string;
   busNumber: string;
+  image: File | null;
 };
 
 const AddNewDriverButtonDialog = () => {
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+
   const form = useForm<FormValues>({
     defaultValues: {
       fullName: "",
@@ -44,11 +49,21 @@ const AddNewDriverButtonDialog = () => {
       terminal: "",
       route: "",
       busNumber: "",
+      image: null,
     },
   });
 
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setPreviewUrl(URL.createObjectURL(file));
+      form.setValue("image", file);
+    }
+  };
+
   const onSubmit = (data: FormValues) => {
     console.log("Submitted Driver:", data);
+    // optionally reset form or close modal
   };
 
   return (
@@ -66,13 +81,44 @@ const AddNewDriverButtonDialog = () => {
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle className="sr-only">Add New Driver</DialogTitle>
-          <Image
-            src="/icons/driverImg-fallback.svg"
-            alt="driver-avatar"
-            width={90}
-            height={90}
-            className="mx-auto"
-          />
+
+          <div className="flex justify-center items-center relative mt-2">
+            <label
+              htmlFor="driver-photo"
+              className="cursor-pointer group relative rounded-full inline-block"
+            >
+              {previewUrl ? (
+                <Image
+                  src={previewUrl}
+                  alt="Driver avatar"
+                  width={90}
+                  height={90}
+                  className="rounded-full object-cover mx-auto"
+                />
+              ) : (
+                <Image
+                  src="/icons/driverImg-fallback.svg"
+                  alt="Upload Driver"
+                  width={90}
+                  height={90}
+                  className="rounded-full mx-auto"
+                />
+              )}
+              <span className="absolute inset-0 bg-black/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
+            </label>
+
+            <Input
+              id="driver-photo"
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              className="hidden"
+            />
+          </div>
+
+          {/* <span className="absolute cursor-pointer inset-0 bg-black/20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <Pencil className="text-white w-4 h-4" />
+          </span> */}
         </DialogHeader>
 
         <Form {...form}>
@@ -132,7 +178,7 @@ const AddNewDriverButtonDialog = () => {
                 )}
               />
 
-              {/* Bus Terminal */}
+              {/* Terminal */}
               <FormField
                 control={form.control}
                 name="terminal"
@@ -185,7 +231,7 @@ const AddNewDriverButtonDialog = () => {
               />
             </div>
 
-            {/* Save Button with top margin of 37px */}
+            {/* Save button spaced 37px below */}
             <DialogFooter className="mt-[37px]">
               <Button
                 type="submit"
