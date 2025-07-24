@@ -10,9 +10,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useState, useEffect } from "react";
 
 import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
-import { Pencil, Plus, Search, Trash2 } from "lucide-react";
+import { Pencil, Plus, Save, Search, Trash2 } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
+import clsx from "clsx";
 const merchants = [
   {
     id: "6a06163e",
@@ -412,10 +413,25 @@ const MerchantsPage = () => {
 
             <Button
               onClick={() => setIsEditing((prev) => !prev)}
-              className="bg-dashboardLightGrayBG rounded-full text-muted-foreground hover:text-white"
+              // className="bg-dashboardLightGrayBG rounded-full text-muted-foreground hover:text-white"
+              className={clsx(
+                "rounded-full",
+                isEditing
+                  ? "bg-[#39C480] hover:bg-[#63b48d]"
+                  : "bg-dashboardLightGrayBG text-muted-foreground hover:text-white"
+              )}
             >
-              {isEditing ? "Cancel" : "Edit"}
-              <Pencil className="ml-2 h-4 w-4" />
+              {isEditing ? (
+                <>
+                  Save
+                  <Save className="ml-2 h-4 w-4" />
+                </>
+              ) : (
+                <>
+                  Edit
+                  <Pencil className="ml-2 h-4 w-4" />
+                </>
+              )}
             </Button>
           </div>
 
@@ -428,7 +444,7 @@ const MerchantsPage = () => {
                   id="fullName"
                   value={selected.name}
                   disabled={!isEditing}
-                  className="mt-1"
+                  className="mt-1 bg-[#CFCFCF33]"
                 />
               </div>
               <div>
@@ -437,7 +453,7 @@ const MerchantsPage = () => {
                   id="gender"
                   value={selected.gender}
                   disabled={!isEditing}
-                  className="mt-1"
+                  className="mt-1 bg-[#CFCFCF33]"
                 />
               </div>
               <div>
@@ -446,7 +462,7 @@ const MerchantsPage = () => {
                   id="address"
                   value={selected.address}
                   disabled={!isEditing}
-                  className="mt-1"
+                  className="mt-1 bg-[#CFCFCF33]"
                 />
               </div>
             </div>
@@ -459,7 +475,7 @@ const MerchantsPage = () => {
                   id="terminalId"
                   value={selected.id}
                   disabled={!isEditing}
-                  className="mt-1"
+                  className="mt-1 bg-[#CFCFCF33]"
                 />
               </div>
               <div>
@@ -468,7 +484,7 @@ const MerchantsPage = () => {
                   id="phone"
                   value={selected.phone}
                   disabled={!isEditing}
-                  className="mt-1"
+                  className="mt-1 bg-[#CFCFCF33]"
                 />
               </div>
               <div>
@@ -477,7 +493,7 @@ const MerchantsPage = () => {
                   id="terminal"
                   value={selected.terminal}
                   disabled={!isEditing}
-                  className="mt-1"
+                  className="mt-1 bg-[#CFCFCF33]"
                 />
               </div>
             </div>
