@@ -17,7 +17,6 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import {
@@ -27,7 +26,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
 import { useForm } from "react-hook-form";
 
 type FormValues = {
@@ -63,7 +61,7 @@ const AddNewDriverButtonDialog = () => {
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[393px]">
         <DialogHeader>
           <DialogTitle className="sr-only">Add New Driver</DialogTitle>
           <Image
@@ -77,16 +75,16 @@ const AddNewDriverButtonDialog = () => {
 
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            {/* Full Name */}
             <FormField
               control={form.control}
               name="fullName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Full Name</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Enter full name"
-                      className="rounded-[6px]"
+                      placeholder="Full Name"
+                      className="w-full rounded-[6px]"
                       {...field}
                     />
                   </FormControl>
@@ -95,16 +93,16 @@ const AddNewDriverButtonDialog = () => {
               )}
             />
 
+            {/* Phone Number */}
             <FormField
               control={form.control}
               name="phone"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Mobile Number</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="+234 810 000 0000"
-                      className="rounded-[6px]"
+                      placeholder="Mobile Number"
+                      className="w-full rounded-[6px]"
                       {...field}
                     />
                   </FormControl>
@@ -113,58 +111,59 @@ const AddNewDriverButtonDialog = () => {
               )}
             />
 
+            {/* Bus Terminal */}
             <FormField
               control={form.control}
               name="terminal"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Bus Terminal</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger className="rounded-[6px]">
-                        <SelectValue placeholder="Select terminal" />
+                  <FormControl>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <SelectTrigger className="w-full rounded-[6px]">
+                        <SelectValue placeholder="Select Bus Terminal" />
                       </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="Terminal 1">Terminal 1</SelectItem>
-                      <SelectItem value="Terminal 2">Terminal 2</SelectItem>
-                      <SelectItem value="Terminal 3">Terminal 3</SelectItem>
-                    </SelectContent>
-                  </Select>
+                      <SelectContent>
+                        <SelectItem value="Terminal 1">Terminal 1</SelectItem>
+                        <SelectItem value="Terminal 2">Terminal 2</SelectItem>
+                        <SelectItem value="Terminal 3">Terminal 3</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
 
+            {/* Route */}
             <FormField
               control={form.control}
               name="route"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Route</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger className="rounded-[6px]">
-                        <SelectValue placeholder="Select route" />
+                  <FormControl>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <SelectTrigger className="w-full rounded-[6px]">
+                        <SelectValue placeholder="Select Route" />
                       </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="Ilawe">Ilawe</SelectItem>
-                      <SelectItem value="Iworoko">Iworoko</SelectItem>
-                      <SelectItem value="Opopogboro">Opopogboro</SelectItem>
-                    </SelectContent>
-                  </Select>
+                      <SelectContent>
+                        <SelectItem value="Ilawe">Ilawe</SelectItem>
+                        <SelectItem value="Iworoko">Iworoko</SelectItem>
+                        <SelectItem value="Opopogboro">Opopogboro</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
 
+            {/* Submit Button */}
             <DialogFooter>
               <Button
                 type="submit"
