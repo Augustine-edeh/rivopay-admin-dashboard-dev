@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 import { useState, useEffect } from "react";
 
 import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
@@ -353,9 +355,15 @@ export default function MerchantsPage() {
                   </Button>
 
                   <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-sm font-bold text-white">
-                      🧑‍💼
-                    </div>
+                    <Avatar className="relative size-11 grid place-items-center bg-[#B3B3B35C] overflow-visible">
+                      <div className="absolute top-0.5 right-0 size-2.5 rounded-full bg-[#00BA8A]"></div>
+                      <AvatarImage
+                        src="/icons/user-fallback.svg"
+                        className="size-4"
+                      />
+                      <AvatarFallback>{merchant.name[0]}</AvatarFallback>
+                    </Avatar>
+
                     <div className="flex-1">
                       <p className="font-semibold">{merchant.name}</p>
                       <p className="text-xs text-muted-foreground">
