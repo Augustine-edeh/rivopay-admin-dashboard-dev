@@ -286,7 +286,9 @@ const merchants = [
   },
 ];
 
-export default function MerchantsPage() {
+const MerchantsPage = () => {
+  const [isEditing, setIsEditing] = useState(false);
+
   const { setTitle } = usePageTitleStore((state) => state);
 
   useEffect(() => setTitle("merchants"), [setTitle]);
@@ -404,54 +406,97 @@ export default function MerchantsPage() {
         </Card>
 
         {/* Selected Merchant Info */}
-        <Card className="p-4 space-y-3 bg-yellow-200">
+        <Card className="p-4 space-y-6 rounded-[12px]">
           <div className="flex justify-between items-center text-muted-foreground">
             <h4 className="text-sm font-medium">Information Summary</h4>
-            {/* Edit button */}
-            <div className="flex justify-end text-shadow-muted">
-              <Button className="bg-dashboardLightGrayBG rounded-full text-muted-foreground hover:text-white">
-                Edit <Pencil className="ml-2 h-4 w-4" />
-              </Button>
+
+            <Button
+              onClick={() => setIsEditing((prev) => !prev)}
+              className="bg-dashboardLightGrayBG rounded-full text-muted-foreground hover:text-white"
+            >
+              {isEditing ? "Cancel" : "Edit"}
+              <Pencil className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+            {/* Left Column */}
+            <div className="space-y-3">
+              <div>
+                <Label htmlFor="fullName">Full Name</Label>
+                <Input
+                  id="fullName"
+                  value={selected.name}
+                  disabled={!isEditing}
+                  className="mt-1"
+                />
+              </div>
+              <div>
+                <Label htmlFor="gender">Gender</Label>
+                <Input
+                  id="gender"
+                  value={selected.gender}
+                  disabled={!isEditing}
+                  className="mt-1"
+                />
+              </div>
+              <div>
+                <Label htmlFor="address">Address</Label>
+                <Input
+                  id="address"
+                  value={selected.address}
+                  disabled={!isEditing}
+                  className="mt-1"
+                />
+              </div>
+            </div>
+
+            {/* Right Column */}
+            <div className="space-y-3">
+              <div>
+                <Label htmlFor="terminalId">Terminal ID</Label>
+                <Input
+                  id="terminalId"
+                  value={selected.id}
+                  disabled={!isEditing}
+                  className="mt-1"
+                />
+              </div>
+              <div>
+                <Label htmlFor="phone">Phone Number</Label>
+                <Input
+                  id="phone"
+                  value={selected.phone}
+                  disabled={!isEditing}
+                  className="mt-1"
+                />
+              </div>
+              <div>
+                <Label htmlFor="terminal">Assigned Terminal</Label>
+                <Input
+                  id="terminal"
+                  value={selected.terminal}
+                  disabled={!isEditing}
+                  className="mt-1"
+                />
+              </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-            <div>
-              <p className="text-muted-foreground">Full Names</p>
-              <p className="font-medium">{selected.name}</p>
-            </div>
-            <div>
-              <p className="text-muted-foreground">Terminal ID</p>
-              <p className="font-medium">{selected.id}</p>
-            </div>
-            <div>
-              <p className="text-muted-foreground">Gender</p>
-              <p className="font-medium">{selected.gender}</p>
-            </div>
-            <div>
-              <p className="text-muted-foreground">Phone Number</p>
-              <p className="font-medium">{selected.phone}</p>
-            </div>
-            <div className="md:col-span-2">
-              <p className="text-muted-foreground">Address</p>
-              <p className="font-medium">{selected.address}</p>
-            </div>
-            <div>
-              <p className="text-muted-foreground">Assigned Terminal</p>
-              <p className="font-medium">{selected.terminal}</p>
-            </div>
-            <div className="flex justify-end">
-              <Image
-                src={selected.imageUrl}
-                alt="NIN"
-                width={150}
-                height={100}
-                className="rounded-md border object-contain"
-              />
-            </div>
+          {/* NIN Image aligned bottom-right */}
+          <div className="flex justify-end mt-4">
+            <Image
+              src={selected.imageUrl}
+              alt="NIN"
+              width={150}
+              height={100}
+              className="rounded-md border object-contain"
+            />
           </div>
         </Card>
       </div>
     </div>
   );
-}
+};
+
+export default MerchantsPage;
