@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Pencil, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 import Image from "next/image";
 import {
   Form,
@@ -28,7 +28,7 @@ import {
 } from "@/components/ui/select";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { Label } from "@/components/ui/label";
+// import { Label } from "@/components/ui/label";
 
 type FormValues = {
   fullName: string;
@@ -63,7 +63,7 @@ const AddNewDriverButtonDialog = () => {
 
   const onSubmit = (data: FormValues) => {
     console.log("Submitted Driver:", data);
-    // optionally reset form or close modal
+    // NOTE: optionally reset form or close modal
   };
 
   return (
