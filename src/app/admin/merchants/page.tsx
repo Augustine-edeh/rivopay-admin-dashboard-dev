@@ -41,7 +41,7 @@ export default function MerchantsPage() {
   return (
     <div className="p-6 space-y-6">
       {/* Header Row */}
-      <div className="flex items-center justify-between p-6 rounded-[11px] [background-image:linear-gradient(90deg,_#F3E4FF9C,_#F3F3E3BD,_#F8F8F8,_#F4ECECE5,_#EAF5E6AB)]">
+      <div className="flex items-center justify-between p-6 rounded-[11px] [background-image:linear-gradient(90deg,_#F3E4FF9C,_#F3F3E3BD,_#F8F8F8,_#F4ECECE5,_#EAF5E6AB),url('/maerchants-walletBar-bg.png')] bg-cover bg-center">
         <div className="flex items-center gap-4">
           <Image
             src="/icons/merchant-wallet.svg"
