@@ -61,7 +61,7 @@ const AnalyticsPage = () => {
       {/* Revenue + Bar section */}
       <section className="grid grid-cols-1 md:grid-cols-[25%_1fr] gap-6">
         {/* Pie Chart Card */}
-        <div className="bg-white rounded-xl shadow">
+        <div className="bg-dashboardAccentGray rounded-xl shadow">
           <div className="flex justify-between items-center border-b p-4 mb-1.5">
             <div>
               <h4 className="text-sm font-medium">Total Revenue</h4>
@@ -113,7 +113,7 @@ const AnalyticsPage = () => {
         </div>
 
         {/* Bar Chart Card */}
-        <div className="flex flex-col gap-3.5 bg-white rounded-xl p-5 pb-0 shadow">
+        <div className="flex flex-col gap-3.5 bg-dashboardAccentGray rounded-xl p-5 pb-0 shadow">
           <div className="flex justify-between items-center flex-wrap gap-2">
             <div>
               <h4 className="text-sm font-medium">
@@ -185,7 +185,7 @@ const AnalyticsPage = () => {
       </section>
 
       {/* Area Chart (User Growth Rate) */}
-      <section className="bg-white rounded-xl shadow flex flex-col h-[330px]">
+      <section className="bg-dashboardAccentGray rounded-xl shadow flex flex-col h-[330px]">
         <p className="flex justify-between items-center border-b px-4 py-1.5 mb-1.5 text-muted-foreground">
           User Insight
         </p>
