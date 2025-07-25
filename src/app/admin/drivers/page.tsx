@@ -48,13 +48,6 @@ const DriversPage = () => {
           <CardContent className="p-4 flex-1 flex flex-col">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-base font-medium">Drivers Management</h3>
-              {/* <Button
-                variant="outline"
-                size="sm"
-                className="bg-[#00AB5712] hover:bg-[#00AB57]  text-[#00AB57] hover:text-[#daf9cffc] rounded-full border-none"
-              >
-                Add New Driver <Plus />
-              </Button> */}
 
               <AddNewDriverButtonDialog />
             </div>
