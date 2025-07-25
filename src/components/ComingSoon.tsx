@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+import Image from "next/image";
+
 const messages = [
   "Redefining urban mobility...",
   "Powering financial transactions...",
@@ -58,20 +60,14 @@ const AdminComingSoon = () => {
         transition={{ delay: 0.2 }}
         className="mb-6 z-10"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-20 w-20 text-[#7B48EF] mx-auto"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={1.5}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M3 10h18M6 6h12M4 14h16M6 18h12"
-          />
-        </svg>
+        <Image
+          src="/rivo-logo.svg" // from public dir
+          alt="Rivo Logo"
+          width={80}
+          height={80}
+          className="mx-auto"
+          priority
+        />
       </motion.div>
 
       <h1 className="text-4xl md:text-5xl font-bold text-[#7B48EF] mb-4 z-10">
