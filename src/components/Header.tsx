@@ -16,7 +16,7 @@ const Header = () => {
   const title = usePageTitleStore((state) => state.title);
 
   return (
-    <header className="sticky top-0 px-7 py-3 flex items-center bg-blue-600">
+    <header className="sticky top-0 px-7 py-3 flex items-center bg- blue-600">
       <h1 className="text-xl font-bold tracking-wide capitalize">{title}</h1>
 
       <div className="flex items-center gap-4 ml-auto">
