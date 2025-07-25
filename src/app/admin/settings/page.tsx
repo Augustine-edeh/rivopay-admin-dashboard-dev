@@ -204,7 +204,7 @@ const SettingsPage = () => {
 
       <div className="px-5 py-6 flex flex-col gap-6">
         {/* Table Section */}
-        <div className="rounded-xl shadow border bg-[#FCFAFA] px-10 pb-5 overflow-hidden">
+        <div className="rounded-xl shadow border bg-[#FCFAFA] px-8 pt-3 pb-10 overflow-hidden">
           <div className="max-h-[300px] overflow-y-auto">
             <Table className="min-w-full border-separate border-spacing-0">
               <TableHeader className="sticky top-0 bg- gray-100 z-10">
