@@ -27,17 +27,19 @@ const AdminLayout = ({ children }: { children: ReactNode }) => {
 
       {/* Main Content */}
       {/* NOTE: consider having a p-7 instead of px-7 for the main content */}
-      <main
+      <div
         className={`
-          flex-1 flex flex-col overflow-y-auto
-          ${shouldHideSidebar ? "w-full px-10" : "w-5/6 px-7 bg-white"}
+          flex-1 flex flex-col
+          ${shouldHideSidebar ? "w-full px-10" : "w-5/6 bg-white"}
         `}
       >
         {/* Conditionally render Header */}
         {!shouldHideHeader && <Header />}
 
-        {children}
-      </main>
+        <main className="flex-1 bg-red-500 px-7 overflow-y-auto">
+          {children}
+        </main>
+      </div>
     </div>
   );
 };
