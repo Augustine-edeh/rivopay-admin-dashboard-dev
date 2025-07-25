@@ -92,8 +92,8 @@ const WalletPage = () => {
   }, [setTitle]);
 
   return (
-    <section className="flex-1 flex gap-4 py-10 rounded-xl bg-[#9D9C9C0F]">
-      <div className="flex flex-col gap-4 bg-lime-400 w-full lg:w-2/3">
+    <section className="flex-1 flex gap-4 py-10 rounded-xl">
+      <div className="flex flex-col gap-4 bg- lime-400 w-full lg:w-2/3 bg-[#9D9C9C0F] rounded-[11px] p-4">
         {/* Wallet Page Header section */}
         <section className="flex justify-between items-center gap-5">
           <h2 className="text-lg font-semibold">Wallet</h2>
@@ -196,7 +196,7 @@ const WalletPage = () => {
         </div>
       </div>
 
-      <div className="bg-blue-500 hidden lg:flex w-1/3 h-full">
+      <div className="bg-[#9D9C9C0F] hidden lg:flex w-1/3 h-full rounded-[11px]">
         <RecentHistory />
       </div>
     </section>
