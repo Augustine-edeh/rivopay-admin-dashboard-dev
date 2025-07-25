@@ -12,7 +12,10 @@ const AdminLayout = ({ children }: { children: ReactNode }) => {
   const hideSidebarRoutes = ["/admin/analytics/total-revenue"];
 
   // Defined routes that shouldn't have a Header
-  const hideHeaderRoutes = ["/admin/analytics/total-revenue"];
+  const hideHeaderRoutes = [
+    "/admin/analytics/total-revenue",
+    "/admin/settings",
+  ];
 
   const shouldHideSidebar = hideSidebarRoutes.includes(pathname);
 
@@ -36,7 +39,7 @@ const AdminLayout = ({ children }: { children: ReactNode }) => {
         {/* Conditionally render Header */}
         {!shouldHideHeader && <Header />}
 
-        <main className="flex-1 bg-red-500 px-7 overflow-y-auto">
+        <main className="relative flex-1 bg- red-500 px-7 overflow-y-auto">
           {children}
         </main>
       </div>

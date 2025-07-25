@@ -190,63 +190,76 @@ const SettingsPage = () => {
   }, [setTitle]);
 
   return (
-    <div className="px-5 py-6 flex flex-col gap-6">
-      {/* Table Section */}
-      <div className="rounded-xl shadow border bg-white overflow-hidden">
-        <div className="max-h-[300px] overflow-y-auto">
-          <Table className="min-w-full border-separate border-spacing-0">
-            <TableHeader className="sticky top-0 bg-gray-100 z-10">
-              <TableRow>
-                <TableHead className="bg-gray-100">Actions</TableHead>
-                <TableHead className="bg-gray-100">ID</TableHead>
-                <TableHead className="bg-gray-100">Assigned role</TableHead>
-                <TableHead className="bg-gray-100">Last seen</TableHead>
-                <TableHead className="bg-gray-100">Status</TableHead>
-                <TableHead className="bg-gray-100">Edit</TableHead>
-                <TableHead className="bg-gray-100">Delete</TableHead>
-              </TableRow>
-            </TableHeader>
+    <div className="pt-28">
+      <header className="absolute top-0 left-0 right-0 flex justify-between items-center border-b border-separatorGray text-muted-foreground px-7 py-3">
+        <h1 className="text-xl text-black font-bold tracking-wide capitalize">
+          Admin Settings
+        </h1>
 
-            <TableBody>
-              {adminList.map((admin) => (
-                <TableRow key={admin.id}>
-                  <TableCell>
-                    <Switch
-                      checked={admin.active}
-                      onCheckedChange={(value) =>
-                        setAdminList((prev) =>
-                          prev.map((a) =>
-                            a.id === admin.id ? { ...a, active: value } : a
-                          )
-                        )
-                      }
-                    />
-                  </TableCell>
-                  <TableCell>{admin.name}</TableCell>
-                  <TableCell>{admin.role}</TableCell>
-                  <TableCell>{admin.lastSeen}</TableCell>
-                  <TableCell>
-                    <span
-                      className={`inline-block w-3 h-3 rounded-full ${
-                        admin.active ? "bg-green-500" : "bg-gray-400"
-                      }`}
-                    />
-                  </TableCell>
-                  <TableCell>
-                    <Pencil className="w-4 h-4 cursor-pointer text-muted-foreground" />
-                  </TableCell>
-                  <TableCell>
-                    <Trash2 className="w-4 h-4 cursor-pointer text-muted-foreground" />
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+        <div className="flex items-center gap-4">
+          <p className="text-2xl font-bold">{`30`}</p>
+          <span>Total Administrator</span>
         </div>
-      </div>
+      </header>
 
-      {/* Bottom Cards Section */}
-      <QuickActionCards cards={quickActionsCards} />
+      <div className="px-5 py-6 flex flex-col gap-6">
+        {/* Table Section */}
+        <div className="rounded-xl shadow border bg-[#FCFAFA] px-10 pb-5 overflow-hidden">
+          <div className="max-h-[300px] overflow-y-auto">
+            <Table className="min-w-full border-separate border-spacing-0">
+              <TableHeader className="sticky top-0 bg- gray-100 z-10">
+                <TableRow>
+                  <TableHead className="bg- gray-100">Actions</TableHead>
+                  <TableHead className="bg- gray-100">ID</TableHead>
+                  <TableHead className="bg- gray-100">Assigned role</TableHead>
+                  <TableHead className="bg- gray-100">Last seen</TableHead>
+                  <TableHead className="bg- gray-100">Status</TableHead>
+                  <TableHead className="bg- gray-100">Edit</TableHead>
+                  <TableHead className="bg- gray-100">Delete</TableHead>
+                </TableRow>
+              </TableHeader>
+
+              <TableBody>
+                {adminList.map((admin) => (
+                  <TableRow key={admin.id}>
+                    <TableCell>
+                      <Switch
+                        checked={admin.active}
+                        onCheckedChange={(value) =>
+                          setAdminList((prev) =>
+                            prev.map((a) =>
+                              a.id === admin.id ? { ...a, active: value } : a
+                            )
+                          )
+                        }
+                      />
+                    </TableCell>
+                    <TableCell>{admin.name}</TableCell>
+                    <TableCell>{admin.role}</TableCell>
+                    <TableCell>{admin.lastSeen}</TableCell>
+                    <TableCell>
+                      <span
+                        className={`inline-block w-3 h-3 rounded-full ${
+                          admin.active ? "bg-green-500" : "bg-gray-400"
+                        }`}
+                      />
+                    </TableCell>
+                    <TableCell>
+                      <Pencil className="w-4 h-4 cursor-pointer text-muted-foreground" />
+                    </TableCell>
+                    <TableCell>
+                      <Trash2 className="w-4 h-4 cursor-pointer text-muted-foreground" />
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+        </div>
+
+        {/* Bottom Cards Section */}
+        <QuickActionCards cards={quickActionsCards} />
+      </div>
     </div>
   );
 };
