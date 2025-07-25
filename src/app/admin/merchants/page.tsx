@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -297,24 +297,24 @@ const MerchantsPage = () => {
   const [selected, setSelected] = useState(merchants[0]);
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="px-6 py-[7px] space-y-6">
       {/* Header Row */}
       {/* NOTE: tweak [bg-cover, bg-center, bg-blend-color, bg-no-repeat] properties to achieve HeaderBar design specs in production   */}
-      <div className="flex items-center justify-between p-6 rounded-[11px] [background-image:linear-gradient(90deg,_#F3E4FF9C,_#F3F3E3BD,_#F8F8F8,_#F4ECECE5,_#EAF5E6AB),url('/maerchants-walletBar-bg.png')] bg-cover bg-center bg-blend- color bg-no-repeat">
+      <div className="flex items-center justify-between px-6 py-3 rounded-[11px] [background-image:linear-gradient(90deg,_#F3E4FF9C,_#F3F3E3BD,_#F8F8F8,_#F4ECECE5,_#EAF5E6AB),url('/maerchants-walletBar-bg.png')] bg-cover bg-center bg-blend- color bg-no-repeat">
         <div className="flex items-center gap-4">
           <Image
             src="/icons/merchant-wallet.svg"
             alt="img"
-            width={50}
-            height={50}
+            width={35}
+            height={35}
             className="object-contain"
           />
 
           <div>
-            <p className="text-sm font-medium mb-1 text-muted-foreground">
+            <p className="text-sm font-medium text-muted-foreground">
               TOTAL ALLOCATION
             </p>
-            <h2 className="text-2xl font-bold">₦0.00</h2>
+            <h2 className="text-2xl font-bold">₦{`0.00`}</h2>
           </div>
         </div>
 
@@ -343,15 +343,15 @@ const MerchantsPage = () => {
 
       {/* Content */}
       {/* NOTE: consider increasing heoght to `500px` */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 h-[450px] bg-[#9D9C9C47] rounded-[14px] px-3.5 py-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 h-[500px] bg-[#9D9C9C47] rounded-[14px] px-3.5 py-6 overflow-hidden">
         {/* Merchant List */}
-        <Card className="p-2 h-full overflow-hidden bg-transparent border-none shadow-none">
-          <ScrollArea className="h-full">
-            <div className="space-y-4 pr-3">
+        <Card className="p-2 h-full bg-transparent border-none shadow-none overflow-hidden">
+          <ScrollArea className="h-full pr-3">
+            <div className="space-y-4">
               {merchants.map((merchant, idx) => (
                 <Card
                   key={idx}
-                  className="p-4 flex flex-col justify-between shadow-sm"
+                  className="p-4 flex flex-col justify-between shadow-sm bg-white"
                 >
                   <Button className="place-self-end grid place-items-center size-7 p-0 m-0 rounded-full bg-transparent hover:bg-lightGray focus:bg-lightGray text-black shadow-none cursor-pointer">
                     <Trash2 size={16} />
