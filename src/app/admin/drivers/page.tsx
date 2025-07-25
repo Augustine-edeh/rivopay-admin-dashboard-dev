@@ -55,7 +55,7 @@ const DriversPage = () => {
             </div>
 
             <div className="overflow-hidden border rounded-md flex-1">
-              <div className="overflow-x-auto">
+              <div>
                 <Table className="table-fixed w-full">
                   {/* Table Head */}
                   <TableHeader className="sticky top-0 bg-white z-10 shadow-sm">
