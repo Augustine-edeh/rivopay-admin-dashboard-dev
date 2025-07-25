@@ -11,8 +11,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Switch } from "@/components/ui/switch";
-import { Button } from "@/components/ui/button";
 import { Pencil, Trash2 } from "lucide-react";
+import QuickActionCards from "@/components/settings/QuickActionCards";
+import { QuickActionCardProps } from "@/components/settings/QuickActionCards";
 
 const mockAdmins = [
   {
@@ -157,6 +158,29 @@ const mockAdmins = [
   },
 ];
 
+const quickActionsCards: QuickActionCardProps[] = [
+  {
+    title: "Control Panel",
+    description: "Get access to full panel control",
+    buttonText: "Continue",
+    buttonTextColor: "#00AB57",
+  },
+  {
+    title: "Password",
+    description: "You can reset or change your password by clicking here",
+    buttonText: "Change",
+    variant: "outline",
+    buttonTextColor: "#000000",
+  },
+  {
+    title: "Remove Account",
+    description: "This action will deactivate temporarily",
+    buttonText: "Deactivate",
+    variant: "destructive",
+    buttonTextColor: "#B43030",
+  },
+];
+
 const SettingsPage = () => {
   const { setTitle } = usePageTitleStore((state) => state);
   const [adminList, setAdminList] = useState(mockAdmins);
@@ -222,40 +246,7 @@ const SettingsPage = () => {
       </div>
 
       {/* Bottom Cards Section */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {/* Control Panel */}
-        <div className="border rounded-lg p-4 bg-white shadow-sm flex flex-col gap-3">
-          <div className="text-sm font-medium">Control Panel</div>
-          <p className="text-xs text-muted-foreground">
-            Get access to full panel control
-          </p>
-          <Button size="sm" className="w-fit">
-            Continue
-          </Button>
-        </div>
-
-        {/* Password */}
-        <div className="border rounded-lg p-4 bg-white shadow-sm flex flex-col gap-3">
-          <div className="text-sm font-medium">Password</div>
-          <p className="text-xs text-muted-foreground">
-            You can reset or change your password by clicking here
-          </p>
-          <Button variant="outline" size="sm" className="w-fit">
-            Change
-          </Button>
-        </div>
-
-        {/* Remove Account */}
-        <div className="border rounded-lg p-4 bg-white shadow-sm flex flex-col gap-3">
-          <div className="text-sm font-medium text-red-500">Remove Account</div>
-          <p className="text-xs text-muted-foreground">
-            This action will deactivate temporarily
-          </p>
-          <Button variant="destructive" size="sm" className="w-fit">
-            Deactivate
-          </Button>
-        </div>
-      </div>
+      <QuickActionCards cards={quickActionsCards} />
     </div>
   );
 };
