@@ -15,11 +15,14 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { PhoneCall, Plus, Trash2 } from "lucide-react";
+import { PhoneCall, Trash2 } from "lucide-react";
 import BusesSummary from "@/components/drivers/BusesSummary";
 import clsx from "clsx";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
+
+import AddNewDriverButtonDialog from "@/components/drivers/AddNewDriverButton-Dialog";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const drivers = new Array(20).fill(null).map((_, i) => ({
   id: `#43${i + 1}`,
@@ -41,18 +44,14 @@ const DriversPage = () => {
         {/* Buses Summary Cards */}
         <BusesSummary />
 
-        {/* Drivers Management Table */}
-        <Card className="h-[500px] flex flex-col">
+        {/* Drivers Management Table section */}
+        {/* NOTE: consider maintaining a heigh tof 350px for layout performance across screen ranges */}
+        <Card className="h-[358px] flex flex-col">
           <CardContent className="p-4 flex-1 flex flex-col">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-base font-medium">Drivers Management</h3>
-              <Button
-                variant="outline"
-                size="sm"
-                className="bg-[#00AB5712] hover:bg-[#00AB57]  text-[#00AB57] hover:text-[#daf9cffc] rounded-full border-none"
-              >
-                Add New Driver <Plus />
-              </Button>
+
+              <AddNewDriverButtonDialog />
             </div>
 
             <div className="overflow-hidden border rounded-md flex-1">
@@ -72,7 +71,7 @@ const DriversPage = () => {
               </div>
 
               {/* Scrollable Body */}
-              <div className="overflow-y-auto flex-1 max-h-[360px]">
+              <ScrollArea className="overflow-y-auto flex-1 max-h-[210px]">
                 <Table className="table-fixed w-full">
                   <TableBody>
                     {drivers.map((driver, index) => (
@@ -120,13 +119,13 @@ const DriversPage = () => {
                     ))}
                   </TableBody>
                 </Table>
-              </div>
+              </ScrollArea>
             </div>
           </CardContent>
         </Card>
       </div>
 
-      {/* RIGHT SECTION */}
+      {/* Selected driver info section */}
       <Card className="rounded-none rounded-r-[17px] bg-dashboardAccentGray">
         <CardContent className="p-4 space-y-7">
           <div>

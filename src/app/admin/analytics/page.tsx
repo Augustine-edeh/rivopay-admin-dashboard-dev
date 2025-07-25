@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectTrigger,
@@ -57,11 +57,11 @@ const AnalyticsPage = () => {
   }));
 
   return (
-    <div className="flex flex-col gap-6 p-6">
+    <div className="flex flex-col gap-6 px-5 py-2">
       {/* Revenue + Bar section */}
       <section className="grid grid-cols-1 md:grid-cols-[25%_1fr] gap-6">
         {/* Pie Chart Card */}
-        <div className="bg-white rounded-xl shadow">
+        <div className="bg-dashboardAccentGray rounded-xl shadow">
           <div className="flex justify-between items-center border-b p-4 mb-1.5">
             <div>
               <h4 className="text-sm font-medium">Total Revenue</h4>
@@ -113,7 +113,7 @@ const AnalyticsPage = () => {
         </div>
 
         {/* Bar Chart Card */}
-        <div className="flex flex-col gap-3.5 bg-white rounded-xl p-5 pb-0 shadow">
+        <div className="flex flex-col gap-3.5 bg-dashboardAccentGray rounded-xl p-5 pb-0 shadow">
           <div className="flex justify-between items-center flex-wrap gap-2">
             <div>
               <h4 className="text-sm font-medium">
@@ -185,7 +185,7 @@ const AnalyticsPage = () => {
       </section>
 
       {/* Area Chart (User Growth Rate) */}
-      <section className="bg-white rounded-xl shadow">
+      <section className="bg-dashboardAccentGray rounded-xl shadow flex flex-col h-[330px]">
         <p className="flex justify-between items-center border-b px-4 py-1.5 mb-1.5 text-muted-foreground">
           User Insight
         </p>
@@ -208,7 +208,7 @@ const AnalyticsPage = () => {
           </Select>
         </div>
 
-        <div className="h-72">
+        <div className="flex-1">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={areaData}>
               <defs>
@@ -257,17 +257,21 @@ const AnalyticsPage = () => {
 
 export default AnalyticsPage;
 
-const renderCustomLegend = ({ payload }: any) => {
-  // Creatd this helper function to help format the legend keys from camelCase to spaced words
-  const formatLabel = (label: string) => {
-    return label
-      .replace(/([a-z])([A-Z])/g, "$1 $2") // Add space before capital letters
-      .replace(/^./, (str) => str.toUpperCase()); // Capitalize first letter
-  };
+import type { LegendPayload } from "recharts";
+
+const renderCustomLegend = ({
+  payload,
+}: {
+  payload?: readonly LegendPayload[];
+}) => {
+  const formatLabel = (label: string) =>
+    label
+      .replace(/([a-z])([A-Z])/g, "$1 $2")
+      .replace(/^./, (str) => str.toUpperCase());
 
   return (
     <ul className="flex justify-center gap-4 text-xs">
-      {payload.map((entry: any, index: number) => (
+      {payload?.map((entry, index) => (
         <li key={`item-${index}`} className="flex items-center gap-2">
           <span
             className="inline-block"
@@ -278,7 +282,7 @@ const renderCustomLegend = ({ payload }: any) => {
               borderRadius: 1.8,
             }}
           />
-          <span>{formatLabel(entry.value)}</span>
+          <span>{formatLabel(entry.value?.toString() || "")}</span>
         </li>
       ))}
     </ul>

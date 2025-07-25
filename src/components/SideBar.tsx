@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { Button } from "@/components/ui/button"; // shadcn button
+
 const SideBar = () => {
   const pathname = usePathname();
 
@@ -55,7 +57,7 @@ const SideBar = () => {
         <p className="text-sm">Rapid Transport System.</p>
       </div>
 
-      <nav className="space-y-2 px-4">
+      <nav className="space-y-2 px-4 flex-grow">
         {sidebarLinks.map(({ label, href, icon }) => {
           const isActive = pathname === href;
 
@@ -64,11 +66,11 @@ const SideBar = () => {
               key={label}
               href={href}
               className={`flex items-center gap-3 p-2 rounded-3xl transition-colors
-                ${
-                  isActive
-                    ? "bg-white text-darkPurple"
-                    : "text-white hover:bg-white hover:text-darkPurple"
-                }`}
+            ${
+              isActive
+                ? "bg-white text-darkPurple"
+                : "text-white hover:bg-white hover:text-darkPurple"
+            }`}
             >
               <Image src={icon} alt={label} width={20} height={20} />
               <span>{label}</span>
@@ -77,12 +79,16 @@ const SideBar = () => {
         })}
       </nav>
 
-      {/* <div>
-        <button className="w-full flex items-center gap-3 p-2 rounded-3xl text-white hover:bg-white hover:text-darkPurple transition-colors">
+      {/* Logout Button at Bottom */}
+      <div className="px-4 mt-auto">
+        <Button
+          variant="ghost"
+          className="w-full justify-start gap-3 text-white hover:bg-white hover:text-darkPurple"
+        >
           <Image src="/icons/logout.svg" alt="logout" width={20} height={20} />
-          <span>Log out</span>
-        </button>
-      </div> */}
+          Log out
+        </Button>
+      </div>
     </aside>
   );
 };

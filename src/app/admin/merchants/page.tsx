@@ -3,14 +3,17 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 import { useState, useEffect } from "react";
 
 import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
-import { Pencil, Plus, Search, Trash2 } from "lucide-react";
+import { Pencil, Plus, Save, Search, Trash2 } from "lucide-react";
 import { Label } from "@/components/ui/label";
-
+import { Separator } from "@/components/ui/separator";
+import clsx from "clsx";
 const merchants = [
   {
     id: "6a06163e",
@@ -284,7 +287,9 @@ const merchants = [
   },
 ];
 
-export default function MerchantsPage() {
+const MerchantsPage = () => {
+  const [isEditing, setIsEditing] = useState(false);
+
   const { setTitle } = usePageTitleStore((state) => state);
 
   useEffect(() => setTitle("merchants"), [setTitle]);
@@ -292,24 +297,24 @@ export default function MerchantsPage() {
   const [selected, setSelected] = useState(merchants[0]);
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="px-6 py-[7px] space-y-6">
       {/* Header Row */}
       {/* NOTE: tweak [bg-cover, bg-center, bg-blend-color, bg-no-repeat] properties to achieve HeaderBar design specs in production   */}
-      <div className="flex items-center justify-between p-6 rounded-[11px] [background-image:linear-gradient(90deg,_#F3E4FF9C,_#F3F3E3BD,_#F8F8F8,_#F4ECECE5,_#EAF5E6AB),url('/maerchants-walletBar-bg.png')] bg-cover bg-center bg-blend- color bg-no-repeat">
+      <div className="flex items-center justify-between px-6 py-3 rounded-[11px] [background-image:linear-gradient(90deg,_#F3E4FF9C,_#F3F3E3BD,_#F8F8F8,_#F4ECECE5,_#EAF5E6AB),url('/maerchants-walletBar-bg.png')] bg-cover bg-center bg-blend- color bg-no-repeat">
         <div className="flex items-center gap-4">
           <Image
             src="/icons/merchant-wallet.svg"
             alt="img"
-            width={50}
-            height={50}
+            width={35}
+            height={35}
             className="object-contain"
           />
 
           <div>
-            <p className="text-sm font-medium mb-1 text-muted-foreground">
+            <p className="text-sm font-medium text-muted-foreground">
               TOTAL ALLOCATION
             </p>
-            <h2 className="text-2xl font-bold">₦0.00</h2>
+            <h2 className="text-2xl font-bold">₦{`0.00`}</h2>
           </div>
         </div>
 
@@ -338,38 +343,59 @@ export default function MerchantsPage() {
 
       {/* Content */}
       {/* NOTE: consider increasing heoght to `500px` */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 h-[450px] bg-[#9D9C9C47] rounded-[14px] px-3.5 py-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 h-[500px] bg-[#9D9C9C47] rounded-[14px] px-3.5 py-6 overflow-hidden">
         {/* Merchant List */}
-        <Card className="p-2 h-full overflow-hidden bg-transparent border-none shadow-none">
-          <ScrollArea className="h-full">
-            <div className="space-y-4 pr-3">
+        <Card className="p-2 h-full bg-transparent border-none shadow-none overflow-hidden">
+          <ScrollArea className="h-full pr-3">
+            <div className="space-y-4">
               {merchants.map((merchant, idx) => (
                 <Card
                   key={idx}
-                  className="p-4 flex flex-col justify-between space-y-3 shadow-sm"
+                  className="p-4 flex flex-col justify-between shadow-sm bg-white"
                 >
                   <Button className="place-self-end grid place-items-center size-7 p-0 m-0 rounded-full bg-transparent hover:bg-lightGray focus:bg-lightGray text-black shadow-none cursor-pointer">
                     <Trash2 size={16} />
                   </Button>
 
                   <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-sm font-bold text-white">
-                      🧑‍💼
-                    </div>
+                    <Avatar className="relative size-11 grid place-items-center bg-[#B3B3B35C] overflow-visible">
+                      <div className="absolute top-0.5 right-0 size-2.5 rounded-full bg-[#00BA8A]"></div>
+                      <AvatarImage
+                        src="/icons/user-fallback.svg"
+                        className="size-4"
+                      />
+                      <AvatarFallback>{merchant.name[0]}</AvatarFallback>
+                    </Avatar>
+
                     <div className="flex-1">
                       <p className="font-semibold">{merchant.name}</p>
-                      <p className="text-xs text-muted-foreground">
-                        Assigned Terminal: {merchant.terminal}
-                      </p>
                     </div>
                     <div className="text-xs text-right">
                       <p className="text-muted-foreground">Terminal ID</p>
                       <p className="font-medium">{merchant.id}</p>
                     </div>
                   </div>
+
+                  <div>
+                    <Separator />
+                    <div className="flex justify-between items-center py-2">
+                      <div className="space-y-2">
+                        <p className="text-xs text-muted-foreground">
+                          Assigned Terminal
+                        </p>
+                        <p className="font-semibold">{merchant.terminal}</p>
+                      </div>
+
+                      <div className="relative h-7 w-0.5 bg-separatorGray">
+                        <div className="absolute -top-1 left-1/2 -translate-x-1/2 size-3 rounded-full bg-[#00AB57]" />
+                      </div>
+                    </div>
+
+                    <Separator />
+                  </div>
                   <Button
                     size="sm"
-                    className="w-fit px-8 mx-auto bg-lightGray text-muted-foreground hover:text-white rounded-full"
+                    className="w-fit px-8 mx-auto mt-2 bg-lightGray text-muted-foreground hover:text-white rounded-full"
                     onClick={() => setSelected(merchant)}
                   >
                     View
@@ -381,54 +407,111 @@ export default function MerchantsPage() {
         </Card>
 
         {/* Selected Merchant Info */}
-        <Card className="p-4 space-y-3 bg-yellow-200">
+        <Card className="p-4 space-y-6 rounded-[12px]">
           <div className="flex justify-between items-center text-muted-foreground">
             <h4 className="text-sm font-medium">Information Summary</h4>
-            {/* Edit button */}
-            <div className="flex justify-end text-shadow-muted">
-              <Button className="bg-dashboardLightGrayBG rounded-full text-muted-foreground hover:text-white">
-                Edit <Pencil className="ml-2 h-4 w-4" />
-              </Button>
+
+            <Button
+              onClick={() => setIsEditing((prev) => !prev)}
+              className={clsx(
+                "rounded-full",
+                isEditing
+                  ? "bg-[#39C480] hover:bg-[#63b48d]"
+                  : "bg-dashboardLightGrayBG text-muted-foreground hover:text-white"
+              )}
+            >
+              {isEditing ? (
+                <>
+                  Save
+                  <Save className="ml-2 h-4 w-4" />
+                </>
+              ) : (
+                <>
+                  Edit
+                  <Pencil className="ml-2 h-4 w-4" />
+                </>
+              )}
+            </Button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+            {/* Left Column */}
+            <div className="space-y-3">
+              <div>
+                <Label htmlFor="fullName">Full Name</Label>
+                <Input
+                  id="fullName"
+                  value={selected.name}
+                  disabled={!isEditing}
+                  className="mt-1 bg-[#CFCFCF33]"
+                />
+              </div>
+              <div>
+                <Label htmlFor="gender">Gender</Label>
+                <Input
+                  id="gender"
+                  value={selected.gender}
+                  disabled={!isEditing}
+                  className="mt-1 bg-[#CFCFCF33]"
+                />
+              </div>
+              <div>
+                <Label htmlFor="address">Address</Label>
+                <Input
+                  id="address"
+                  value={selected.address}
+                  disabled={!isEditing}
+                  className="mt-1 bg-[#CFCFCF33]"
+                />
+              </div>
+            </div>
+
+            {/* Right Column */}
+            <div className="space-y-3">
+              <div>
+                <Label htmlFor="terminalId">Terminal ID</Label>
+                <Input
+                  id="terminalId"
+                  value={selected.id}
+                  disabled={!isEditing}
+                  className="mt-1 bg-[#CFCFCF33]"
+                />
+              </div>
+              <div>
+                <Label htmlFor="phone">Phone Number</Label>
+                <Input
+                  id="phone"
+                  value={selected.phone}
+                  disabled={!isEditing}
+                  className="mt-1 bg-[#CFCFCF33]"
+                />
+              </div>
+              <div>
+                <Label htmlFor="terminal">Assigned Terminal</Label>
+                <Input
+                  id="terminal"
+                  value={selected.terminal}
+                  disabled={!isEditing}
+                  className="mt-1 bg-[#CFCFCF33]"
+                />
+              </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-            <div>
-              <p className="text-muted-foreground">Full Names</p>
-              <p className="font-medium">{selected.name}</p>
-            </div>
-            <div>
-              <p className="text-muted-foreground">Terminal ID</p>
-              <p className="font-medium">{selected.id}</p>
-            </div>
-            <div>
-              <p className="text-muted-foreground">Gender</p>
-              <p className="font-medium">{selected.gender}</p>
-            </div>
-            <div>
-              <p className="text-muted-foreground">Phone Number</p>
-              <p className="font-medium">{selected.phone}</p>
-            </div>
-            <div className="md:col-span-2">
-              <p className="text-muted-foreground">Address</p>
-              <p className="font-medium">{selected.address}</p>
-            </div>
-            <div>
-              <p className="text-muted-foreground">Assigned Terminal</p>
-              <p className="font-medium">{selected.terminal}</p>
-            </div>
-            <div className="flex justify-end">
-              <Image
-                src={selected.imageUrl}
-                alt="NIN"
-                width={150}
-                height={100}
-                className="rounded-md border object-contain"
-              />
-            </div>
+          {/* NIN Image aligned bottom-right */}
+          <div className="flex justify-end mt-4">
+            <Image
+              src={selected.imageUrl}
+              alt="NIN"
+              width={150}
+              height={100}
+              className="rounded-md border object-contain"
+            />
           </div>
         </Card>
       </div>
     </div>
   );
-}
+};
+
+export default MerchantsPage;

@@ -12,14 +12,17 @@ const AdminLayout = ({ children }: { children: ReactNode }) => {
   const hideSidebarRoutes = ["/admin/analytics/total-revenue"];
 
   // Defined routes that shouldn't have a Header
-  const hideHeaderRoutes = ["/admin/analytics/total-revenue"];
+  const hideHeaderRoutes = [
+    "/admin/analytics/total-revenue",
+    "/admin/settings",
+  ];
 
   const shouldHideSidebar = hideSidebarRoutes.includes(pathname);
 
   const shouldHideHeader = hideHeaderRoutes.includes(pathname);
 
   return (
-    <div className="min-h-screen flex bg-muted text-foreground">
+    <div className="h-screen flex bg-muted text-foreground">
       {/* NOTE: Suggestion: set height to h-screen and give overflow-hidden to overall parent container  */}
 
       {/* Conditionally render sidebar */}
@@ -27,17 +30,19 @@ const AdminLayout = ({ children }: { children: ReactNode }) => {
 
       {/* Main Content */}
       {/* NOTE: consider having a p-7 instead of px-7 for the main content */}
-      <main
+      <div
         className={`
-          flex-1 flex flex-col overflow-y-auto
-          ${shouldHideSidebar ? "w-full px-10" : "w-5/6 px-7 bg-red-500"}
+          flex-1 flex flex-col
+          ${shouldHideSidebar ? "w-full px-10" : "w-5/6 bg-white"}
         `}
       >
         {/* Conditionally render Header */}
         {!shouldHideHeader && <Header />}
 
-        {children}
-      </main>
+        <main className="relative flex-1 bg- red-500 px-7 overflow-y-auto">
+          {children}
+        </main>
+      </div>
     </div>
   );
 };

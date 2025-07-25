@@ -8,7 +8,11 @@ const HelpPage = () => {
 
   useEffect(() => setTitle("Help and Support"), [setTitle]);
 
-  return <div>Help Page</div>;
+  return (
+    <div>
+      The help page should re-route to the integrated 3rd party H&S dashboard
+    </div>
+  );
 };
 
 export default HelpPage;
