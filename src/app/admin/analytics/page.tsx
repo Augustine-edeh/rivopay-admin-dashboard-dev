@@ -257,17 +257,21 @@ const AnalyticsPage = () => {
 
 export default AnalyticsPage;
 
-const renderCustomLegend = ({ payload }: any) => {
-  // Creatd this helper function to help format the legend keys from camelCase to spaced words
-  const formatLabel = (label: string) => {
-    return label
-      .replace(/([a-z])([A-Z])/g, "$1 $2") // Add space before capital letters
-      .replace(/^./, (str) => str.toUpperCase()); // Capitalize first letter
-  };
+import type { LegendPayload } from "recharts";
+
+const renderCustomLegend = ({
+  payload,
+}: {
+  payload?: readonly LegendPayload[];
+}) => {
+  const formatLabel = (label: string) =>
+    label
+      .replace(/([a-z])([A-Z])/g, "$1 $2")
+      .replace(/^./, (str) => str.toUpperCase());
 
   return (
     <ul className="flex justify-center gap-4 text-xs">
-      {payload.map((entry: any, index: number) => (
+      {payload?.map((entry, index) => (
         <li key={`item-${index}`} className="flex items-center gap-2">
           <span
             className="inline-block"
@@ -278,7 +282,7 @@ const renderCustomLegend = ({ payload }: any) => {
               borderRadius: 1.8,
             }}
           />
-          <span>{formatLabel(entry.value)}</span>
+          <span>{formatLabel(entry.value?.toString() || "")}</span>
         </li>
       ))}
     </ul>
