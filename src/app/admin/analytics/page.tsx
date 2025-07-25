@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectTrigger,
@@ -57,7 +57,7 @@ const AnalyticsPage = () => {
   }));
 
   return (
-    <div className="flex flex-col gap-6 p-6">
+    <div className="flex flex-col gap-6 px-5 py-2">
       {/* Revenue + Bar section */}
       <section className="grid grid-cols-1 md:grid-cols-[25%_1fr] gap-6">
         {/* Pie Chart Card */}
@@ -185,7 +185,7 @@ const AnalyticsPage = () => {
       </section>
 
       {/* Area Chart (User Growth Rate) */}
-      <section className="bg-white rounded-xl shadow">
+      <section className="bg-white rounded-xl shadow flex flex-col h-[330px]">
         <p className="flex justify-between items-center border-b px-4 py-1.5 mb-1.5 text-muted-foreground">
           User Insight
         </p>
@@ -208,7 +208,7 @@ const AnalyticsPage = () => {
           </Select>
         </div>
 
-        <div className="h-72">
+        <div className="flex-1">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={areaData}>
               <defs>
