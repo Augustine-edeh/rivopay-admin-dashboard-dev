@@ -232,6 +232,8 @@ const SettingsPage = () => {
                             )
                           )
                         }
+                        className="data-[state=checked]:bg-[#00AB57]
+    data-[state=unchecked]:bg-[#737373]"
                       />
                     </TableCell>
                     <TableCell>{admin.name}</TableCell>
