@@ -92,7 +92,7 @@ const WalletPage = () => {
   }, [setTitle]);
 
   return (
-    <section className="flex-1 flex gap-4 mt-12 mx-12 py-6 rounded-xl bg-[#9D9C9C0F]">
+    <section className="flex-1 flex gap-4 py-10 rounded-xl bg-[#9D9C9C0F]">
       <div className="flex flex-col gap-4 bg-lime-400 w-full lg:w-2/3">
         {/* Wallet Page Header section */}
         <section className="flex justify-between items-center gap-5">
