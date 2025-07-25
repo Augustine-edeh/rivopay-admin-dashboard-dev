@@ -233,7 +233,7 @@ const SettingsPage = () => {
                           )
                         }
                         className="data-[state=checked]:bg-[#00AB57]
-    data-[state=unchecked]:bg-[#737373]"
+    data-[state=unchecked]:bg-[#737373] cursor-pointer"
                       />
                     </TableCell>
                     <TableCell>{admin.name}</TableCell>
