@@ -6,7 +6,7 @@ import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
 const HelpPage = () => {
   const { setTitle } = usePageTitleStore((state) => state);
 
-  useEffect(() => setTitle("Help and Support"), [setTitle]);
+  useEffect(() => setTitle("help and support"), [setTitle]);
 
   return (
     <div>

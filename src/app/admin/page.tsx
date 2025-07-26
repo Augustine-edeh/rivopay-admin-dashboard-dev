@@ -17,8 +17,8 @@ import Image from "next/image";
 const AdminPage = () => {
   const { title, setTitle } = usePageTitleStore((state) => state);
   useEffect(() => {
-    if (title !== "welcome!") {
-      setTitle("welcome!");
+    if (title !== "dashboard") {
+      setTitle("dashboard");
     }
   }, [title, setTitle]);
 

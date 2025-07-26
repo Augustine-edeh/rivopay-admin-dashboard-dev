@@ -187,7 +187,7 @@ const SettingsPage = () => {
   const [adminList, setAdminList] = useState(mockAdmins);
 
   useEffect(() => {
-    setTitle("Admin Settings");
+    setTitle("admin settings");
   }, [setTitle]);
 
   return (
