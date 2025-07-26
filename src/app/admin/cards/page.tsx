@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import RecentHistory from "@/components/wallet/History";
+import { Separator } from "@/components/ui/separator";
 
 const AssignedCardsPage = () => {
   const { title, setTitle } = usePageTitleStore((state) => state);
@@ -145,32 +146,49 @@ const AssignedCardsPage = () => {
       </div>
 
       {/* Right Side: Card Info & History */}
-      <div className="space-y-4 rounded-[8px] border border-[#D9D9D9] bg-dashboardAccentGray">
+      <div className="">
         {/* Card Details */}
-        <section className="rounded-xl p-4  space-y-2">
-          <div className="grid grid-cols-2 gap-2 text-sm">
-            <p>
-              <span className="text-muted-foreground">Holder Names:</span> Femi
-              Owoalabi
-            </p>
-            <p>
-              <span className="text-muted-foreground">Gender:</span> Male
-            </p>
-            <p>
-              <span className="text-muted-foreground">Card Number:</span> 0000
-              0000 00
-            </p>
-            <p>
-              <span className="text-muted-foreground">Meta ID:</span> RIVO9832
-            </p>
-            <p>
-              <span className="text-muted-foreground">Exp. Date:</span>{" "}
-              20/12/2026
-            </p>
+        <section className="p-4 pt-7 space-y-2 bg-dashboardAccentGray rounded-t-[8px]">
+          <div className="grid grid-cols-1 gap-4 text-sm bg-dashboardAccentGray">
+            <div>
+              <div className="grid grid-cols-2 ">
+                <span className="text-muted-foreground">Holder Names:</span>
+                <span>{`Femi Owoalabi`}</span>
+              </div>
+              <Separator className="h-4 mt-2 bg-[#D9D9D9]" />
+            </div>
+            <div>
+              <div className="grid grid-cols-2 ">
+                <span className="text-muted-foreground">Gender:</span>
+                <span>{`Male`}</span>
+              </div>
+              <Separator className="h-4 mt-2 bg-[#D9D9D9]" />
+            </div>
+            <div>
+              <div className="grid grid-cols-2 ">
+                <span className="text-muted-foreground">Card Number:</span>
+                <span>{`0000
+                0000 00`}</span>
+              </div>
+              <Separator className="h-4 mt-2 bg-[#D9D9D9]" />
+            </div>
+            <div>
+              <div className="grid grid-cols-2 ">
+                <span className="text-muted-foreground">Meta ID:</span> RIVO9832
+              </div>
+              <Separator className="h-4 mt-2 bg-[#D9D9D9]" />
+            </div>
+            <div>
+              <div className="grid grid-cols-2 ">
+                <span className="text-muted-foreground">Exp. Date:</span>
+                20/12/2026
+              </div>
+              <Separator className="h-4 mt-2 bg-[#D9D9D9]" />
+            </div>
           </div>
         </section>
 
-        <RecentHistory />
+        <RecentHistory className="rounded-t-none" />
       </div>
     </div>
   );

@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { Badge } from "../ui/badge";
 import { Separator } from "../ui/separator";
 import { ArrowRightLeft } from "lucide-react";
+import { Button } from "../ui/button";
+import clsx from "clsx";
 
 const TransactionItem = ({
   icon,
@@ -33,14 +34,19 @@ const TransactionItem = ({
   </div>
 );
 
-const RouteHistoryCard = () => (
-  <div className="bg-white rounded-xl shadow-sm p-4 space-y-4">
+const RouteHistoryCard = ({ className }: { className?: string }) => (
+  <div
+    className={clsx(
+      "bg-dashboardAccentGray rounded-xl shadow-sm p-4 space-y-4",
+      className
+    )}
+  >
     {/* Header */}
     <div className="flex justify-between items-center text-muted-foreground">
       <h3 className="font-medium">Route History</h3>
-      <Badge className="bg-[#DFDFDF] text-inherit px-4 py-1 rounded-full">
+      <Button className="bg-[#DFDFDF] hover:bg-textPurple text-inherit hover:text-white  px-4 py-1 rounded-full h-7">
         More
-      </Badge>
+      </Button>
     </div>
     {/* Top Row: Locations + Icon */}
     <div className="flex items-center justify-between space-x-4">
@@ -75,56 +81,63 @@ const RouteHistoryCard = () => (
   </div>
 );
 
-export const RecentHistory = () => {
+export const RecentHistory = ({ className }: { className?: string }) => {
   return (
-    <section className="w-full space-y-4 p-4">
-      {/* Header */}
-      <div className="flex justify-between items-center text-muted-foreground">
-        <h3 className="font-medium">Recent History</h3>
-        <Badge className="bg-[#DFDFDF] text-inherit px-4 py-1 rounded-full">
-          More
-        </Badge>
-      </div>
+    <section className={clsx("w-full space-y-2")}>
+      <div
+        className={clsx(
+          "bg-dashboardAccentGray p-4 space-y-4 rounded-[8px]",
+          className
+        )}
+      >
+        {/* Header */}
+        <div className="flex justify-between items-center text-muted-foreground">
+          <h3 className="font-medium">Recent History</h3>
+          <Button className="bg-[#DFDFDF] hover:bg-textPurple text-inherit hover:text-white  px-4 py-1 rounded-full h-7">
+            More
+          </Button>
+        </div>
 
-      {/* Green bar + Separator */}
-      <div className="flex items-center">
-        <div className="h-2.5 w-32 rounded-full bg-[#00AB57]" />
-        <Separator className="flex-1 h-0.5 bg-[#D9D9D9]" />
-      </div>
+        {/* Green bar + Separator */}
+        <div className="flex items-center">
+          <div className="h-2.5 w-32 rounded-full bg-[#00AB57]" />
+          <Separator className="flex-1 h-0.5 bg-[#D9D9D9]" />
+        </div>
 
-      {/* Transactions */}
-      <div className="space-y-3">
-        <TransactionItem
-          icon={
-            <Image
-              src="/icons/card.svg"
-              alt="card"
-              width={4}
-              height={4}
-              className="size-4 object-contain"
-            />
-          }
-          title="Transfer"
-          subtitle="Sango–Dugbe"
-          amount="₦200.00"
-          status="Confirmed"
-        />
-        <TransactionItem
-          // icon={<QrCode className="h-4 w-4" />}
-          icon={
-            <Image
-              src="/icons/qrcode.svg"
-              alt="qrcode"
-              width={4}
-              height={4}
-              className="size-4 object-contain"
-            />
-          }
-          title="Transfer"
-          subtitle="Sango–Dugbe"
-          amount="₦200.00"
-          status="Confirmed"
-        />
+        {/* Transactions */}
+        <div className="space-y-3">
+          <TransactionItem
+            icon={
+              <Image
+                src="/icons/card.svg"
+                alt="card"
+                width={4}
+                height={4}
+                className="size-4 object-contain"
+              />
+            }
+            title="Transfer"
+            subtitle="Sango–Dugbe"
+            amount="₦200.00"
+            status="Confirmed"
+          />
+          <TransactionItem
+            // icon={<QrCode className="h-4 w-4" />}
+            icon={
+              <Image
+                src="/icons/qrcode.svg"
+                alt="qrcode"
+                width={4}
+                height={4}
+                className="size-4 object-contain"
+              />
+            }
+            title="Transfer"
+            subtitle="Sango–Dugbe"
+            amount="₦200.00"
+            status="Confirmed"
+          />
+        </div>
       </div>
 
       {/* Route History */}

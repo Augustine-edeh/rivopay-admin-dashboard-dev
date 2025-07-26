@@ -196,7 +196,7 @@ const WalletPage = () => {
         </div>
       </div>
 
-      <div className="bg-[#9D9C9C0F] hidden lg:flex w-1/3 h-full rounded-[11px]">
+      <div className="hidden lg:flex w-1/3 h-full rounded-[11px]">
         <RecentHistory />
       </div>
     </section>
