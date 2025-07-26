@@ -191,22 +191,12 @@ const SettingsPage = () => {
   }, [setTitle]);
 
   return (
-    <div className="pt-28">
-      <header className="absolute top-0 left-0 right-0 flex justify-between items-center border-b border-separatorGray text-muted-foreground px-7 py-3">
-        <h1 className="text-xl text-black font-bold tracking-wide capitalize">
-          Admin Settings
-        </h1>
-
-        <div className="flex items-center gap-4">
-          <p className="text-2xl font-bold">{`30`}</p>
-          <span>Total Administrator</span>
-        </div>
-      </header>
-
+    <div className="py-6">
       <div className="px-5 py-6 flex flex-col gap-6">
         {/* Table Section */}
         <div className="rounded-xl shadow border bg-[#FCFAFA] px-8 pt-3 pb-10 overflow-hidden">
-          <div className="max-h-[300px] overflow-y-auto">
+          {/* NOTE: consider having max height at h-[300px] */}
+          <div className="max-h-[310px] overflow-y-auto">
             <Table className="min-w-full border-separate border-spacing-0">
               <TableHeader className="sticky top-0 bg- gray-100 z-10">
                 <TableRow>

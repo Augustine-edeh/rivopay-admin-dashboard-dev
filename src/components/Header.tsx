@@ -16,20 +16,26 @@ const Header = () => {
   const title = usePageTitleStore((state) => state.title);
 
   return (
-    <header className="sticky top-0 px-7 py-3 flex items-center bg- blue-600">
+    <header className="sticky top-0 px-7 py-3 flex justify-between items-center border-b">
       <h1 className="text-xl font-bold tracking-wide capitalize">{title}</h1>
 
-      <div className="flex items-center gap-4 ml-auto">
+      <div className="flex items-center gap-4 ml -auto">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <div className="relative flex items-center cursor-pointer bg-dashboardLightGrayBG hover:bg-dashboardCardGray rounded-full p-1.5">
-              <UserAvatar className="size-9" />
-              <Bell
-                fill="#BF2B2B"
-                color="#BF2B2B"
-                size={10}
-                className="absolute top-0 right-0"
-              />
+            <div className="flex items-center gap-2 cursor-pointer">
+              <div className="relative flex items-center cursor-pointer bg-dashboardLightGrayBG hover:bg-dashboardCardGray rounded-full p-1.5">
+                <UserAvatar className="size-9" />
+                <Bell
+                  fill="#BF2B2B"
+                  color="#BF2B2B"
+                  size={10}
+                  className="absolute top-0 right-0"
+                />
+              </div>
+
+              <p className="font-semibold flex items-center gap-1">
+                {`Rose Walters`}
+              </p>
             </div>
           </DropdownMenuTrigger>
 
