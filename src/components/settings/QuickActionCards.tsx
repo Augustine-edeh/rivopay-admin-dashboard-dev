@@ -26,7 +26,7 @@ const QuickActionCards = ({ cards }: { cards: QuickActionCardProps[] }) => {
           <Button
             variant={"outline"}
             size="sm"
-            className="w-fit rounded-[3px] mt-1.5"
+            className="w-fit rounded-[3px] mt-auto"
             onClick={card.onClick}
             style={{ color: card.buttonTextColor }}
           >
