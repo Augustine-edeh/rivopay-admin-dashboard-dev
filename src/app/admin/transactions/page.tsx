@@ -89,7 +89,7 @@ const transactions = [
 const TransactionsPage = () => {
   const { setTitle } = usePageTitleStore((state) => state);
 
-  useEffect(() => setTitle("Transactions"), [setTitle]);
+  useEffect(() => setTitle("transactions"), [setTitle]);
 
   return (
     <section className="flex-1 flex flex-col gap-4 mt-10 mx- 12 py-6 rounded-xl bg-dashboardAccentGray px-10">
