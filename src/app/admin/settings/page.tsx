@@ -14,6 +14,7 @@ import { Switch } from "@/components/ui/switch";
 import { Pencil, Trash2 } from "lucide-react";
 import QuickActionCards from "@/components/settings/QuickActionCards";
 import { QuickActionCardProps } from "@/components/settings/QuickActionCards";
+import clsx from "clsx";
 
 const mockAdmins = [
   {
@@ -239,12 +240,18 @@ const SettingsPage = () => {
                     <TableCell>{admin.name}</TableCell>
                     <TableCell>{admin.role}</TableCell>
                     <TableCell>{admin.lastSeen}</TableCell>
-                    <TableCell>
-                      <span
-                        className={`inline-block w-3 h-3 rounded-full ${
-                          admin.active ? "bg-green-500" : "bg-gray-400"
-                        }`}
-                      />
+                    <TableCell className="flex justify-center">
+                      <div
+                        className={clsx(
+                          "grid place-items-center rounded-full size-6",
+                          admin.active ? "bg-[#00AB57]" : "bg-[#737373]"
+                        )}
+                      >
+                        <span className="sr-only">
+                          {admin.active ? "Active" : "Inactive"}
+                        </span>
+                        <div className="w-2.5 h-1 bg-white" />
+                      </div>
                     </TableCell>
                     <TableCell>
                       <Pencil className="w-4 h-4 cursor-pointer text-muted-foreground" />
