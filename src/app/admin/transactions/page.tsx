@@ -29,6 +29,15 @@ import { Label } from "@/components/ui/label";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
+interface TransactionsType {
+  ref: string;
+  method: string;
+  date: string;
+  time: string;
+  amount: string;
+  status: string;
+}
+
 const transactions = [
   {
     ref: "#21223456216",
@@ -93,7 +102,7 @@ const TransactionsPage = () => {
 
   useEffect(() => setTitle("transactions"), [setTitle]);
 
-  const [selectedTx, setSelectedTx] = useState(null);
+  const [selectedTx, setSelectedTx] = useState<TransactionsType | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
@@ -144,24 +153,24 @@ const TransactionsPage = () => {
           </TableHeader>
 
           <TableBody>
-            {transactions.map((tx, index) => (
+            {transactions.map((transaction, index) => (
               <TableRow key={index} className="h-14">
-                <TableCell>{tx.ref}</TableCell>
-                <TableCell>{tx.method}</TableCell>
-                <TableCell>{tx.date}</TableCell>
-                <TableCell>{tx.time}</TableCell>
-                <TableCell>{tx.amount}</TableCell>
+                <TableCell>{transaction.ref}</TableCell>
+                <TableCell>{transaction.method}</TableCell>
+                <TableCell>{transaction.date}</TableCell>
+                <TableCell>{transaction.time}</TableCell>
+                <TableCell>{transaction.amount}</TableCell>
                 <TableCell>
                   <Badge
                     variant="outline"
                     className={clsx(
                       "rounded-full border-none",
-                      tx.status === "Successful"
+                      transaction.status === "Successful"
                         ? "bg-[#B1EE8133] text-[#00AB57]"
                         : "bg-[#FF080033] text-[#FF0900]"
                     )}
                   >
-                    {tx.status}
+                    {transaction.status}
                   </Badge>
                 </TableCell>
                 <TableCell>
@@ -170,7 +179,7 @@ const TransactionsPage = () => {
                     size="sm"
                     className="text-xs h-fit py-0.5 px-3.5 rounded-full text-muted-foreground bg-dashboardLightGrayBG border-none"
                     onClick={() => {
-                      setSelectedTx(tx);
+                      setSelectedTx(transaction);
                       setModalOpen(true);
                     }}
                   >
@@ -203,7 +212,6 @@ const TransactionsPage = () => {
         open={modalOpen}
         onOpenChange={setModalOpen}
         transaction={selectedTx}
-        showCloseButton={false}
       />
     </section>
   );

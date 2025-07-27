@@ -1,7 +1,6 @@
 "use client";
 
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogFooter } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
@@ -68,9 +67,9 @@ const ReceiptModal = ({
         "> */}
         <div className="h-1/2 px-6 flex flex-col">
           <div className="flex items-center gap-3 rounded-xl px-3 py-2 bg-dashboardAccentGray">
-            <div className="grid place-content-center size-12 bg-[#D9D9D9] text-xs px- rounded-[12px]">
+            <Badge className="grid place-content-center size-12 bg-[#D9D9D9] text-xs text-black px- rounded-[12px]">
               rivo
-            </div>
+            </Badge>
             <div>
               <p className="font-bold">My Wallet card</p>
               <p className="text-xs text-muted-foreground">
@@ -82,9 +81,11 @@ const ReceiptModal = ({
             </p>
           </div>
 
-          <p className="flex-1 grid place-content-center text-center text-xs text-[#85B361] mt-auto">
-            on the {transaction.date}
-          </p>
+          <DialogFooter className="flex-1 text-[#85B361]">
+            <p className="flex-1 grid place-content-center">
+              on the {transaction.date}
+            </p>
+          </DialogFooter>
         </div>
       </DialogContent>
     </Dialog>
