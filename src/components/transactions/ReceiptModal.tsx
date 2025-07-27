@@ -35,7 +35,7 @@ const ReceiptModal = ({
       >
         <div className="h-1/2 text-center">
           <p className="text-sm text-muted-foreground">
-            Bola Tinunbu Fawaz made a transaction of
+            Bola Kuti Fawaz made a transaction of
           </p>
           <h2 className="text-2xl font-bold my-2">{transaction.amount}</h2>
           <p className="text-sm text-muted-foreground">
@@ -64,7 +64,9 @@ const ReceiptModal = ({
           <div className="size-9 rounded-full bg-black/50" />
         </div>
 
-        <div className="h-1/2 px-6">
+        {/* <div className="h-1/2 px-6 
+        "> */}
+        <div className="h-1/2 px-6 flex flex-col">
           <div className="flex items-center gap-3 rounded-xl px-3 py-2 bg-dashboardAccentGray">
             <div className="grid place-content-center size-12 bg-[#D9D9D9] text-xs px- rounded-[12px]">
               rivo
@@ -80,7 +82,7 @@ const ReceiptModal = ({
             </p>
           </div>
 
-          <p className="text-center text-xs text-green-600 mt-4">
+          <p className="flex-1 grid place-content-center text-center text-xs text-[#85B361] mt-auto">
             on the {transaction.date}
           </p>
         </div>
