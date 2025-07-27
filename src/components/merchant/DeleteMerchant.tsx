@@ -2,6 +2,7 @@
 
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogFooter,
   DialogHeader,
@@ -38,12 +39,15 @@ const DeleteMerchant = () => {
 
         <DialogFooter className="flex mt-5">
           <div className="flex-1 text-center space-x-3">
-            <Button
-              className="rounded-full px-10 text-muted-foreground border border-separatorGray/90 hover:border-separatorGray"
-              variant="outline"
-            >
-              Cancel
-            </Button>
+            <DialogClose asChild>
+              <Button
+                className="rounded-full px-10 text-muted-foreground border border-separatorGray/90 hover:border-separatorGray"
+                variant="outline"
+              >
+                Cancel
+              </Button>
+            </DialogClose>
+
             <Button
               className="rounded-full px-10 bg-[#BF2B2B]/90 hover:bg-[#BF2B2B]"
               variant="destructive"
