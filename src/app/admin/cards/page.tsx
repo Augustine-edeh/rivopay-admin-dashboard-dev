@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
 
 import { Button } from "@/components/ui/button";
-import { Ban, Pencil, Plus } from "lucide-react";
+import { Ban, Pencil } from "lucide-react";
 
 import {
   Table,
@@ -17,6 +17,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import RecentHistory from "@/components/wallet/History";
 import { Separator } from "@/components/ui/separator";
+import AddNewCardDialog from "@/components/cards/AddNewCard";
 
 const AssignedCardsPage = () => {
   const { title, setTitle } = usePageTitleStore((state) => state);
@@ -32,14 +33,11 @@ const AssignedCardsPage = () => {
           <div className="flex items-start gap-4">
             <div className="grid grid-cols-1 gap-4 text-[#737373]">
               <div className="flex flex-col justify-center">
-                <Button className="grid place-items-center size-12 rounded-xl border-2 border-dashed border-[#D9D9D9]  bg-dashboardAccentGray">
-                  <Plus className="text-muted-foreground" />
-                </Button>
-                <p className="text-[10px]">Add Tags</p>
+                <AddNewCardDialog />
               </div>
 
               <div className="flex flex-col justify-center">
-                <Button className="grid place-items-center size-12 rounded-xl border-2 border-[#D9D9D9]  bg-dashboardAccentGray">
+                <Button className="grid place-items-center size-12 rounded-xl border-2 border-[#D9D9D9] bg-transparent hover:bg-gray-200/80 cursor-pointer">
                   <Ban color="#BF2B2B" />
                 </Button>
                 <p className="text-[10px]">Block card</p>
