@@ -159,7 +159,7 @@ const AddNewCardDialog = () => {
                     <FormLabel>Exp. Date</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder=""
+                        placeholder="DD/MM/YYYY"
                         className="w-full rounded-[3px]"
                         {...field}
                       />
