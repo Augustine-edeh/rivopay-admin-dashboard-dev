@@ -92,7 +92,7 @@ const MerchantModal = () => {
           </div>
 
           {/* Upload Section */}
-          <div className="text-center">
+          {/* <div className="text-center">
             <h4 className="font-bold">Upload Document</h4>
             <p className="text-sm mb-2">National ID</p>
 
@@ -104,6 +104,34 @@ const MerchantModal = () => {
                   JPG, PNG, PDF and SVG files up to 5MB
                 </span>
               </div>
+            </div>
+          </div> */}
+
+          <div className="text-center">
+            <h4 className="font-bold text-xl">Upload Document</h4>
+            <p className="text-sm mb-2">National ID</p>
+
+            <label
+              htmlFor="file-upload"
+              className="cursor-pointer border border-dashed rounded-lg p-4 block w-full max-w-md mx-auto"
+            >
+              <p className="font-semibold text-center sr-only">
+                Click to upload or drag a file
+              </p>
+              <p className="font-bold">National ID Card.JPEG</p>
+
+              <input
+                id="file-upload"
+                type="file"
+                className="hidden"
+                accept=".jpg,.jpeg,.png,.pdf,.svg"
+              />
+            </label>
+            <div className="text-xs flex justify-center items-center gap-1 text-muted-foreground mt-3">
+              <span className="grid place-items-center size-3 bg-[#9747FF52] rounded-full">
+                <span className="size-2 bg-purple-500 rounded-full" />
+              </span>
+              <p>JPG, PNG, PDF and SVG files up to 5MB</p>
             </div>
           </div>
 
