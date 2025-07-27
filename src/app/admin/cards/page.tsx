@@ -33,6 +33,7 @@ const AssignedCardsPage = () => {
           <div className="flex items-start gap-4">
             <div className="grid grid-cols-1 gap-4 text-[#737373]">
               <div className="flex flex-col justify-center">
+                {/* Add new Card Trigger Button */}
                 <AddNewCardDialog />
               </div>
 
