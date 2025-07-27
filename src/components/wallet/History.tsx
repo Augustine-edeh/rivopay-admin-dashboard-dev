@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { Separator } from "../ui/separator";
 import { ArrowRightLeft } from "lucide-react";
-import { Button } from "../ui/button";
 import clsx from "clsx";
 import MoreTransactionsDialog from "../cards/MoreTransactionHistory";
+import MoreRouteHistoryDialog from "../cards/MoreRouteHistory";
 
 export const TransactionItem = ({
   icon,
@@ -35,7 +35,7 @@ export const TransactionItem = ({
   </div>
 );
 
-const RouteHistoryCard = ({ className }: { className?: string }) => (
+export const RouteHistoryCard = ({ className }: { className?: string }) => (
   <div
     className={clsx(
       "bg-dashboardAccentGray rounded-xl shadow-sm p-4 space-y-4",
@@ -45,9 +45,8 @@ const RouteHistoryCard = ({ className }: { className?: string }) => (
     {/* Header */}
     <div className="flex justify-between items-center text-muted-foreground">
       <h3 className="font-medium">Route History</h3>
-      <Button className="bg-[#DFDFDF] hover:bg-textPurple text-inherit hover:text-white  px-4 py-1 rounded-full h-7">
-        More
-      </Button>
+      {/* More button for Route History */}
+      <MoreRouteHistoryDialog />
     </div>
     {/* Top Row: Locations + Icon */}
     <div className="flex items-center justify-between space-x-4">
