@@ -3,8 +3,10 @@
 // import { useEffect } from "react";
 // import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
 
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
+import ReceiptModal from "@/components/transactions/ReceiptModal";
+
 import {
   Table,
   TableBody,
@@ -91,6 +93,9 @@ const TransactionsPage = () => {
 
   useEffect(() => setTitle("transactions"), [setTitle]);
 
+  const [selectedTx, setSelectedTx] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
   return (
     <section className="flex-1 flex flex-col gap-4 mt-10 mx- 12 py-6 rounded-xl bg-dashboardAccentGray px-10">
       {/* Transactions Page Header section */}
@@ -164,6 +169,10 @@ const TransactionsPage = () => {
                     variant="outline"
                     size="sm"
                     className="text-xs h-fit py-0.5 px-3.5 rounded-full text-muted-foreground bg-dashboardLightGrayBG border-none"
+                    onClick={() => {
+                      setSelectedTx(tx);
+                      setModalOpen(true);
+                    }}
                   >
                     View
                   </Button>
@@ -182,13 +191,20 @@ const TransactionsPage = () => {
               key={num}
               variant={num === 1 ? "default" : "outline"}
               size="sm"
-              className="w-8 h-8 p-0"
+              className="size-8 p-0"
             >
               {num}
             </Button>
           ))}
         </div>
       </div>
+
+      <ReceiptModal
+        open={modalOpen}
+        onOpenChange={setModalOpen}
+        transaction={selectedTx}
+        showCloseButton={false}
+      />
     </section>
   );
 };
