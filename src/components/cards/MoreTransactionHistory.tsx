@@ -7,9 +7,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogFooter,
+  DialogClose,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
 import { TransactionItem } from "../wallet/History";
 import Image from "next/image";
 
@@ -86,18 +86,24 @@ const MoreTransactionsDialog = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-[#DFDFDF] hover:bg-textPurple text-inherit hover:text-white  px-4 py-1 rounded-full h-7">
+        <Button className="bg-[#DFDFDF] hover:bg-textPurple text-inherit hover:text-white px-4 py-1 rounded-full h-7">
           More
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="flex flex-col sm:max-w-[486px] min-h-80 max-h-[550px]">
+      <DialogContent
+        showCloseButton={false}
+        className="flex flex-col sm:max-w-[486px] min-h-80 max-h-[550px]"
+      >
         <DialogHeader>
-          <DialogTitle className="sr-only">Transaction History</DialogTitle>
-          <DialogTitle className="">Transaction Historysss</DialogTitle>
+          <DialogTitle className="text-base font-medium">
+            Transaction History
+          </DialogTitle>
         </DialogHeader>
 
-        <div className="flex-1 pr-2 space-y-2 bg-red-400 overflow-auto">
+        <p className="text-sm text-muted-foreground">Today</p>
+
+        <div className="flex-1 pr-2 space-y-2 overflow-auto">
           {recentTransactions.length ? (
             recentTransactions.map(
               ({ title, subtitle, amount, status }, index) => (
@@ -107,8 +113,8 @@ const MoreTransactionsDialog = () => {
                     <Image
                       src="/icons/card.svg"
                       alt="card"
-                      width={4}
-                      height={4}
+                      width={16}
+                      height={16}
                       className="size-4 object-contain"
                     />
                   }
@@ -123,6 +129,14 @@ const MoreTransactionsDialog = () => {
             <p>No recent transactions</p>
           )}
         </div>
+
+        <DialogFooter className="mt-10">
+          <DialogClose asChild>
+            <Button className="bg-[#DFDFDF] hover:bg-textPurple text-inherit hover:text-white px-4 py-1 rounded-full h-7 mx-auto">
+              Back
+            </Button>
+          </DialogClose>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   );
