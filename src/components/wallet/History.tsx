@@ -3,8 +3,9 @@ import { Separator } from "../ui/separator";
 import { ArrowRightLeft } from "lucide-react";
 import { Button } from "../ui/button";
 import clsx from "clsx";
+import MoreTransactionsDialog from "../cards/MoreTransactionHistory";
 
-const TransactionItem = ({
+export const TransactionItem = ({
   icon,
   title,
   subtitle,
@@ -93,9 +94,11 @@ export const RecentHistory = ({ className }: { className?: string }) => {
         {/* Header */}
         <div className="flex justify-between items-center text-muted-foreground">
           <h3 className="font-medium">Recent History</h3>
-          <Button className="bg-[#DFDFDF] hover:bg-textPurple text-inherit hover:text-white  px-4 py-1 rounded-full h-7">
+          {/* <Button className="bg-[#DFDFDF] hover:bg-textPurple text-inherit hover:text-white  px-4 py-1 rounded-full h-7">
             More
-          </Button>
+          </Button> */}
+
+          <MoreTransactionsDialog />
         </div>
 
         {/* Green bar + Separator */}
