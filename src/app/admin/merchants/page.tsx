@@ -14,6 +14,7 @@ import { Pencil, Plus, Save, Search, Trash2 } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import clsx from "clsx";
+import AddMerchantButton from "@/components/merchant/MerchantModal";
 const merchants = [
   {
     id: "6a06163e",
@@ -318,9 +319,8 @@ const MerchantsPage = () => {
           </div>
         </div>
 
-        <Button className="bg-[#553A6B] hover:bg-[#6b3f8c] text-white rounded-full">
-          <Plus /> Add New Merchant
-        </Button>
+        {/* Add Merchant trigger Button */}
+        <AddMerchantButton />
       </div>
 
       {/* Search and Count */}
