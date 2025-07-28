@@ -53,7 +53,10 @@ const SideBar = () => {
   return (
     <aside className="hidden md:flex w-1/6 flex-col bg-darkPurple py-6 text-white space-y-10">
       <div className="mx-10">
-        <h1 className="font-bold text-3xl">rivo</h1>
+        <div className="flex items-center gap-2 mb-1">
+          <Image src="/rivo-logo.svg" alt="logo" width={40} height={40} />
+          <h1 className="font-bold text-3xl">rivo</h1>
+        </div>
         <p className="text-sm">Rapid Transport System.</p>
       </div>
 

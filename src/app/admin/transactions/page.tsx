@@ -3,8 +3,10 @@
 // import { useEffect } from "react";
 // import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
 
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
+import ReceiptModal from "@/components/transactions/ReceiptModal";
+
 import {
   Table,
   TableBody,
@@ -26,6 +28,15 @@ import clsx from "clsx";
 import { Label } from "@/components/ui/label";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
+
+interface TransactionsType {
+  ref: string;
+  method: string;
+  date: string;
+  time: string;
+  amount: string;
+  status: string;
+}
 
 const transactions = [
   {
@@ -91,6 +102,9 @@ const TransactionsPage = () => {
 
   useEffect(() => setTitle("transactions"), [setTitle]);
 
+  const [selectedTx, setSelectedTx] = useState<TransactionsType | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
   return (
     <section className="flex-1 flex flex-col gap-4 mt-10 mx- 12 py-6 rounded-xl bg-dashboardAccentGray px-10">
       {/* Transactions Page Header section */}
@@ -139,24 +153,24 @@ const TransactionsPage = () => {
           </TableHeader>
 
           <TableBody>
-            {transactions.map((tx, index) => (
+            {transactions.map((transaction, index) => (
               <TableRow key={index} className="h-14">
-                <TableCell>{tx.ref}</TableCell>
-                <TableCell>{tx.method}</TableCell>
-                <TableCell>{tx.date}</TableCell>
-                <TableCell>{tx.time}</TableCell>
-                <TableCell>{tx.amount}</TableCell>
+                <TableCell>{transaction.ref}</TableCell>
+                <TableCell>{transaction.method}</TableCell>
+                <TableCell>{transaction.date}</TableCell>
+                <TableCell>{transaction.time}</TableCell>
+                <TableCell>{transaction.amount}</TableCell>
                 <TableCell>
                   <Badge
                     variant="outline"
                     className={clsx(
                       "rounded-full border-none",
-                      tx.status === "Successful"
+                      transaction.status === "Successful"
                         ? "bg-[#B1EE8133] text-[#00AB57]"
                         : "bg-[#FF080033] text-[#FF0900]"
                     )}
                   >
-                    {tx.status}
+                    {transaction.status}
                   </Badge>
                 </TableCell>
                 <TableCell>
@@ -164,6 +178,10 @@ const TransactionsPage = () => {
                     variant="outline"
                     size="sm"
                     className="text-xs h-fit py-0.5 px-3.5 rounded-full text-muted-foreground bg-dashboardLightGrayBG border-none"
+                    onClick={() => {
+                      setSelectedTx(transaction);
+                      setModalOpen(true);
+                    }}
                   >
                     View
                   </Button>
@@ -182,13 +200,19 @@ const TransactionsPage = () => {
               key={num}
               variant={num === 1 ? "default" : "outline"}
               size="sm"
-              className="w-8 h-8 p-0"
+              className="size-8 p-0"
             >
               {num}
             </Button>
           ))}
         </div>
       </div>
+
+      <ReceiptModal
+        open={modalOpen}
+        onOpenChange={setModalOpen}
+        transaction={selectedTx}
+      />
     </section>
   );
 };

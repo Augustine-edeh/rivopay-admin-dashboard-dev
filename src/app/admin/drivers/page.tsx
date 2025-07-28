@@ -21,6 +21,8 @@ import clsx from "clsx";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 
+import { useRouter } from "next/navigation";
+
 import AddNewDriverButtonDialog from "@/components/drivers/AddNewDriverButton-Dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
@@ -36,6 +38,7 @@ const DriversPage = () => {
   const { setTitle } = usePageTitleStore((state) => state);
 
   useEffect(() => setTitle("drivers"), [setTitle]);
+  const router = useRouter();
 
   return (
     <div className="grid grid-cols-1 xl:grid-cols-[2fr_1fr] gap-6 py-6">
@@ -225,7 +228,8 @@ const DriversPage = () => {
           <div className="flex justify-center">
             <Button
               variant="ghost"
-              className="w-fit bg-[#B3B3B35C] text-muted-foreground rounded-full px-6 mt-5"
+              className="w-fit bg-[#B3B3B35C] hover:bg-darkPurple text-muted-foreground hover:text-white rounded-full px-6 mt-5"
+              onClick={() => router.push("/admin/drivers/activities")}
             >
               More
             </Button>

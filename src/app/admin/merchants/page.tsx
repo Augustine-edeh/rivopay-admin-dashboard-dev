@@ -10,10 +10,12 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useState, useEffect } from "react";
 
 import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
-import { Pencil, Plus, Save, Search, Trash2 } from "lucide-react";
+import { Pencil, Save, Search } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import clsx from "clsx";
+import AddMerchantButton from "@/components/merchant/MerchantModal";
+import DeleteMerchant from "@/components/merchant/DeleteMerchant";
 const merchants = [
   {
     id: "6a06163e",
@@ -318,9 +320,8 @@ const MerchantsPage = () => {
           </div>
         </div>
 
-        <Button className="bg-[#553A6B] hover:bg-[#6b3f8c] text-white rounded-full">
-          <Plus /> Add New Merchant
-        </Button>
+        {/* Add Merchant trigger Button */}
+        <AddMerchantButton />
       </div>
 
       {/* Search and Count */}
@@ -353,10 +354,8 @@ const MerchantsPage = () => {
                   key={idx}
                   className="p-4 flex flex-col justify-between shadow-sm bg-white"
                 >
-                  <Button className="place-self-end grid place-items-center size-7 p-0 m-0 rounded-full bg-transparent hover:bg-lightGray focus:bg-lightGray text-black shadow-none cursor-pointer">
-                    <Trash2 size={16} />
-                  </Button>
-
+                  {/* Delet Merchant Trigger Button */}
+                  <DeleteMerchant />
                   <div className="flex items-center gap-4">
                     <Avatar className="relative size-11 grid place-items-center bg-[#B3B3B35C] overflow-visible">
                       <div className="absolute top-0.5 right-0 size-2.5 rounded-full bg-[#00BA8A]"></div>
