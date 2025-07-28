@@ -34,7 +34,7 @@ const DriverInfoModalTrigger = ({ activity }: DriverInfoProps) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Card className="w-96 h-fit bg-[#F8F8F8] text-muted-foreground">
+        <Card className="w-96 h-fit bg-[#F8F8F8] hover:bg-lightGray text-muted-foreground">
           <CardContent className="space-y-7">
             <div className="flex justify-between items-center">
               <div className="flex gap-5">
