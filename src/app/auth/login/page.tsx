@@ -162,6 +162,20 @@ const LoginPage = () => {
               Log in
             </Button>
 
+            <Button
+              type="button"
+              variant="outline"
+              className="w-full rounded-3xl"
+              title="Auto-fills demo credentials for testing purposes"
+              onClick={() => {
+                form.setValue("email", "demo@rivopay.com");
+                form.setValue("password", "DemoPass123");
+                form.trigger(); // triggers/updates the validation state for testing purpose
+              }}
+            >
+              Use Demo Account
+            </Button>
+
             <Link
               href="/auth/sign-up"
               className="text-textPurple block w-fit mx-auto hover:underline mb-2 text-sm"
