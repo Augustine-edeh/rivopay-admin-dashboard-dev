@@ -1,10 +1,6 @@
 "use client";
 
-// import { useRouter } from "next/navigation";
-
 import MetricCard from "@/components/MetricCard";
-// import { Button } from "@/components/ui/button";
-// import { ArrowLeft, TrendingUp } from "lucide-react";
 import BackButton from "@/components/BackButton";
 
 import {
