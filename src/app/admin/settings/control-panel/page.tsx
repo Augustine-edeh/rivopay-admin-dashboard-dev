@@ -1,4 +1,5 @@
 import SecondaryScreenHeader from "@/components/SecondaryScreenHeader";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -50,7 +51,12 @@ const ControlPanelPage = () => {
       />
 
       <div className="flex-1 flex flex-col p-5 bg-white">
-        <h1 className="mb-10">Account Restriction</h1>
+        <div className="flex justify-between mb-5">
+          <h2 className="font-bold">Account Restriction</h2>
+          <Button className="bg-textPurple/90 hover:bg-textPurple rounded-full">
+            View Team
+          </Button>
+        </div>
 
         <ScrollArea className="h-[550px]">
           <div className="flex flex-col gap-2">
