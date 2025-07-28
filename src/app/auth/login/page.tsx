@@ -134,14 +134,23 @@ const LoginPage = () => {
             />
 
             {/* Remember login checkbox Field */}
-            <div className="flex items-center gap-3 mt-2.5">
-              <Checkbox id="rememberMeLoggedin" className="size-5" />
-              <Label
-                htmlFor="rememberMeLoggedin"
-                className="text-muted-foreground text-sm flex"
+            <div className="flex items-center justify-between px-4 py-4">
+              <div className="flex items-center gap-1">
+                <Checkbox id="rememberMeLoggedin" className="size-5" />
+                <Label
+                  htmlFor="rememberMeLoggedin"
+                  className="text-muted-foreground text-sm flex"
+                >
+                  Keep me logged in
+                </Label>
+              </div>
+
+              <Link
+                href="/sign-in"
+                className="text-textPurple block w-fit hover:underline text-sm"
               >
-                Keep me logged in
-              </Label>
+                Forgot password?
+              </Link>
             </div>
 
             {/* Log in Button */}
@@ -154,10 +163,10 @@ const LoginPage = () => {
             </Button>
 
             <Link
-              href="/sign-in"
-              className="text-textPurple block w-fit mx-auto hover:underline"
+              href="/sign-up"
+              className="text-textPurple block w-fit mx-auto hover:underline mb-2 text-sm"
             >
-              Forgot password?
+              Don’t have an account? Sign up
             </Link>
           </div>
         </form>
