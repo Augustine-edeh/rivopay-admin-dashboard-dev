@@ -1,31 +1,71 @@
 "use client";
 
-import PieChartComponent from "@/components/admin/PieChartComponent";
-import SelectComponent from "@/components/admin/Select";
-import CardsTable from "@/components/CardsTable";
-import MetricCard from "@/components/MetricCard";
-import TrackCard from "@/components/TrackCard";
-import { Button } from "@/components/ui/button";
-
 import { useEffect } from "react";
 import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
-import { metricsData } from "@/data/dashboardMetric";
+import MetricCard from "@/components/MetricCard";
+import TrackCard from "@/components/TrackCard";
+import PieChartComponent from "@/components/admin/PieChartComponent";
+import { ArrowDown, TrendingUp } from "lucide-react";
 
-import { TrendingUp } from "lucide-react";
-import Image from "next/image";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 
-const AdminPage = () => {
-  const { title, setTitle } = usePageTitleStore((state) => state);
+import SelectComponent from "@/components/admin/Select";
+
+// import { metricsData } from "@/data/dashboardMetric";
+
+const metricsData = [
+  {
+    title: "Total Revenue",
+    value: "₦0.00",
+    percentageChange: 0,
+    Icon: TrendingUp,
+    iconColor: "#00AB57",
+    iconBgColor: "#D9F4C3",
+    bgColor: "#553A6B",
+  },
+  {
+    title: "Daily Revenue",
+    value: "120",
+    percentageChange: 5.6,
+    Icon: TrendingUp,
+    iconColor: "#85B361",
+    iconBgColor: "#B1EE8173",
+  },
+  {
+    title: "Weekly Revenue",
+    value: "20",
+    percentageChange: -2.3,
+    Icon: ArrowDown,
+    iconColor: "#D9AC19",
+    iconBgColor: "#F8D64D63",
+  },
+  {
+    title: "Monthly Revenue",
+    value: "315",
+    percentageChange: 8.1,
+    Icon: TrendingUp,
+    iconColor: "#85B361",
+    iconBgColor: "#00AB5733",
+  },
+];
+
+const DashboardPage = () => {
+  const { setTitle } = usePageTitleStore((state) => state);
+
   useEffect(() => {
-    if (title !== "dashboard") {
-      setTitle("dashboard");
-    }
-  }, [title, setTitle]);
+    setTitle("dashboard");
+  }, [setTitle]);
 
   return (
-    <div className="flex-1 flex flex-col gap-4 bg-white py-5">
-      {/* MetricCard Section */}
-      <section className="flex justify-between gap-4 overflow-x-auto pb-2 md:p-0">
+    <section className="flex-1 flex flex-col gap-6 px-6 py-5 bg-white">
+      {/* Metric Cards Section */}
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {metricsData.map((item, index) => (
           <MetricCard
             key={index}
@@ -35,86 +75,54 @@ const AdminPage = () => {
             Icon={item.Icon}
             iconColor={item.iconColor}
             iconBgColor={item.iconBgColor}
+            bgColor={item.bgColor}
           />
         ))}
       </section>
 
-      {/* Bottom Section */}
-      <section className="flex-1 flex gap-1.5 bg-blue-400 -dashboardAccentGray p-1">
-        <div className="bg-red-500 w-1/2">
-          {/* Card Section */}
-          <div>
-            <h4>Total 50</h4>
-
-            <div className="flex justify-between items-center bg-pink-500">
-              <h3 className="font-semibold">Cards Managemnet</h3>
-              <Button className="rounded-3xl bg-textPurple">Add Card</Button>
+      {/* Revenue Distribution + Summary Cards */}
+      <section className="flex flex-col lg:flex-row gap-6">
+        {/* Pie Chart Section */}
+        <div className="bg-muted rounded-lg w-full lg:w-1/3">
+          <div className="flex justify-between p-4">
+            <div>
+              <h4 className="text-base font-semibold">
+                Payment Method Distribution
+              </h4>
+              <p className="text-sm text-muted-foreground">2025</p>
             </div>
-
-            <div className="flex justify-between gap-3 bg-pink-300">
-              <div className="relative w-72 bg-yellow-600">
-                <Image src="/card-image.png" fill alt="card" />
-              </div>
-
-              <div className="w-10 border border-[#9D9C9C47] rounded-xl" />
-
-              <div className="flex flex-col flex-1 gap-2">
-                <TrackCard
-                  title="Card Activations"
-                  value={123}
-                  percentageChange={12}
-                  Icon={TrendingUp}
-                  iconColor="#33B952"
-                  imageSrc="/semi-circle_gray.png"
-                  borderColor="border-dashboardCardGray"
-                  bgColor="bg-white"
-                />
-                <TrackCard
-                  title="Total Blocked Card"
-                  value={14}
-                  percentageChange="4%"
-                  Icon={TrendingUp}
-                  iconColor="#FF0000"
-                  imageSrc="/semi-circle_green.png"
-                  borderColor="border-[#B1EE81]"
-                  bgColor="bg-dashboardAccentGreen"
-                />
-              </div>
-            </div>
+            <Select>
+              <SelectTrigger
+                className="h-8 rounded-3xl px-2
+               bg-[#E0E0E0]"
+              >
+                <SelectValue placeholder="Sort by:" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="weekly">Weekly</SelectItem>
+                <SelectItem value="monthly">Monthly</SelectItem>
+                <SelectItem value="yearly">Yearly</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
 
-          {/* Table Section */}
-          <div>
-            <CardsTable />
+          <div className="mt-4 h-60">
+            <PieChartComponent />
           </div>
         </div>
 
-        <div className="flex flex-col gap-2 bg-orange-500 p-1 w-1/2">
-          {/* Card Section */}
-          <div className="flex flex-col bg-blue-700 p-2 h-1/2">
-            <div className="bg-yellow-200 w-fit px-1 text-center">
-              <h3 className="font-medium">Payment Method Distribution</h3>
-              <p className="font-normal">Januaty - December 2024</p>
-            </div>
-
-            <div className="flex-1 bg-pink-400">
-              <PieChartComponent />
-            </div>
-          </div>
-
-          {/* Line Chart Section */}
-          <div className="flex flex-col bg-green-300 h-1/2">
-            <div className="flex justify-between items-center">
-              <p>Revenue Generated</p>
-              <SelectComponent />
-            </div>
-
-            <div className="flex-1 bg-violet-500/40"></div>
-          </div>
+        {/* Summary Cards Section */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 flex-1">
+          <TrackCard title="Total Users" value={0} />
+          <TrackCard title="Total Merchants" value={0} />
+          <TrackCard title="Card Holders" value={0} />
+          <TrackCard title="DailyTaps" value={0} />
+          <TrackCard title="Active Drivers" value={0} />
+          <TrackCard title="Total Admins" value={0} />
         </div>
       </section>
-    </div>
+    </section>
   );
 };
 
-export default AdminPage;
+export default DashboardPage;
