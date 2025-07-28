@@ -1,3 +1,5 @@
+"use client";
+
 import { ArrowLeft } from "lucide-react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import Image from "next/image";
@@ -5,6 +7,7 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import clsx from "clsx";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 const driverActivities = [
   {
@@ -46,10 +49,16 @@ const driverActivities = [
 ];
 
 const DriverActivities = () => {
+  const router = useRouter();
+
   return (
     <div className="h-screen flex flex-col pt-3 pb-10">
       <header className="flex items-center gap-3 mb-5">
-        <Button variant="outline" title="Back to drivers page">
+        <Button
+          variant="outline"
+          title="Back to drivers page"
+          onClick={() => router.push("/admin/drivers")}
+        >
           <ArrowLeft />
         </Button>
         <p>Driver Activities</p>
