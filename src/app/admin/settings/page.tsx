@@ -11,10 +11,11 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Switch } from "@/components/ui/switch";
-import { Pencil, Trash2 } from "lucide-react";
+import { Pencil } from "lucide-react";
 import QuickActionCards from "@/components/settings/QuickActionCards";
 import { QuickActionCardProps } from "@/components/settings/QuickActionCards";
 import clsx from "clsx";
+import DeleteAdminTrigger from "@/components/settings/DeleteAdminButton";
 
 const mockAdmins = [
   {
@@ -247,7 +248,8 @@ const SettingsPage = () => {
                       <Pencil className="w-4 h-4 cursor-pointer text-muted-foreground" />
                     </TableCell>
                     <TableCell>
-                      <Trash2 className="w-4 h-4 cursor-pointer text-muted-foreground" />
+                      {/* <Trash2 className="w-4 h-4 cursor-pointer text-muted-foreground" /> */}
+                      <DeleteAdminTrigger />
                     </TableCell>
                   </TableRow>
                 ))}
