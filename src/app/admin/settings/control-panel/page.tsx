@@ -1,6 +1,5 @@
 import SecondaryScreenHeader from "@/components/SecondaryScreenHeader";
 import TeamModal from "@/components/settings/TeamModal";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,

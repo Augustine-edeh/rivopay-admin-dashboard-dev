@@ -11,14 +11,10 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 
 const teamMembers = [
-  { name: "Prosper Efe", email: "prosper@rivo.com", isAdmin: true },
-  { name: "Prosper Efe", email: "prosper@rivo.com", isAdmin: true },
-  { name: "Prosper Efe", email: "prosper@rivo.com", isAdmin: false },
-  { name: "Prosper Efe", email: "prosper@rivo.com", isAdmin: false },
-  { name: "Prosper Efe", email: "prosper@rivo.com", isAdmin: false },
-  { name: "Prosper Efe", email: "prosper@rivo.com", isAdmin: false },
-  { name: "Prosper Efe", email: "prosper@rivo.com", isAdmin: false },
-  { name: "Prosper Efe", email: "prosper@rivo.com", isAdmin: false },
+  { name: "Prosper Ele", email: "prosper@rivo.com", isAdmin: true },
+  { name: "Prosper Ele", email: "prosper@rivo.com", isAdmin: false },
+  { name: "Prosper Ele", email: "prosper@rivo.com", isAdmin: false },
+  { name: "Prosper Ele", email: "prosper@rivo.com", isAdmin: false },
 ];
 
 const TeamModal = () => {
@@ -71,7 +67,7 @@ const TeamModal = () => {
           {teamMembers.map((member, index) => (
             <div
               key={index}
-              className="flex justify-between items-center px-3 py-3 border rounded-md hover:bg-muted transition"
+              className="group flex justify-between items-center px-3 py-3 border rounded-md hover:bg-muted transition"
             >
               <div className="flex items-center gap-3">
                 <Checkbox />
@@ -90,17 +86,16 @@ const TeamModal = () => {
                 </div>
               </div>
 
-              {!member.isAdmin && (
-                <div className="flex gap-3">
-                  <Button
-                    variant="outline"
-                    className="border-green-500 text-green-500 hover:bg-green-50"
-                  >
-                    Make Admin
-                  </Button>
-                  <Button variant="destructive">Remove from team</Button>
-                </div>
-              )}
+              {/* Hidden by default, shown on hover of parent */}
+              <div className="hidden group-hover:flex gap-3">
+                <Button
+                  variant="outline"
+                  className="border-green-500 text-green-500 hover:bg-green-50"
+                >
+                  Make Admin
+                </Button>
+                <Button variant="destructive">Remove from team</Button>
+              </div>
             </div>
           ))}
         </div>
