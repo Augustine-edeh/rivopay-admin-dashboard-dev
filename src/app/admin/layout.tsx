@@ -12,13 +12,14 @@ const AdminLayout = ({ children }: { children: ReactNode }) => {
   const hideSidebarRoutes = [
     "/admin/analytics/total-revenue",
     "/admin/drivers/activities",
+    "/admin/settings/control-panel",
   ];
 
   // Defined routes that shouldn't have a Header
   const hideHeaderRoutes = [
     "/admin/analytics/total-revenue",
     "/admin/drivers/activities",
-    // "/admin/settings",
+    "/admin/settings/control-panel",
   ];
 
   const shouldHideSidebar = hideSidebarRoutes.includes(pathname);
