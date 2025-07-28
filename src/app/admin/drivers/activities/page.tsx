@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import DriverInfoModalTrigger from "@/components/drivers/DriverInfoModalTrigger";
-import BackButton from "@/components/BackButton";
+import SecondaryScreenHeader from "@/components/SecondaryScreenHeader";
 
 const driverActivities = [
   {
@@ -44,13 +44,11 @@ const driverActivities = [
 const DriverActivities = () => {
   return (
     <div className="h-screen flex flex-col pt-3 pb-10">
-      <header className="flex items-center gap-3 mb-5">
-        <BackButton
-          backTo="/admin/drivers"
-          currentPageTitle={"Driver Activities"}
-          title={"Back to drivers page"}
-        />
-      </header>
+      <SecondaryScreenHeader
+        backTo="/admin/drivers"
+        currentPageTitle={"Driver Activities"}
+        title={"Back to drivers page"}
+      />
 
       <div className="flex-1 flex flex-wrap gap-x-5 gap-y-3 p-5 overflow-y-auto bg-white">
         {driverActivities.map((activity, index) => (

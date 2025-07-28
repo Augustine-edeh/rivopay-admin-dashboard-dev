@@ -1,7 +1,6 @@
 "use client";
 
 import MetricCard from "@/components/MetricCard";
-import BackButton from "@/components/BackButton";
 
 import {
   Select,
@@ -23,6 +22,7 @@ import {
 } from "recharts";
 
 import { TrendingUp } from "lucide-react";
+import SecondaryScreenHeader from "@/components/SecondaryScreenHeader";
 
 const metricsData = [
   {
@@ -74,17 +74,13 @@ const revenueData = [
 ];
 
 const TotalRevenueLayout = () => {
-  // const router = useRouter();
-
   return (
     <div className="h-screen flex flex-col gap-3.5 bg-muted text-foreground pt-5 pb-10">
-      <header className="flex items-center gap-3 mb-5">
-        <BackButton
-          backTo="/admin/analytics"
-          currentPageTitle={"Total Revenue"}
-          title={"Back to analytics page"}
-        />
-      </header>
+      <SecondaryScreenHeader
+        backTo="/admin/analytics"
+        currentPageTitle={"Total Revenue"}
+        title={"Back to analytics page"}
+      />
 
       <section className="flex-1 flex flex-col gap-5 p-7 bg-gray-300/45">
         {/* Metrics Cards */}
