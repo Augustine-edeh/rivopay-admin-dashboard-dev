@@ -1,4 +1,5 @@
 import SecondaryScreenHeader from "@/components/SecondaryScreenHeader";
+import TeamModal from "@/components/settings/TeamModal";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -53,9 +54,7 @@ const ControlPanelPage = () => {
       <div className="flex-1 flex flex-col p-5 bg-white">
         <div className="flex justify-between mb-5">
           <h2 className="font-bold">Account Restriction</h2>
-          <Button className="bg-textPurple/90 hover:bg-textPurple rounded-full">
-            View Team
-          </Button>
+          <TeamModal />
         </div>
 
         <ScrollArea className="h-[550px]">
