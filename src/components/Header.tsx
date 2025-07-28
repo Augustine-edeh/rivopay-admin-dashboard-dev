@@ -1,36 +1,56 @@
-import { Bell, Search } from "lucide-react";
+"use client";
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+import { Bell } from "lucide-react";
 import UserAvatar from "./UserAvatar";
-import { Label } from "@/components/ui/label";
-import { Input } from "./ui/input";
+import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
+import NotificationPanel from "./header/NotificationPanel";
+// import Image from "next/image";
 
 const Header = () => {
+  const title = usePageTitleStore((state) => state.title);
+
   return (
-    <header className="h-16 flex items-center gap-28 bg-blue-600">
-      <h1 className="text-xl font-bold tracking-wide">Welcome!</h1>
+    <header className="sticky top-0 px-7 py-3 flex justify-between items-center border-b">
+      <h1 className="text-xl font-bold tracking-wide capitalize">{title}</h1>
 
-      <div className="flex-1 flex justify-between bg-blue-400">
-        <div className="relative hidden md:flex items-center bg-green-300 w-full max-w-2xl">
-          <Input
-            className="rounded-4xl pl-14"
-            id="search"
-            placeholder="Search..."
-          />
-          <Label htmlFor="search" className="absolute left-3.5">
-            <Search className="text-separatorGray" />
-          </Label>
-        </div>
+      <div className="flex items-center gap-4 ml -auto">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <div className="flex items-center gap-2 cursor-pointer">
+              <div className="relative flex items-center cursor-pointer bg-dashboardLightGrayBG hover:bg-dashboardCardGray rounded-full p-1.5">
+                <UserAvatar className="size-9" />
+                <Bell
+                  fill="#BF2B2B"
+                  color="#BF2B2B"
+                  size={10}
+                  className="absolute top-0 right-0"
+                />
+              </div>
 
-        <div className="flex items-center ml-auto gap-10 bg-orange-400">
-          <div className="grid place-content-center bg-gray-400 rounded-full size-10">
-            <Bell />
-            <p className="sr-only">Notifications</p>
-          </div>
+              <p className="font-semibold flex items-center gap-1">
+                {`Rose Walters`}
+              </p>
+            </div>
+          </DropdownMenuTrigger>
 
-          <div className="flex items-center gap-2.5 bg-gray-400 rounded-3xl px-2 py-1.5">
-            <UserAvatar />
-            <p>Admin</p>
-          </div>
-        </div>
+          <DropdownMenuContent
+            align="end"
+            className="w-[350px] p-0 shadow-lg rounded-lg"
+          >
+            <NotificationPanel />
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+        {/* <button className="w-full flex items-center gap-2 p-2 rounded-3xl text-muted-foreground hover:underline hover:text-darkPurple transition-colors">
+          <Image src="/icons/logout.svg" alt="logout" width={20} height={20} />
+          <span>Log out</span>
+        </button> */}
       </div>
     </header>
   );

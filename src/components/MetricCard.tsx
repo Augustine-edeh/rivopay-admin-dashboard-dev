@@ -15,6 +15,9 @@ interface MetricCardProps {
   Icon?: LucideIcon;
   iconColor: string;
   iconBgColor?: string;
+  bgColor?: string;
+  type?: "full" | "fixed";
+  className?: string;
 }
 
 const MetricCard = ({
@@ -24,20 +27,40 @@ const MetricCard = ({
   Icon,
   iconColor,
   iconBgColor,
+  bgColor,
+  type = "full",
+  className,
 }: MetricCardProps) => {
+  const isCustomBg = !!bgColor;
+
   return (
-    <Card className="w-full pb-1.5 bg-dashboardAccentGray">
+    <Card
+      className={clsx(type === "full" ? "w-full" : "w-72", className)}
+      style={{ backgroundColor: bgColor || "#f9f9f9" }}
+    >
       <CardHeader>
-        <CardTitle className="text-separatorGray">{title}</CardTitle>
+        <CardTitle
+          className={clsx("text-separatorGray", isCustomBg && "text-white")}
+        >
+          {title}
+        </CardTitle>
       </CardHeader>
 
-      <CardContent className="font-semibold text-xl">{value}</CardContent>
+      <CardContent
+        className={clsx("font-semibold text-xl", isCustomBg && "text-white")}
+      >
+        {value}
+      </CardContent>
 
       <CardFooter className="flex items-center space-x-2">
-        <span className="text-sm font-medium">{percentageChange}%</span>
+        <span
+          className={clsx("text-sm font-medium", isCustomBg && "text-white")}
+        >
+          {percentageChange}%
+        </span>
         {Icon && (
           <div
-            className={clsx("rounded-full p-1")}
+            className="rounded-full p-1"
             style={{ backgroundColor: iconBgColor }}
           >
             <Icon size={18} color={iconColor} />
