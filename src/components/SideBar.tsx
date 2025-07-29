@@ -33,7 +33,7 @@ const SideBar = () => {
     },
     {
       label: "Merchants Request",
-      href: "/admin/merchant-request",
+      href: "/admin/merchants/request",
       icon: "/icons/merchant-request.svg",
     },
     { label: "Drivers", href: "/admin/drivers", icon: "/icons/drivers.svg" },

@@ -291,7 +291,7 @@ const merchants = [
   },
 ];
 
-const MerchantsPage = () => {
+const MerchantsLayout = () => {
   const [isEditing, setIsEditing] = useState(false);
 
   const { setTitle } = usePageTitleStore((state) => state);
@@ -506,4 +506,4 @@ const MerchantsPage = () => {
   );
 };
 
-export default MerchantsPage;
+export default MerchantsLayout;
