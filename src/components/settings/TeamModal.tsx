@@ -13,6 +13,7 @@ import { ScrollArea } from "../ui/scroll-area";
 import { Plus } from "lucide-react";
 import { Label } from "../ui/label";
 import SearchInput from "../shared/SearchInput";
+import ConfirmDeleteDialog from "../shared/ConfirmDeleteDialog";
 
 const teamMembers = [
   { name: "Prosper Efe", email: "prosper@rivo.com", isAdmin: true },
@@ -80,17 +81,19 @@ const TeamModal = () => {
                   <div className="flex items-center gap-4">
                     {/* NOTE: Should be replaced by user avatar */}
                     <div className="size-10 bg-lightGray rounded-full" />
-                    <p className="font-medium text-sm">
-                      {member.name}{" "}
-                      {member.isAdmin && (
-                        <span className="text-xs text-muted-foreground">
-                          (Admin)
-                        </span>
-                      )}
-                    </p>
-                    <p className="text-xs text-muted-foreground">
-                      {member.email}
-                    </p>
+                    <div>
+                      <p className="font-medium text-sm">
+                        {member.name}{" "}
+                        {member.isAdmin && (
+                          <span className="text-xs text-muted-foreground">
+                            (Admin)
+                          </span>
+                        )}
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        {member.email}
+                      </p>
+                    </div>
                   </div>
                 </div>
 
@@ -101,12 +104,21 @@ const TeamModal = () => {
                   >
                     Make Admin
                   </Button>
-                  <Button
-                    variant="outline"
-                    className="border-rivoRed text-rivoRed hover:bg-red-50 rounded-full"
-                  >
-                    Remove from team
-                  </Button>
+
+                  <ConfirmDeleteDialog
+                    name="David Akinloye"
+                    role="KYC Verification"
+                    description="This will automatically remove their data"
+                    onDelete={() => console.log("Deleted")} // NOTE: for testing
+                    trigger={
+                      <Button
+                        variant="outline"
+                        className="border-rivoRed text-rivoRed hover:bg-red-50 rounded-full"
+                      >
+                        Remove from team
+                      </Button>
+                    }
+                  />
                 </div>
               </div>
             ))}
