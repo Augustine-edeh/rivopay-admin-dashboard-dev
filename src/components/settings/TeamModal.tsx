@@ -15,6 +15,7 @@ import { Label } from "../ui/label";
 import SearchInput from "../shared/SearchInput";
 import ConfirmDeleteDialog from "../shared/ConfirmDeleteDialog";
 import MakeAdminDialog from "../shared/MakeAdminDialog";
+import AddNewMemberDialog from "../shared/AddNewMemberDialog";
 
 const teamMembers = [
   { name: "Prosper Efe", email: "prosper@rivo.com", isAdmin: true },
@@ -54,12 +55,17 @@ const TeamModal = () => {
             <Label htmlFor="selectAll">Select All</Label>
           </div>
           <SearchInput />
-          <Button
-            variant="secondary"
-            className="rounded-full text-white bg-textPurple/90 hover:bg-textPurple"
-          >
-            <Plus /> Add New Member
-          </Button>
+          <AddNewMemberDialog
+            onAdd={(email) => console.log("New member added:", email)}
+            trigger={
+              <Button
+                variant="secondary"
+                className="rounded-full text-white bg-textPurple/90 hover:bg-textPurple"
+              >
+                <Plus /> Add New Member
+              </Button>
+            }
+          />
         </div>
 
         {/* Tabs row */}
