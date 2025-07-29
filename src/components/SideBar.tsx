@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { Button } from "@/components/ui/button"; // shadcn button
+import { Button } from "@/components/ui/button";
 
 const SideBar = () => {
   const pathname = usePathname();
@@ -33,7 +33,7 @@ const SideBar = () => {
     },
     {
       label: "Merchants Request",
-      href: "/admin/merchant-request",
+      href: "/admin/merchants/request",
       icon: "/icons/merchant-request.svg",
     },
     { label: "Drivers", href: "/admin/drivers", icon: "/icons/drivers.svg" },
