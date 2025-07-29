@@ -14,6 +14,7 @@ import { Plus } from "lucide-react";
 import { Label } from "../ui/label";
 import SearchInput from "../shared/SearchInput";
 import ConfirmDeleteDialog from "../shared/ConfirmDeleteDialog";
+import MakeAdminDialog from "../shared/MakeAdminDialog";
 
 const teamMembers = [
   { name: "Prosper Efe", email: "prosper@rivo.com", isAdmin: true },
@@ -98,12 +99,18 @@ const TeamModal = () => {
                 </div>
 
                 <div className="hidden group-hover:flex gap-3">
-                  <Button
-                    variant="outline"
-                    className="border-rivoGreen text-rivoGreen hover:bg-green-50 rounded-full"
-                  >
-                    Make Admin
-                  </Button>
+                  <MakeAdminDialog
+                    name={member.name}
+                    onConfirm={() => console.log("Made admin")} // NOTE: for testing
+                    trigger={
+                      <Button
+                        variant="outline"
+                        className="border-rivoGreen text-rivoGreen hover:bg-green-50 rounded-full"
+                      >
+                        Make Admin
+                      </Button>
+                    }
+                  />
 
                   <ConfirmDeleteDialog
                     name="David Akinloye"
