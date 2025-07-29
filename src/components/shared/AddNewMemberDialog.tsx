@@ -19,9 +19,8 @@ const AddNewMemberDialog = ({
   onAdd,
 }: {
   trigger: React.ReactNode;
-  onAdd: (email: string, role: string, accessControl: boolean) => void;
+  onAdd: (email: string | null, role: string, accessControl: boolean) => void;
 }) => {
-  const [email, setEmail] = useState("");
   const [accessControl, setAccessControl] = useState(true);
   const [role, setRole] = useState("owner");
 
@@ -101,7 +100,7 @@ const AddNewMemberDialog = ({
           </Button>
           <Button
             // disabled={!email.includes("@")}
-            onClick={() => onAdd(email, role, accessControl)}
+            onClick={() => onAdd("", role, accessControl)}
             className="rounded-full outline-none border-none bg-rivoGreen text-white hover:bg-rivoGreen/90"
           >
             Add Member
