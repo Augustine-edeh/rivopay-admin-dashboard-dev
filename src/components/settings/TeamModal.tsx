@@ -10,7 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ScrollArea } from "../ui/scroll-area";
-import { Plus, h } from "lucide-react";
+import { Plus } from "lucide-react";
 import { Label } from "../ui/label";
 import SearchInput from "../shared/SearchInput";
 
@@ -38,7 +38,7 @@ const TeamModal = () => {
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-3xl w-full h-[80vh] p-6">
+      <DialogContent className="sm:max-w-4xl w-full h-[80vh] p-6">
         <DialogHeader>
           <DialogTitle className="text-xl font-semibold">
             Team Members
@@ -46,7 +46,7 @@ const TeamModal = () => {
         </DialogHeader>
 
         {/* Header controls */}
-        <div className="flex justify-between items-center my-4">
+        <div className="flex flex-wrap gap-4 justify-between items-center my-4">
           <div className="flex items-center gap-3">
             <Checkbox id="selectAll" />
             <Label htmlFor="selectAll">Select All</Label>
@@ -67,8 +67,8 @@ const TeamModal = () => {
         </div>
 
         {/* Member list */}
-        <ScrollArea>
-          <div className="mt-4 space-y-2 overflow-y-auto max-h-[60vh] pr-2">
+        <ScrollArea className="h-[60vh] pr-2 mt-4 bg-red-300">
+          <div className="space-y-2">
             {teamMembers.map((member, index) => (
               <div
                 key={index}
@@ -91,17 +91,16 @@ const TeamModal = () => {
                   </div>
                 </div>
 
-                {/* Hidden by default, shown on hover of parent */}
                 <div className="hidden group-hover:flex gap-3">
                   <Button
                     variant="outline"
-                    className="border-rivoGreen text-rivoGreen hover:bg-green-50 rounded-full cursor-pointer"
+                    className="border-rivoGreen text-rivoGreen hover:bg-green-50 rounded-full"
                   >
                     Make Admin
                   </Button>
                   <Button
                     variant="outline"
-                    className="border-rivoRed text-rivoRed hover:bg-red-50 rounded-full cursor-pointer"
+                    className="border-rivoRed text-rivoRed hover:bg-red-50 rounded-full"
                   >
                     Remove from team
                   </Button>
