@@ -1,18 +1,9 @@
-"use client";
-
-// import "@/styles/globals.css";
 import type { ReactNode } from "react";
-import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
-import { useEffect } from "react";
 import AddMerchantButton from "@/components/merchant/MerchantModal";
 import SearchInput from "@/components/shared/SearchInput";
 import Image from "next/image";
 
 const MerchantsLayout = ({ children }: { children: ReactNode }) => {
-  const { setTitle } = usePageTitleStore((state) => state);
-
-  useEffect(() => setTitle("merchants"), [setTitle]);
-
   return (
     <div className="flex flex-col h-[85dvh] px-6 py-[7px] space-y-6">
       {/* Header */}
@@ -39,14 +30,14 @@ const MerchantsLayout = ({ children }: { children: ReactNode }) => {
         <AddMerchantButton />
       </div>
 
-      {/* Search and Count */}
+      {/* Search-input  & accredited merchants count */}
       <div className="flex items-center justify-between">
+        {/* NOTE: re-introduce the accredited merchants count entry */}
         <p className="text-sm text-muted-foreground">Accredited merchants</p>
         <SearchInput />
       </div>
 
       {/* Dynamic content (from page.tsx inside /merchants/*) */}
-
       <div className="flex-1 min-h-0">{children}</div>
     </div>
   );
