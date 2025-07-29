@@ -17,6 +17,8 @@
   --color-dashboardLightGrayBG: #f3f3f3;
   --color-dashboardLightGreen: #b1ee81;
   --color-dashboardAccentGreen: #f4fcf7;
+  --color-rivoGreen: #00ab57;
+  --color-rivoRed: #bf2b2b;
 }
 
 @custom-variant dark (&:is(.dark *));
