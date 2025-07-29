@@ -47,8 +47,6 @@ const MerchantsLayout = ({ children }: { children: ReactNode }) => {
 
       {/* Dynamic content (from page.tsx inside /merchants/*) */}
 
-      {/* <div className="flex-1 flex bg-orange-500 p-1">{children}</div> */}
-
       <div className="flex-1 min-h-0">{children}</div>
     </div>
   );
