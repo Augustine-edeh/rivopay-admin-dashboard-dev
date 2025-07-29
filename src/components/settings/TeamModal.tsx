@@ -38,7 +38,7 @@ const TeamModal = () => {
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-4xl w-full h-[80vh] p-6">
+      <DialogContent className="sm:max-w-4xl w-full h-[80vh] p-6 flex flex-col">
         <DialogHeader>
           <DialogTitle className="text-xl font-semibold">
             Team Members
@@ -48,7 +48,7 @@ const TeamModal = () => {
         {/* Header controls */}
         <div className="flex flex-wrap gap-4 justify-between items-center my-4">
           <div className="flex items-center gap-3">
-            <Checkbox id="selectAll" />
+            <Checkbox id="selectAll" className="size-5" />
             <Label htmlFor="selectAll">Select All</Label>
           </div>
           <SearchInput />
@@ -66,17 +66,20 @@ const TeamModal = () => {
           <span className="cursor-pointer">Admins {`(3)`}</span>
         </div>
 
-        {/* Member list */}
-        <ScrollArea className="h-[60vh] pr-2 mt-4 bg-red-300">
+        {/* Scrollable List */}
+        <ScrollArea className="flex-1 min-h-0 pr-2">
           <div className="space-y-2">
             {teamMembers.map((member, index) => (
               <div
                 key={index}
-                className="group flex justify-between items-center px-3 py-3 border rounded-md hover:bg-muted transition"
+                className="group flex justify-between items-center p-3 rounded-md hover:bg-muted transition"
               >
-                <div className="flex items-center gap-3">
-                  <Checkbox />
-                  <div>
+                <div className="flex items-center gap-7">
+                  <Checkbox className="size-5" />
+
+                  <div className="flex items-center gap-4">
+                    {/* NOTE: Should be replaced by user avatar */}
+                    <div className="size-10 bg-lightGray rounded-full" />
                     <p className="font-medium text-sm">
                       {member.name}{" "}
                       {member.isAdmin && (
