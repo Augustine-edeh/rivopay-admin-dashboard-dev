@@ -90,19 +90,39 @@ const SideBar = () => {
             <Link
               key={label}
               href={href}
-              className={`flex items-center gap-3 p-2 rounded-3xl transition-colors
+              className={`group flex items-center gap-3 p-2 rounded-3xl transition-colors
         ${
           isActive
             ? "bg-white text-darkPurple"
-            : "text-white hover:bg-white hover:text-darkPurple"
+            : "text-white hover:bg-white hover:text-darkPurple focus:bg-white focus:text-darkPurple"
         }`}
             >
-              <Image
-                src={isActive ? activeIcon : icon}
-                alt={label}
-                width={20}
-                height={20}
-              />
+              {/* Icon Wrapper */}
+              <div className="relative w-5 h-5">
+                {/* Inactive Icon */}
+                <Image
+                  src={icon}
+                  alt={`${label} icon`}
+                  fill
+                  className={`transition-opacity duration-200 ${
+                    isActive
+                      ? "opacity-0"
+                      : "group-hover:opacity-0 group-focus:opacity-0 group-active:opacity-0"
+                  }`}
+                />
+                {/* Active Icon */}
+                <Image
+                  src={activeIcon}
+                  alt={`${label} active icon`}
+                  fill
+                  className={`transition-opacity duration-200 ${
+                    isActive
+                      ? "opacity-100"
+                      : "opacity-0 group-hover:opacity-100 group-focus:opacity-100 group-active:opacity-100"
+                  }`}
+                />
+              </div>
+
               <span>{label}</span>
             </Link>
           );
