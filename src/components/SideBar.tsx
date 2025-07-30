@@ -133,9 +133,25 @@ const SideBar = () => {
       <div className="px-4 mt-auto">
         <Button
           variant="ghost"
-          className="w-full justify-start gap-3 text-white hover:bg-white hover:text-darkPurple"
+          className="group w-full justify-start gap-3 text-white hover:bg-white hover:text-darkPurple focus:bg-white focus:text-darkPurple transition-colors"
         >
-          <Image src="/icons/logout.svg" alt="logout" width={20} height={20} />
+          {/* Icon Container */}
+          <div className="relative w-5 h-5">
+            {/* Inactive Icon */}
+            <Image
+              src="/icons/logout.svg"
+              alt="logout"
+              fill
+              className="transition-opacity duration-200 group-hover:opacity-0 group-focus:opacity-0 group-active:opacity-0"
+            />
+            {/* Active Icon */}
+            <Image
+              src="/icons/logout-active.svg"
+              alt="logout active"
+              fill
+              className="opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus:opacity-100 group-active:opacity-100"
+            />
+          </div>
           Log out
         </Button>
       </div>
