@@ -74,6 +74,7 @@ const SideBar = () => {
 
   return (
     <aside className="hidden md:flex w-1/6 flex-col bg-darkPurple py-6 text-white space-y-10">
+      {/* Logo */}
       <div className="mx-10">
         <div className="flex items-center gap-2 mb-1">
           <Image src="/rivo-logo.svg" alt="logo" width={40} height={40} />
@@ -82,6 +83,7 @@ const SideBar = () => {
         <p className="text-sm">Rapid Transport System.</p>
       </div>
 
+      {/* Nav Links */}
       <nav className="space-y-2 px-4 flex-grow">
         {sidebarLinks.map(({ label, href, icon, activeIcon }) => {
           const isActive = pathname === href;
@@ -91,15 +93,14 @@ const SideBar = () => {
               key={label}
               href={href}
               className={`group flex items-center gap-3 p-2 rounded-3xl transition-colors
-        ${
-          isActive
-            ? "bg-white text-darkPurple"
-            : "text-white hover:bg-white hover:text-darkPurple focus:bg-white focus:text-darkPurple"
-        }`}
+              ${
+                isActive
+                  ? "bg-white text-darkPurple"
+                  : "text-white hover:bg-white hover:text-darkPurple focus:bg-white focus:text-darkPurple"
+              }`}
             >
-              {/* Icon Wrapper */}
-              <div className="relative w-5 h-5">
-                {/* Inactive Icon */}
+              <div className="relative size-5">
+                {/* Inactive icon */}
                 <Image
                   src={icon}
                   alt={`${label} icon`}
@@ -110,7 +111,7 @@ const SideBar = () => {
                       : "group-hover:opacity-0 group-focus:opacity-0 group-active:opacity-0"
                   }`}
                 />
-                {/* Active Icon */}
+                {/* Active icon */}
                 <Image
                   src={activeIcon}
                   alt={`${label} active icon`}
@@ -122,29 +123,28 @@ const SideBar = () => {
                   }`}
                 />
               </div>
-
               <span>{label}</span>
             </Link>
           );
         })}
       </nav>
 
-      {/* Logout Button at Bottom */}
-      <div className="px-4 mt-auto">
+      {/* Logout */}
+      <div className="border-t border-white/20 pt-6 px-4 mt-auto">
         <Button
           variant="ghost"
-          className="group w-full justify-start gap-3 text-white hover:bg-white hover:text-darkPurple focus:bg-white focus:text-darkPurple transition-colors"
+          title="Log out"
+          className="group w-full justify-start gap-3 text-red-400 hover:bg-red-50 hover:text-red-700 focus:bg-red-50 focus:text-red-700 transition-colors"
         >
-          {/* Icon Container */}
-          <div className="relative w-5 h-5">
-            {/* Inactive Icon */}
+          <div className="relative size-5">
+            {/* Default logout icon */}
             <Image
               src="/icons/logout.svg"
               alt="logout"
               fill
               className="transition-opacity duration-200 group-hover:opacity-0 group-focus:opacity-0 group-active:opacity-0"
             />
-            {/* Active Icon */}
+            {/* Active logout icon */}
             <Image
               src="/icons/logout-active.svg"
               alt="logout active"
