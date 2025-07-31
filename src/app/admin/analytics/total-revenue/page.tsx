@@ -1,10 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-
 import MetricCard from "@/components/MetricCard";
-import { Button } from "@/components/ui/button";
-import { ArrowLeft, TrendingUp } from "lucide-react";
 
 import {
   Select,
@@ -24,6 +20,9 @@ import {
   ResponsiveContainer,
   CartesianGrid,
 } from "recharts";
+
+import { TrendingUp } from "lucide-react";
+import SecondaryScreenHeader from "@/components/SecondaryScreenHeader";
 
 const metricsData = [
   {
@@ -75,19 +74,13 @@ const revenueData = [
 ];
 
 const TotalRevenueLayout = () => {
-  const router = useRouter();
-
   return (
     <div className="h-screen flex flex-col gap-3.5 bg-muted text-foreground pt-5 pb-10">
-      <header>
-        <Button
-          variant="ghost"
-          onClick={() => router.push("/admin/analytics")}
-          className="flex items-center gap-2 bg-darkPurple hover:bg-darkPurple/80 text-accent hover:text-accent"
-        >
-          <ArrowLeft /> Total Revenue
-        </Button>
-      </header>
+      <SecondaryScreenHeader
+        backTo="/admin/analytics"
+        currentPageTitle={"Total Revenue"}
+        title={"Back to analytics page"}
+      />
 
       <section className="flex-1 flex flex-col gap-5 p-7 bg-gray-300/45">
         {/* Metrics Cards */}

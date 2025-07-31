@@ -166,6 +166,7 @@ const quickActionsCards: QuickActionCardProps[] = [
     description: "Get access to full panel control",
     buttonText: "Continue",
     buttonTextColor: "#00AB57",
+    href: "/admin/settings/control-panel",
   },
   {
     title: "Password",

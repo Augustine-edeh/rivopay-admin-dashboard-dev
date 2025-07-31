@@ -2,10 +2,6 @@
 @import "tw-animate-css";
 
 @theme {
-  /* --color-cream: #fff7e8;
-  --darkPurple: #6746a3;
-  --lightPurple: "#9747FF52"; */
-
   --color-darkPurple: #6746a3;
   --color-lightPurple: #9747ff52;
   --color-darkGray: #8e8e93;
@@ -17,6 +13,8 @@
   --color-dashboardLightGrayBG: #f3f3f3;
   --color-dashboardLightGreen: #b1ee81;
   --color-dashboardAccentGreen: #f4fcf7;
+  --color-rivoGreen: #00ab57;
+  --color-rivoRed: #bf2b2b;
 }
 
 @custom-variant dark (&:is(.dark *));
