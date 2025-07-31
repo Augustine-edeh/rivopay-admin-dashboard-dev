@@ -1,6 +1,6 @@
 import { ArrowDown, TrendingUp } from "lucide-react";
 
-export const metricsData = [
+export const dashboardMetricsData = [
   {
     title: "Total Revenue",
     value: "₦0.00",

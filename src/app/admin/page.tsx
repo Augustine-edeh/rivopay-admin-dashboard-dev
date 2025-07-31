@@ -11,7 +11,7 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select";
-import { metricsData } from "@/data/dashboardMetricData";
+import { dashboardMetricsData } from "@/data/dashboardMetricsData";
 import { summaryItems } from "@/data/dashboardSummaryItems";
 import SummaryItemCard from "@/components/admin/SummaryItemCard";
 
@@ -26,7 +26,7 @@ const DashboardPage = () => {
     <section className="flex-1 flex flex-col gap-6 px-6 py-5 bg-white">
       {/* Metric Cards Section */}
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {metricsData.map((item, index) => (
+        {dashboardMetricsData.map((item, index) => (
           <MetricCard
             key={index}
             title={item.title}
