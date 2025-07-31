@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
 import MetricCard from "@/components/MetricCard";
 import PieChartComponent from "@/components/admin/PieChartComponent";
-
 import {
   Select,
   SelectTrigger,
@@ -12,7 +11,6 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select";
-import Image from "next/image";
 import { metricsData } from "@/data/dashboardMetricData";
 import { summaryItems } from "@/data/dashboardSummaryItems";
 import SummaryItemCard from "@/components/admin/SummaryItemCard";
