@@ -48,7 +48,7 @@ const LoginPage = () => {
   //   useState<boolean>(false);
 
   // 2. Submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
     console.log(values);
 
     // NOTE: post form values to the backend.
@@ -60,8 +60,23 @@ const LoginPage = () => {
     // NOTE: if response.data.success; redirect to admin page
     // 1. show toast({type: success, message: {heading: 'Login successfully}', subText: 'You are logged in.' })
     // 2. clear the form & redirect to /admin.
-    router.push("/admin"); //3.
-  }
+    // router.push("/admin"); //3.
+
+    const demoEmail = "demo@rivopay.com";
+    const demoPassword = "DemoPass123";
+
+    if (values.email === demoEmail && values.password === demoPassword) {
+      // on Valid demo credentials: proceed
+      console.log("Demo login successful:", values);
+      router.push("/admin");
+    } else {
+      // on Invalid login: prevents navigation & optionally show an error
+      console.error("Invalid login attempt:", values);
+      alert(
+        "Invalid login details. Please use the 'Use Demo Account' button to log in."
+      );
+    }
+  };
 
   return (
     <div className="w-full max-w-md">
