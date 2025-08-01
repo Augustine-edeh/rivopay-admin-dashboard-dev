@@ -1,0 +1,38 @@
+export const driverActivities = [
+  {
+    image: "/driver-2.svg",
+    name: "James Komolafe",
+    terminalID: "7764PP9",
+    route: "Ado-Ikere",
+    arrivingIn: "15",
+    date: "January 23rd 2024",
+    status: "pending",
+  },
+  {
+    image: "/driver-2.svg",
+    name: "James Komolafe",
+    terminalID: "7764PP9",
+    route: "Ado-Ilawe",
+    arrivingIn: "15",
+    date: "January 23rd 2024",
+    status: "completed",
+  },
+  {
+    image: "/driver-2.svg",
+    name: "James Komolafe",
+    terminalID: "7764PP9",
+    route: "Ado-Ilawe",
+    arrivingIn: "15",
+    date: "January 23rd 2024",
+    status: "completed",
+  },
+  {
+    image: "/driver-2.svg",
+    name: "James Komolafe",
+    terminalID: "7764PP9",
+    route: "Ado-Ikere",
+    arrivingIn: "15",
+    date: "January 23rd 2024",
+    status: "pending",
+  },
+];
