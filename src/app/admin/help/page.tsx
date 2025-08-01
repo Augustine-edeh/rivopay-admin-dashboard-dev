@@ -6,11 +6,16 @@ import { usePageTitleStore } from "@/stores/ui/pageTitleStore";
 const HelpPage = () => {
   const { setTitle } = usePageTitleStore((state) => state);
 
-  useEffect(() => setTitle("help and support"), [setTitle]);
+  useEffect(() => {
+    setTitle("help and support");
+    // Example redirection logic for future integration:
+    // router.push("https://your-helpdesk.example.com/dashboard");
+  }, [setTitle]);
 
   return (
-    <div>
-      The help page should re-route to the integrated 3rd party H&S dashboard
+    <div className="text-center text-muted-foreground mt-10">
+      Help & Support will redirect users to our third-party dashboard once
+      integrated.
     </div>
   );
 };
