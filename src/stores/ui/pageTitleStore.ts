@@ -6,6 +6,6 @@ interface PageTitleState {
 }
 
 export const usePageTitleStore = create<PageTitleState>((set) => ({
-  title: "dashboard", // default title
+  title: "", // default title
   setTitle: (title) => set({ title }),
 }));
