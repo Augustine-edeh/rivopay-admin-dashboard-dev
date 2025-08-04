@@ -1,0 +1,60 @@
+import { TransactionsType } from "@/types/transactions/transactions";
+
+export const transactions: TransactionsType[] = [
+  {
+    ref: "#21223456216",
+    method: "Physical Card",
+    date: "12 Mar 2025",
+    time: "12:00pm",
+    amount: "₦300",
+    status: "Successful",
+  },
+  {
+    ref: "#21323456216",
+    method: "Virtual Card",
+    date: "12 Mar 2025",
+    time: "12:00pm",
+    amount: "₦300",
+    status: "Pending",
+  },
+  {
+    ref: "#21323456216",
+    method: "QR Code",
+    date: "12 Mar 2025",
+    time: "12:00pm",
+    amount: "₦500",
+    status: "Successful",
+  },
+  {
+    ref: "#21323456216",
+    method: "QR Code",
+    date: "12 Mar 2025",
+    time: "12:00pm",
+    amount: "₦300",
+    status: "Pending",
+  },
+  {
+    ref: "#21323456216",
+    method: "QR Code",
+    date: "12 Mar 2025",
+    time: "12:00pm",
+    amount: "₦500",
+    status: "Successful",
+  },
+  {
+    ref: "#21323456216",
+    method: "Physical Card",
+    date: "12 Mar 2025",
+    time: "12:00pm",
+    amount: "₦300",
+    status: "Pending",
+  },
+  {
+    ref: "#21323456216",
+    method: "Virtual Card",
+    date: "12 Mar 2025",
+    time: "12:00pm",
+    amount: "₦300",
+    status: "Successful",
+  },
+];

@@ -2,10 +2,6 @@
 @import "tw-animate-css";
 
 @theme {
-  /* --color-cream: #fff7e8;
-  --darkPurple: #6746a3;
-  --lightPurple: "#9747FF52"; */
-
   --color-darkPurple: #6746a3;
   --color-lightPurple: #9747ff52;
   --color-darkGray: #8e8e93;
